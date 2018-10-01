@@ -1,0 +1,272 @@
+#single .page-title{
+	padding-top: 20px;
+	font-size: 27px;
+}
+
+.page-menu{
+	width: 100%;
+}
+
+.nav-links{
+	position: absolute;
+	left: 50%;
+	margin: -41px 0px 0px 373px;
+}
+
+.page-menu .line{
+    width: 100%;
+    height: 1px;
+    border-top: 2px solid #aaa;
+    margin-top: 20px;
+}
+
+#single .dialog-arrow.page-menu-arrow{
+	background-image: url('../imgs/icons/menu-up.png');
+	width: 25px;
+    height: 25px;
+	margin-left: 966px;
+    margin-top: -19px;
+    transition-duration: .2s;
+}
+
+#single .nav-links a{
+    text-decoration: none;
+    color: #888;
+    font-size: 16px;
+    margin-right: 16px;
+    transition-duration: .2s;
+}
+
+#single .nav-links a:hover{
+	color: #222;
+}
+
+#single #comments{
+	display: none;
+}
+
+.page-part-container{
+	margin-top: 20px;
+}
+
+.info-item{
+	margin-top: 20px;
+	font-size: 19px;
+	color: #777;
+}
+
+.info-item strong{
+	color: #111;
+}
+
+.right-part{
+	margin-left: 20px;
+	display: inline-block;
+	width: 65%;
+}
+
+.left-part{
+	margin-left: 15px;
+}
+
+.right-part .eye-blue{
+	top: 1px;
+}
+
+.open-add-comments-form{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.add-comments-form{
+	box-shadow: 0 0 5px #ccc;
+	border-radius: 3px;
+	display: none;
+	padding-bottom: 30px;
+	background-color: white;
+}
+
+.add-comments-form .dialog-arrow{
+	margin-top: -25px;
+    margin-left: 70px;
+}
+
+.count-comments{
+	font-size: 20px;
+	color: #808080;
+}
+
+.count-comments strong{
+	color: #111;
+}
+
+#single .comments-list{
+	margin-top: 20px;
+}
+
+#single .card-comment{
+	box-shadow: 0 0 6px #bbb;
+	padding: 15px;
+	margin-bottom: 30px;
+	background-color: white;
+    border-radius: 3px;
+}
+
+.cc-title{
+	font-size: 19px;
+	color: #333;
+	font-weight: bold;
+}
+
+.cc-title .m-icon{
+	margin-right: 10px;
+}
+
+.cc-timestamp{
+	text-align: right;
+	color: #888888;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+.cc-body{
+	margin-top: 15px;
+	font-family: Roboto;
+	font-size: 14px;
+}
+
+.cc-footer{
+	margin-top: 15px;
+	color: #686868;
+	font-size: 14px;
+}
+
+.cc-footer .comment-delete{
+	background-color: transparent;
+	border: 0;
+    margin-top: -10px;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+.cc-footer .comment-delete:hover{
+	opacity: .7;
+}
+
+.cc-footer .comment-delete .m-icon{
+	width: 14px;
+	height: 20px;
+    top: 3px;
+    left: 3px;
+}
+
+#single .page-title .m-icon{
+    width: 26px;
+    height: 26px;
+    top: 5px;
+}
+
+#single .rating .m-icon{
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#single .card-comment{
+	transition-duration: .2s;
+}
+
+#single .remove-dialog{
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    margin: -124px 0px 0px 110px;
+    /*transition-duration: .2s;*/
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 0 5px #555;
+    padding: 15px;
+    border-radius: 3px;
+    padding-top: 5px;
+    font-size: 15px;
+    display: none;
+}
+
+#single .remove-dialog .dialog-arrow{
+	transform: rotate(180deg);
+}
+
+#single .remove-dialog.rd-step-1 .dialog-arrow,
+#single .remove-dialog.rd-step-yes .dialog-arrow,
+#single .remove-dialog.rd-step-no-send .dialog-arrow
+{
+    top: 89px;
+    left: 330px;
+}
+
+#single .remove-dialog.rd-step-yes{
+	padding-top: 15px;
+}
+
+#single button.rd-ans{
+	border: 0;
+    padding: 8px;
+    color: white;
+    border-radius: 3px;
+    background-color: #1e88e5;
+    font-size: 14px;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+#single button.rd-ans:hover{
+	opacity: .7;
+}
+
+#single .rd-step-yes{
+	/*display: none;*/
+}
+
+#single .remove-dialog.rd-step-no{
+    width: 326px;
+    height: 310px;
+    margin: -335px 0px 0px 184px;
+    font-size: 16px;
+    padding-top: 2px;
+}
+
+#single .remove-dialog.rd-step-no .send-form{
+	font-size: 15px;
+}
+
+#single .remove-dialog.rd-step-no .input{
+    width: 330px;
+    transform: scale(.9);
+    margin-left: -17px;
+}
+
+#single .remove-dialog.rd-step-no .input input,
+#single .remove-dialog.rd-step-no .input textarea{
+	width: 270px;
+}
+
+#single .remove-dialog.rd-step-no .dialog-arrow{
+    top: 298px;
+    left: 256px;
+}
+
+#single .remove-dialog [data-ans="cancel"]{
+	background-color: transparent;
+	margin-left: 20px;
+	color: grey;
+}
+
+#single .remove-dialog.rd-bottom.rd-step-no{
+    margin-top: 44px;
+}
+
+#single .remove-dialog.rd-bottom.rd-step-no .dialog-arrow{
+    top: -24px;
+    transform: rotate(0deg);
+}

@@ -1,0 +1,144 @@
+/* ICONS */
+.m-icon{
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% auto;
+	position: relative;
+	transition-duration: .2s;
+}
+
+/*.m-icon.account-plus{
+	background-image: url('../imgs/icons/account-plus.png');
+}*/
+
+.m-icon.plus{
+	background-image: url('../imgs/icons/plus.png');
+	background-size: 120% auto;
+}
+
+.m-icon.plus-red{
+	background-image: url('../imgs/icons/plus-red.png');
+	background-size: 120% auto;
+}
+
+.m-icon.magnify{
+	background-image: url('../imgs/icons/magnify.png');
+}
+
+.m-icon.magnify-red{
+	background-image: url('../imgs/icons/magnify-red.png');
+}
+
+.m-icon.magnify-white{
+	background-image: url('../imgs/icons/magnify-white.png');
+}
+
+.m-icon.arrow-left{
+	background-image: url('../imgs/icons/arrow-left.png');
+}
+
+.m-icon.arrow-right{
+	background-image: url('../imgs/icons/arrow-right.png');
+}
+
+.m-icon.thumb-up-green{
+	background-image: url('../imgs/icons/thumb-up-green.png');
+}
+
+.m-icon.thumb-down-red{
+	background-image: url('../imgs/icons/thumb-down-red.png');
+}
+
+.m-icon.thumbs-up-down{
+	background-image: url('../imgs/icons/thumbs-up-down.png');
+}
+
+.m-icon.prize{
+	background-image: url('../imgs/icons/prize.png');
+}
+
+.m-icon.vk{
+	background-image: url('../imgs/icons/vk.png');
+	background-size: 120% auto;
+}
+
+.m-icon.twitter{
+	background-image: url('../imgs/icons/twitter.png');
+}
+
+.m-icon.facebook{
+	background-image: url('../imgs/icons/facebook.png');
+	background-size: 50% auto;
+}
+
+.m-icon.arrow-right-red{
+	background-image: url('../imgs/icons/arrow-right-red.png');
+}
+
+.m-icon.arrow-left-red{
+	background-image: url('../imgs/icons/arrow-left-red.png');
+}
+
+.m-icon.menu-down{
+	background-image: url('../imgs/icons/menu-down.png');
+}
+
+.m-icon.open-in-new{
+	background-image: url('../imgs/icons/open-in-new.png');
+}
+
+.m-icon.account{
+	background-image: url('../imgs/icons/account.png');
+}
+
+.m-icon.email{
+	background-image: url('../imgs/icons/email.png');
+}
+
+.m-icon.message-text{
+	background-image: url('../imgs/icons/message-text.png');
+}
+
+.m-icon.folder-image{
+	background-image: url('../imgs/icons/folder-image.png');
+}
+
+.m-icon.close{
+	background-image: url('../imgs/icons/close.png');
+}
+
+.m-icon.web{
+	background-image: url('../imgs/icons/web.png');
+}
+
+.m-icon.playlist-edit{
+	background-image: url('../imgs/icons/playlist-edit.png');
+}
+
+.m-icon.checkbox-blank-outline{
+	background-image: url('../imgs/icons/checkbox-blank-outline.png');
+}
+
+.m-icon.checkbox-marked{
+	background-image: url('../imgs/icons/checkbox-marked.png');
+}
+
+.m-icon.plus-white{
+	background-image: url('../imgs/icons/plus-white.png');
+}
+
+.m-icon.lock-alert{
+	background-image: url('../imgs/icons/lock-alert.png');
+}
+
+.m-icon.newspaper{
+	background-image: url('../imgs/icons/newspaper.png');
+}
+
+
+
+
+/* /ICONS */

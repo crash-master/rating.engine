@@ -1,0 +1,58 @@
+#news-list{
+	margin-top: 30px;
+}
+
+.nl-item{
+	background-color: #eee;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.nl-item .thumbnail img{
+	width: 100%;
+	height: auto;
+}
+
+.nl-title{
+	margin: 0 0 15px 0;
+}
+
+.nl-item .article{
+	font-size: 5rem;
+	line-height: 7rem;
+	margin-bottom: 15px;
+}
+
+.nl-item .timestamp{
+	font-size: 5rem;
+}
+
+.nl-item .read-more-wrap{
+	text-align: right;
+}
+
+.std-pagination{
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.std-pagination a{
+	margin-left: 10px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 5rem;
+	font-family: MariupolBold;
+	min-width: 45px;
+}
+
+.std-pagination a:first-of-type{
+	margin-left: 0;
+}
+
+.std-pagination .number{
+}
+
+.logo{
+	cursor: pointer;
+}
