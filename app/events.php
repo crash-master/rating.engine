@@ -6,18 +6,21 @@ use Kernel\Sess;
 function checkOnSecureList($current_route){
 
     $exeption = [
-        '/admin/login-page'
+        '/admin/login-page',
+        '/admin/login'
     ];
 
     return array_search('admin', explode('/', $current_route)) && array_search($current_route, $exeption) === false;
 }
 
 Events::add('call_action', function($params){
-	$route = linkTo($params['controllerName'].'@'.$params['actionName']);
-    if(Sess::get('admin') != 'true'){
-    	if(checkOnSecureList($route)){
-    		return redirect(linkTo('IndexController@admin_login_page'));
-    	}
+    if(is_string($params['actionName'])){
+    	$route = linkTo($params['controllerName'].'@'.$params['actionName']);
+        if(Sess::get('admin') != 'true'){
+        	if(checkOnSecureList($route)){
+        		return redirect(linkTo('IndexController@admin_login_page'));
+        	}
+        }
     }
 });
 

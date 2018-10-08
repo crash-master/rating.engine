@@ -14,7 +14,7 @@ class Router{
 		if(empty($arr['route']) or empty($arr['action'])){
 			return false;
 		}
-        if($arr['route'][0] != '/') $arr['route'] = '/' . $arr['route'];
+        $arr['route'] = trim($arr['route'], '/');
 		self::$data[$arr['route']] = $arr['action'];
 		return true;
 	}
@@ -99,9 +99,7 @@ class Router{
                 return true;
             }
             
-            $r = call_user_func(array($action_404[0], $action_404[1]));
-            $view($r);
-
+            $view(self::call($action_404[0], $action_404[1]));
         }
 
 		return true;
@@ -152,17 +150,6 @@ class Router{
 
     }
 
-    public static function post($post,$action,$get = false){
-        if(!$post or !$action) return false;
-
-        if($get)
-            self::$post[$post.':'.$get]['action'] = $action;
-        else
-            self::$post[$post]['action'] = $action;
-
-        return true;
-    }
-
     public static function eventsPost($view){
         $data = Request::post();
         $keys = array_keys($data);
@@ -192,7 +179,7 @@ class Router{
                             'method' => 'post'
                         ]);
 
-                        $view(call_user_func(array($arr[0],$arr[1])));
+                        $view(self::call($arr[0],$arr[1]));
                         self::$post_flag = true;
                     }
                 }
@@ -208,7 +195,6 @@ class Router{
         }elseif($view and !self::$viewfunc){
             self::$viewfunc = $view;
         }
-        // Request::clearGet();
 
         self::eventsPost($view);
 		self::routing($view);
@@ -231,8 +217,22 @@ class Router{
 		return count(self::$data);
 	}
 
-    public static function get($route,$action){
+    public static function get($route, $action){
         self::addRoute(array('route'=>$route,'action'=>$action));
+    }
+
+    public static function post($post, $action, $get = false){
+        if(!$post or !$action) return false;
+
+        if($get){
+            $get = ltrim($get, '/');
+            self::$post[$post.':'.$get]['action'] = $action;
+        }
+        else{
+            self::$post[$post]['action'] = $action;
+        }
+
+        return true;
     }
     
     public static function linkTo($actionName, $params = NULL){
@@ -247,10 +247,9 @@ class Router{
             foreach($post as $var_and_route => $action){
                 if($action['action'] == $actionName){
                     list(,$route) = explode(':', $var_and_route);
-                    return $route;
+                    return '/' . $route;
                 }
             }
-            return false;
         }
 
         if(is_array($params)){
@@ -258,10 +257,42 @@ class Router{
             foreach($params as $key => $val){     
                 $route = str_replace('{' . $key . '}', $val, $route);     
             }
-            return $route;
+            return '/' . $route;
         }
         
-        return $data[$actionName];
+        return '/' . $data[$actionName];
+    }
+
+    private static function controller_name_to_route_link($controller){
+        $controller = str_replace('Controller', '', $controller);
+        return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/', "-$1", $controller));
+    }
+
+    private static function action_name_to_route_link($action){
+        $action = str_replace(' ', '', ucwords(str_replace('_', ' ', $action)));
+        return strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/', "-$1", $action));
+    }
+
+    public static function generate_route_from_action($action_string){
+        // get controller and action names from string
+        list($controller, $action) = explode('@', $action_string, 2);
+        $controller_for_route = self::controller_name_to_route_link($controller);
+        $action_for_route = self::action_name_to_route_link($action);
+
+        // make route
+        $route = '/' . $controller_for_route . '/' . $action_for_route;
+        if(!class_exists($controller)){
+            IncludeControll::load_one_controller($controller);
+        }
+        $reflectionMethod = new \ReflectionMethod($controller, $action);
+        $methParams = $reflectionMethod -> getParameters();
+
+        foreach($methParams as $name){
+            $name = trim(ltrim(rtrim(strstr($name, '$'), ']'), '$'));
+            $route .= '/{' . $name . '}';
+        }
+
+        return $route;
     }
     
     public static function actions($c){
@@ -269,25 +300,25 @@ class Router{
             $c = [$c];
         $count = count($c);
         for($i=0;$i<$count;$i++){
-            $controller = explode('@', $c[$i]);
-            $mini = explode('Controller', $controller[0]);
-            $route = '/' . $mini[0] . '/' . $controller[1];
-            $reflectionMethod = new \ReflectionMethod($controller[0], $controller[1]);
-            $methParams = $reflectionMethod -> getParameters();
-            $countP = count($methParams);
-            for($k=0;$k<$countP;$k++){
-                $route .= '/{' . $methParams[$k] -> name . '}';
-            }
+            $route = self::generate_route_from_action($c[$i]);
             
+            // set route
             self::get($route, $c[$i]);
         }
         
         return true;
     }
+
+    public static function action($c){
+        return self::actions($c);
+    }
     
     public static function controller($classname, $without = false){
         $without = !$without ? [] : $without;
         $without = !is_array($without) ? [$without] : $without;
+        if(!class_exists($classname)){
+            IncludeControll::load_one_controller($classname);
+        }
         $methods = get_class_methods($classname);
         $count = count($methods);
         $arr = [];
@@ -298,7 +329,7 @@ class Router{
                 continue;
             $arr[] = $classname . '@' . $methods[$i];
         }
-        
+
         return self::actions($arr);
     }
     
@@ -317,6 +348,37 @@ class Router{
             'get' => self::$data,
             'post' => self::$post
         ];  
+    }
+
+    public static function route_universe($param1, $param2 = false, $param3 = false){
+        if($param1 and !$param2 and !$param3){
+            if(!is_array($param1) and strpos($param1, '@') !== false){
+                // this is action
+                self::action($param1);
+            }elseif(!is_array($param1) and strpos($param1, 'Controller') !== false){
+                // this is controller
+                self::controller($param1);
+            }elseif(is_array($param1)){
+                // this is actionS
+                self::actions($param1);
+            }
+        }elseif($param1 and $param2 and !$param3){
+            if(is_string($param1) and is_object($param2)){
+                self::get($param1, $param2);
+            }elseif(is_string($param2) and strpos($param2, '@') !== false and strpos($param1, '/') !== false){
+                // this is GET classic
+                self::get($param1, $param2);
+            }elseif(strpos($param1, 'Controller') !== false){
+                // this is controller with two params
+                self::controller($param1, $param2);
+            }elseif(strpos($param2, '@') !== false and strpos($param1, '/') === false){
+                // this is POST classic
+                self::post($param1, $param2);
+            }
+        }elseif($param1 and $param2 and $param3){
+            // this is only POST classic
+            self::post($param1, $param2, $param3);
+        }
     }
 
 }

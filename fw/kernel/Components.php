@@ -3,7 +3,6 @@ namespace Kernel;
 
 class Components{
 	private static $components;
-	private static $pathToComponentsSchema;
 
 	/**
 	 * [create component]
@@ -14,10 +13,15 @@ class Components{
 		if(!is_array(self::$components)){
 			self::$components = [];
 		}
-		if(isset(self::$components[$name])){
-			Err::add('Components', "Component with name '{$name}' already exist");
-			return false;
+		try{
+			if(isset(self::$components[$name])){
+				throw new Exception("Component with name '{$name}' already exist");
+				return false;
+			}
+		}catch(Exception $e){
+			exception($e);
 		}
+
 		self::$components[$name] = $component;
 	}
 
@@ -52,7 +56,24 @@ class Components{
 	 * @return [array]       [one component]
 	 */
 	public static function getOnComponentsName($name){
-		return self::$components[$name];
+		if(isset(self::$components[$name])){
+			return self::$components[$name];
+		}
+		return [];
+	}
+
+	/**
+	 * [getFullOnComponentsName get full component an example [component_name => [view_path => [controller1@action, controller2@action]]]]
+	 *
+	 * @param  [string] $name [name of component]
+	 *
+	 * @return [array] [component in assoc array]
+	 */
+	public static function getFullOnComponentsName($name){
+		if(isset(self::$components[$name])){
+			return [$name => self::$components[$name]];
+		}
+		return [];
 	}
 
 	/**
@@ -97,26 +118,20 @@ class Components{
 	}
 
 	/**
-	 * [init function for initialisation ]
-	 * @param  [string] $path [path to file with components schema]
-	 */
-	public static function init($path = NULL){
-		self::$pathToComponentsSchema = $path ? $path : './app/components.php';
-
-		if(!file_exists(self::$pathToComponentsSchema)){
-			Err::add('Components', 'File components.php (components schema) was not found');
-			return false;
-		}
-	}
-
-	/**
 	 * [callToAction for calling action]
 	 * @param  [string] $view [path to view]
 	 */
-	public static function callToAction($view){
+	public static function callToAction($view, $arguments = false){
 		$component = self::getOnViewPath($view);
-		if(!count($component)){
-			return false;
+		if(!count($component) or !$component){
+			$component = self::getFullOnComponentsName($view);
+			if(!isset($component[$view])){
+				return false;
+			}
+			list($view) = array_keys($component[$view]);
+			if(!count($component) or !$component){
+				return false;
+			}
 		}
 
 		Events::register('before_rendered_component', [
@@ -124,18 +139,44 @@ class Components{
             'component' => $component
         ]);
 
+
 		foreach($component as $name => $item){
 			if(!is_array($item[$view])){
-				$action = explode('@', $item[$view]);
-				View::addVars(call_user_func(array($action[0],$action[1])));
-			}else{
-				$count = count($item[$view]);
-				for($i=0; $i<$count; $i++){
-					$action = explode('@', $item[$view][$i]);
-					View::addVars(call_user_func(array($action[0],$action[1])));
+				$item[$view] = [$item[$view]];
+			}
+			$count = count($item[$view]);
+			for($i=0; $i<$count; $i++){
+				list($controller, $action) = explode('@', $item[$view][$i]);
+				if($controller == ''){
+					dd([$component[$name]]);
 				}
+				View::addVars(self::call($controller, $action, $arguments));
 			}
 		}
 	}
+
+	/**
+	 * [call action]
+	 *
+	 * @param  [string] $controller [controller name]
+	 * @param  [string] $action [action name]
+	 * @param  [array] $args [array with arguments]
+	 *
+	 * @return [string] [layout html code]
+	 */
+	public static function call($controller, $action, $args){   
+        $reflectionMethod = new \ReflectionMethod($controller, $action);
+        $methParams = $reflectionMethod -> getParameters();
+        $params = [];
+        $count = count($methParams);
+
+        for($i=0;$i<$count;$i++){
+            if(isset($args[$methParams[$i] -> name])){
+                $params[] = $args[$methParams[$i] -> name];
+            }
+        }
+
+        return $reflectionMethod -> invokeArgs(new $controller(), $params);
+    }
 
 }

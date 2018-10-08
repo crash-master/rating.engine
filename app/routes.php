@@ -17,8 +17,12 @@ Router::get('/page/{pagename}', 'PageController@text_page');
 Router::get('/page/rating', 'RatingController@page');
 Router::get('/page/tag/{slug}', 'TagController@page');
 Router::get('/profile/{slug}', 'ProfileController@page');
-Router::post('pass', 'IndexController@admin_login', '/admin/login');
 Router::post('main-meta', 'MetaController@save_main_meta', '/admin/meta/save/main-meta');
 Router::post('social-links', 'MetaController@save_social_links', '/admin/meta/save/social-links');
 Router::get('/redirect/original-url/{profileid}','SiteController@incrementSiteVisit');
 Router::get('/waiting/for/key/{key}', 'ReviewController@waiting_key_for_remove');
+
+// yellow drops
+Router::get('/page/profiles', 'YDController@profile_list');
+
+route('/transport', 'YDController@transport');

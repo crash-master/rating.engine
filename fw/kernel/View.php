@@ -4,8 +4,10 @@ namespace Kernel;
 class View{
     private static $vars;
     private static $currentPage;
+    private static $layoutMap;
+    private static $layoutMapCreate_flag = false;
 
-    public static function make($name,$arr = NULL,$varname = NULL){
+    public static function make($name, $arr = NULL, $varname = NULL){
         if(!is_array(self::$vars))
             self::$vars = [];
 
@@ -28,6 +30,9 @@ class View{
     }
 
     private static function searchFile($name){
+        $file = Components::getOnComponentsName($name);
+        if($file) list($name) = array_keys($file);
+        
         list($rootDir, $secondDir) = explode('/', $name);
         if($rootDir == 'fw' && $secondDir == 'modules'){
             if(file_exists($name)){
@@ -40,11 +45,11 @@ class View{
         }
 
         $dirList = ['./resources/view/'];
-        $packages = PackageControll::getPackageList();
-        $count = count($packages['path']);
-        for($i=0;$i<$count;$i++){
-            $dirList[] = $packages['path'][$i] . '/resources/view/';
-        }
+        // $packages = PackageControll::getPackageList();
+        // $count = count($packages['path']);
+        // for($i=0;$i<$count;$i++){
+        //     $dirList[] = $packages['path'][$i] . '/resources/view/';
+        // }
 
         $count = count($dirList);
         for($i=0;$i<$count;$i++){
@@ -65,7 +70,7 @@ class View{
         $file = self::searchFile($name);
         if(!$file)
             return false;
-
+        self::addLayoutMapItem($name, $file);
         Events::register('before_rendered_page', [
             'file' => $file,
             'vars' => self::$vars
@@ -75,23 +80,24 @@ class View{
         if(!is_null(self::$vars))
             extract(self::$vars);
 
-        require_once($file);
+        require($file);
 
         $res = ob_get_clean();
         return $res;
     }
 
-    public static function join($name){
+    public static function join($name, $arr_arguments = []){
         $file = self::searchFile($name);
         if(!$file) return false;
+        self::addLayoutMapItem($name, $file);
         Events::register('before_rendered_layout', [
             'file' => $file,
             'name' => $name
         ]);
-        Components::callToAction($name);
+        Components::callToAction($name, $arr_arguments);
         if(!is_null(self::$vars))
             extract(self::$vars);
-        require_once($file);
+        require($file);
         Events::register('after_rendered_layout', [
             'file' => $file,
             'name' => $name
@@ -148,6 +154,20 @@ class View{
         self::$vars = array_merge(self::$vars, $arr);
     }
 
+    public static function addLayoutMapItem($name, $file){
+        if(self::$layoutMapCreate_flag){
+            // dd(debug_backtrace());
+            self::$layoutMap[$name] = $file;
+        }
+    }
+
+    public static function getLayoutMap($name, $vars = NULL){
+        self::$layoutMapCreate_flag = true;
+        self::$layoutMap = [];
+        self::make($name, $vars);
+        self::$layoutMapCreate_flag = false;
+        return self::$layoutMap;
+    }
+
 }
 
-?>

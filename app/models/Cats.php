@@ -13,7 +13,7 @@ class Cats extends \Extend\Model{
     }
 
     public function full_list(){
-    	return $this -> all();
+    	return atarr($this -> all());
     }
 
 }

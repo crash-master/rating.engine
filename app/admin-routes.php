@@ -35,6 +35,9 @@ Router::get('/admin/review/remove/{id}', 'ReviewController@remove');
 Router::get('/admin/comment/remove/{id}', 'CommentController@remove');
 Router::post('title', 'CatsController@add', '/admin/cats/new');
 Router::post('name', 'ProfileController@profile_update', '/admin/profile_update');
+route('pass', 'IndexController@admin_login', '/admin/login');
+Router::post('admin-create-new-profile', 'ProfileController@admin_create_profile', '/admin/create-new-profile');
+Router::get('/admin/create-new-profile', 'ProfileController@admin_create_new_profile_page');
 
 Router::get('/admin/tags', 'TagController@admin_page');
 Router::get('/admin/tags/remove/{tagid}', 'TagController@remove');

@@ -27,14 +27,12 @@ class Profile extends \Extend\Model{
         model('Site') -> set($site);
         model('Site') -> domen_created($mag); // domen_created
 
+        $profile['slug'] = $slug;
         return $profile;
     }
 
     public function search_request($request){
         $profiles = arrayToArray(model('Profile') -> get(['where' => ['name', 'LIKE', '%'.$request.'%', 'OR', 'site', 'LIKE', '%'.$request.'%'], 'limit' => [0, 5]]));
-        if(!$profiles[0]){
-            $profiles = [];
-        }
         $count = count($profiles);
         $profiles_public = [];
         $n = 0;
@@ -52,10 +50,8 @@ class Profile extends \Extend\Model{
 
     public function get_last_profiles($count_profiles){
         $profiles = arrayToArray($this -> get(['where' => ['public_flag','=','1'], 'order' => ['id','DESC'], 'limit' => [0, $count_profiles]]));
-        if(!$profiles[0]){
-            $profiles = [];
-        }
-        for($i=0; $i<$count_profiles; $i++) {
+        $count = count($profiles);
+        for($i=0; $i<$count; $i++) {
             $profiles[$i] = $this -> profile_fields_transform($profiles[$i], ['site', 'timestamp', 'site_link']);
         }
 
@@ -70,13 +66,14 @@ class Profile extends \Extend\Model{
                 case 'site_obj': $profile['site_obj'] = model('Site') -> get(['where' => ['profileid', '=', $profile['id']]]); break;
                 case 'cat': $profile['cat'] = model('Cats') -> get(['where' => ['id', '=', $profile['catid']]]); break;
                 case 'site': $profile['site'] = url_without_prefix($profile['site']); break;
-                case 'to_profile': $profile['to_profile'] = model('Meta') -> getMeta('siteurl') . linkTo('ProfileController@page', ['slug' => $data[$i]['slug']]); break;
+                case 'to_profile': $profile['to_profile'] = model('Meta') -> getMeta('siteurl') . linkTo('ProfileController@page', ['slug' => $profile['slug']]); break;
                 case 'domen_created': $profile['site_obj']['domen_created'] = dateFormat($profile['site_obj']['domen_created']); break;
                 case 'number': $profile['number'] = model('Number') -> get_number($profile['id']); break;
                 case 'number_txt': $profile['number_txt'] = model('Number') -> get_number($profile['id']);
                     $profile['number_txt'] = ($profile['number_txt'] < 9) ? '0' . $profile['number_txt'] : $profile['number_txt'];
                 break;
                 case 'tags': $profile['tags'] = model('Tag') -> get_by_profile($profile); break;
+                case 'count_comments': $profile['count_comments'] = model('Comment') -> get_count_comments_tree_by_profile_id($profile['id']);
             }
         }
 
@@ -98,9 +95,6 @@ class Profile extends \Extend\Model{
 
     public function get_moderation_list(){
     	$data = arrayToArray($this -> get(['where' => ['public_flag','=',0], 'order' => ['id', 'ASC']]));
-        if(!$data[0]){
-            $data = [];
-        }
     	$count = count($data);
     	for($i=0;$i<$count;$i++){
     		$data[$i]['site'] = linkToLink($data[$i]['site']);
@@ -156,6 +150,11 @@ class Profile extends \Extend\Model{
             'favicon' => $favicon
         ];
     }
+
+    public function get_by_id($profileid){
+        $profile = $this -> profile_fields_transform(model('Profile') -> get(['id', '=', $profileid]), ['to_profile']);
+        return $profile;
+    }  
 
         /////// RATING ///////
 
@@ -224,4 +223,23 @@ class Profile extends \Extend\Model{
         ];
         model('Profile') -> update($data, ['id', '=', $profileid]);
     }
+
+    public function get_rating_list($order, $limit = false, $count_on_page = false){
+        if($count_on_page){
+            $data = arrayToArray(model('Profile') -> get(['where' => ['public_flag','=','1'], 'order' => [$order,'DESC'], 'limit' => [$limit, $count_on_page]]));
+        }else{
+            $data = arrayToArray(model('Profile') -> get(['where' => ['public_flag','=','1'], 'order' => [$order,'DESC']]));
+        }
+        $count = count($data);
+        for($i=0; $i<$count; $i++){
+            $data[$i] = $this -> profile_fields_transform($data[$i], ['timestamp', 'number', 'site_link', 'site', 'to_profile', 'site_obj', 'cat', 'count_comments']);
+            if(!$data[$i]['site_obj']){
+                $data[$i]['site_obj'] = false;
+            }else{
+                $data[$i]['site_obj']['screen'] = '';
+            }
+        }
+        return $data;
+    }
+
 }

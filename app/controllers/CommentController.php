@@ -16,7 +16,22 @@ class CommentController extends \Extend\Controller{
     public function create(){
     	$post = \Kernel\Request::post();
     	$post['public_flag'] = '0';
-    	model('Comment') -> set($post);
+        if(isset($post['profileid']) and $post['profileid'] != 0){
+            $link = 'profile_'.$post['profileid'];
+            unset($post['reviewid']);
+            unset($post['commentid']);
+        }elseif(isset($post['reviewid']) and $post['reviewid'] != 0){
+            $link = 'review_'.$post['reviewid'];
+            unset($post['profileid']);
+            unset($post['commentid']);
+        }elseif(isset($post['commentid']) and $post['commentid'] != 0){
+            $link = 'comment_'.$post['commentid'];
+            unset($post['profileid']);
+            unset($post['reviewid']);
+        }
+
+        model('Comment') -> create($post, $link);
+        return true; // call this action from ajax
     }
 
     public function confirm($id){
@@ -32,7 +47,20 @@ class CommentController extends \Extend\Controller{
     }
 
     public function remove($id){
+        model('Comment') -> remove_comment($id);
+        return redirect('IndexController@index');
+    }
 
+    public function createCommentForm($profileid = 0, $commentid = 0){
+        return ['profileid' => $profileid, 'commentid' => $commentid];
+    }
+
+    public function comments($profileid = 0, $commentid = 0){
+        if($profileid){
+            $comments = model('Comment') -> get_by_profile_id($profileid);
+        }
+
+        return ['comments' => $comments];
     }
     
     

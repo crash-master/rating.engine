@@ -5,17 +5,15 @@ use Kernel\{
     DBW
 };
 
-class CommentMigration extends \Extend\Migration{
+class Comment_linkMigration extends \Extend\Migration{
 
     public static function up(){
 
         // Create tables in db
 
-        DBW::create('Comment',function($t){
-            $t -> varchar('name')
-            -> text('message')
-            -> tinyint('public_flag')
-            -> datetime('timestamp');
+        DBW::create('Comment_link',function($t){
+            $t -> int('srcid')
+            -> varchar('link');
         });
 
     }
@@ -24,7 +22,7 @@ class CommentMigration extends \Extend\Migration{
 
         // Drop tables from db
 
-        DBW::drop('Comment');
+        DBW::drop('Comment_link');
 
     }
 

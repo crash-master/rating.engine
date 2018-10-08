@@ -12,9 +12,6 @@ class Review extends \Extend\Model{
 
     public function get_moderation_list(){
     	$reviews = arrayToArray($this -> get(['where' => ['public_flag', '=', '0'], 'order' => ['id', 'ASC']]));
-        if(!$reviews[0]){
-            $reviews = [];
-        }
         $count = count($reviews);
         for($i=0; $i<$count; $i++){
             $reviews[$i]['profile'] = model('Profile') -> get(['where' => ['id', '=', $reviews[$i]['profileid']]]);
@@ -25,9 +22,6 @@ class Review extends \Extend\Model{
 
     public function get_last_reviews(){
         $reviews = arrayToArray(model('Review') -> get(['where' => ['public_flag', '=', '1'], 'order' => ['id', 'DESC'], 'limit' => [0, 3]]));
-        if($reviews[0] === false){
-            $reviews = [];
-        }
 
         $count = count($reviews);
         for($i=0; $i<$count; $i++){
@@ -49,9 +43,6 @@ class Review extends \Extend\Model{
 
     public function get_by_profile_id($profile_id){
         $reviews = arrayToArray(model('Review') -> get(['where' => ['profileid', '=', $profile_id, 'AND', 'public_flag', '=', '1']]));
-        if($reviews[0] === false){
-            $reviews = [];
-        }
         $count = count($reviews);
         for($i=0; $i<$count; $i++){
             $reviews[$i]['country'] = ($reviews[$i]['country'] == '') ? 'Неизвестно': $reviews[$i]['country'];

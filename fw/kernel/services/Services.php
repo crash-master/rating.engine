@@ -6,7 +6,8 @@ use Kernel\{
 	Model,
 	Module,
 	View,
-	Events
+	Events,
+	ExceptionHandler
 };
 
 function ddump($data, $indent=0) {
@@ -49,10 +50,13 @@ function dd($var){
 	  return '<big>' . $str . '</big>';
 	}
 
-	die('<pre>'.ddump($var).'</pre>');
+	die('<pre style="width: 90%; padding: 25px; background: #eee">'.ddump($var).'</pre>');
 }
 
-function redirect($url){
+function redirect($url, $vars = []){
+	if(strpos($url, '@') !== false){
+		$url = linkTo($url, $vars);
+	}
 	header('Location: '.$url);
 	return true;
 }
@@ -69,15 +73,6 @@ function show($data){
 	return true;
 }
 
-function phpErrors(){
-	$err = error_get_last();
-	if(!is_array($err))
-		return false;
-
-	Err::add('PHP ERR', $err['message'].' '.$err['file'].' in line '.$err['line']);
-	return true;
-}
-
 function arrayToArray($arr){
 	if(!$arr)
 		return [];
@@ -89,12 +84,6 @@ function arrayToArray($arr){
 
 function atarr($arr){
 	return arrayToArray($arr);
-}
-
-function dump(){
-	Err::log();
-	Log::dump();
-	return true;
 }
 
 function model($name){
@@ -109,7 +98,18 @@ function linkTo($controller, $args = false){
 	return Router::linkTo($controller, $args);
 }
 
-function vjoin($name){
-	return View::join($name);
+function vjoin($name, $args = []){
+	return View::join($name, $args);
 }
 
+function route($param1, $param2 = false, $param3 = false){
+	Router::route_universe($param1, $param2, $param3);
+}
+
+function view($layout, $vars = NULL){
+	return View::make($layout, $vars);
+}
+
+function exception($e, $response_code = false){
+	return ExceptionHandler::getInstance() -> handler($e, $response_code);
+}

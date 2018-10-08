@@ -13,25 +13,11 @@ class RatingController extends \Extend\Controller{
         return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/rating.php', ['count' => $res]);
     }
 
-    public function rating($order, $limit){
-        $data = arrayToArray(model('Profile') -> get(['where' => ['public_flag','=','1'], 'order' => [$order,'DESC'], 'limit' => [$limit, 15]]));
-        $count = count($data);
-        for($i=0; $i<$count; $i++){
-            $data[$i]['timestamp'] = dateFormat($data[$i]['timestamp']);
-            $data[$i]['number'] = $i + 1;
-            $data[$i]['site_link'] = linkTo('SiteController@incrementSiteVisit', ['profileid' => $data[$i]['id']]);
-            $data[$i]['site'] = url_without_prefix($data[$i]['site']);
-            $data[$i]['to_profile'] = linkTo('ProfileController@page', ['slug' => $data[$i]['slug']]);
-            $data[$i]['site_obj'] = model('Site') -> get(['where' => ['profileid', '=', $data[$i]['id']]]);
-            $data[$i]['cat'] = model('Cats') -> get(['where' => ['id', '=', $data[$i]['catid']]]);
-            if(!$data[$i]['site_obj']){
-                $data[$i]['site_obj'] = false;
-            }else{
-                $data[$i]['site_obj']['screen'] = '';
-            }
-        }
-
-        return View::json(['rating' => $data, 'len' => model('Meta') -> getMeta('count_profiles') - 1]);
+    public function rating($order, $limit = 0){
+        $count_on_page = 10;
+        $data = model('Profile') -> get_rating_list($order, $limit, $count_on_page);
+        $len = model('Profile') -> length(['public_flag', '=', '1']);
+        return View::json(['rating' => $data, 'len' => $len]);
     }
 
     public function high_list(){

@@ -6,10 +6,10 @@ $templatename = \Kernel\Config::get('rating-engine -> view-template');
 // 	'controller2@action2'
 // ]]);
 
-// Components::create('Head', ['layouts/head' => [
-// 	'PageController@text_page_meta',
-// 	'MetaController@getHeadMeta'
-// ]]);
+Components::create('Head', [$templatename . '/layouts/head' => [
+	'PageController@text_page_meta',
+	'MetaController@getHeadMeta'
+]]);
 
 // Components::create('Header', ['layouts/header' => [
 // 	'MetaController@getHeadMeta'

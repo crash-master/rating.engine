@@ -37,7 +37,7 @@ function dateFormat($date){
 	}else{
 		$time = strtotime($date);
 	}
-    return @date('d.m.y в h:i', $time);
+    return date('d.m.y в h:i', intval($time));
 }
 
 function translit($str) {
@@ -60,4 +60,19 @@ function linkToLink($link){
 	}else{
 		return 'http://'.$link;
 	}
+}
+
+function re_is_visible($admin_page_route){
+	$admin_routes = \Kernel\Config::get('rating-engine -> admin-panel -> hidden_routes');
+
+	foreach($admin_routes as $admin_route){
+		if(strpos($admin_route, 'Controller@') !== false){
+			$admin_route = linkTo($admin_route);
+		}
+		if($admin_page_route == $admin_route){
+			return false;
+		}
+	}
+
+	return true;
 }
