@@ -4,60 +4,33 @@
 
 class Number extends \Extend\Model{
 
-    public $sets;
+	public $sets;
 
-    public function __construct(){
-        $this -> sets = new \Sets\NumberSet;
-    }
+	public function __construct(){
+		$this -> sets = new \Sets\NumberSet;
+	}
 
-    public function dump($profileid){
-    	$items = arrayToArray(model('Profile') -> get(['order' => ['rating', 'DESC']]));
-    	if(!$items[0]){
-    		$items = [];
-    	}
+	public function init(){
+		$this -> update_number();
+	}
 
-    	$i = 0;
-    	foreach($items as $item){
-    		$i++;
-    		if($item['id'] != $profileid)
-    			continue;
-    		$this -> update(['number' => $i], ['profileid', '=', $profileid]);
-    	}
+	public function update_numbers(){
+		$items = arrayToArray(model('Profile') -> get(['where' => ['public_flag', '=', '1'], 'order' => ['rating', 'DESC']]));
 
-    	return true;
-    }
+		$i = 0;
+		foreach($items as $item){
+			$i++;
+			if($this -> get(['profileid', '=', $item['id']])){
+				$this -> update(['number' => $i], ['profileid', '=', $item['id']]);
+				continue;
+			}
+			$this -> set(['number' => $i, 'profileid' => $item['id']]);
+		}
+	}
 
-    public function init(){
-    	$items = arrayToArray(model('Profile') -> get(['order' => ['rating', 'DESC']]));
-    	if(!$items[0]){
-    		$items = [];
-    	}
-
-    	$i = 0;
-    	foreach($items as $item){
-    		$i++;
-    		if($this -> get(['where' => ['profileid', '=', $item['id']]]))
-    			continue;
-    		$this -> set(['number' => $i, 'profileid' => $item['id']]);
-    	}
-    }
-
-    public function update_numbers(){
-        $items = arrayToArray(model('Profile') -> get(['order' => ['rating', 'DESC']]));
-        if(!$items[0]){
-            $items = [];
-        }
-
-        $i = 0;
-        foreach($items as $item){
-            $i++;
-            $this -> update(['number' => $i, 'profileid' => $item['id']]);
-        }
-    }
-
-    public function get_number($profileid){
-    	$res = $this -> get(['where' => ['profileid', '=', $profileid]]);
-    	return $res['number'];
-    }
+	public function get_number($profileid){
+		$res = $this -> get(['profileid', '=', $profileid]);
+		return $res['number'];
+	}
 
 }

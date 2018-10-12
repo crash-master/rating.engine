@@ -1,4 +1,4 @@
-<? vjoin('attract/layouts/head') ?>
+<? if(!isset($profile)) $profile = false; vjoin('Head', ['profile' => $profile]) ?>
 <button class="menu" data-menu="">
 	<span class="item"></span>
 	<span class="item"></span>

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><?= $page['title'] ? $page['title'] : $meta_page['title'] ? $meta_page['title'] : $profile['name'] ?></title>
-	<meta name="description" value="<?= $meta['description'] ?>">
-	<meta name="keywords" value="<?= $page['keywords'] ? $page['keywords'] : $meta_page['keywords'] ? $meta_page['keywords'] : $profile['site']['keywords'] ?>">
+	<title><?= $page_meta['title'] ?></title>
+	<meta name="description" value="<?= $page_meta['description'] ?>">
+	<meta name="keywords" value="<?= $page_meta['keywords'] ?>">
 
 	<meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="/resources/vendor/bootstrap-4.1.2/css/bootstrap.min.css" type="text/css">

@@ -173,7 +173,7 @@ class Profile extends \Extend\Model{
             case '1': $this -> rating_plus($profileid, $removeFlag); break;
             case '0': $this -> rating_neutral($profileid, $removeFlag); break;
         }
-
+        model('Number') -> update_numbers();
     }
 
     public function rating_plus($profileid, $removeFlag){

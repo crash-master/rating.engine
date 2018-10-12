@@ -28,11 +28,8 @@ Events::add('call_action', function($params){
 //
 //});
 
-//Events::add('before_db_query', function($params){
-//    dd($params);
-//});
 
-Events::add('before_db_query', function($params){
+Events::add('after_db_query', function($params){
 	$sql = strtolower($params['sql']);
 	if(strpos($sql, 'insert') !== false or strpos($sql, 'delete') !== false){
 		if(strpos($sql, '`' . strtolower(model('Comment') -> sets -> tableName()) . '`')){

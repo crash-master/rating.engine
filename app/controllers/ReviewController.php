@@ -49,10 +49,9 @@ class ReviewController extends \Extend\Controller{
     }
 
     public function confirm($id){
-      	model('Review') -> update(['public_flag' => '1'], ['id', '=', $id]);
         $review = model('Review') -> get(['where' => ['id', '=', $id]]);
+      	model('Review') -> update(['public_flag' => '1'], ['id', '=', $id]);
         model('Profile') -> rating($review);
-        model('Number') -> dump($review['profileid']);
         return redirect(linkTo('ReviewController@moderation'));
     }
 
