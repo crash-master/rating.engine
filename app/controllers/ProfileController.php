@@ -33,6 +33,7 @@ class ProfileController extends \Extend\Controller{
 
 	public function confirm($id){
 		model('Profile') -> update(['public_flag' => '1'], ['id', '=', $id]);
+		model('Number') -> update_numbers();
 		return redirect(linkTo('ProfileController@moderation'));
 	}
 
