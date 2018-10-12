@@ -53,7 +53,6 @@ class ReviewController extends \Extend\Controller{
         $review = model('Review') -> get(['where' => ['id', '=', $id]]);
         model('Profile') -> rating($review);
         model('Number') -> dump($review['profileid']);
-        model('Meta') -> incrementField('count_reviews');
         return redirect(linkTo('ReviewController@moderation'));
     }
 

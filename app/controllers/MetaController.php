@@ -14,11 +14,11 @@ class MetaController extends \Extend\Controller{
  		$mi = model('Meta') -> getMeta('sitename', true);
  		$metainfo[$mi['meta_name']] = $mi['meta_value'];
 
-        $mi = model('Meta') -> getMeta('siteurl', true);
+        $mi = model('Meta') -> getMeta('sub_sitename', true);
         $metainfo[$mi['meta_name']] = $mi['meta_value'];
 
- 		$mi = model('Meta') -> getMeta('description', true);
- 		$metainfo[$mi['meta_name']] = $mi['meta_value'];
+        $mi = model('Meta') -> getMeta('siteurl', true);
+        $metainfo[$mi['meta_name']] = $mi['meta_value'];
 
         $mi = model('Meta') -> getMeta('metrica', true);
         $metainfo[$mi['meta_name']] = $mi['meta_value'];
@@ -54,10 +54,11 @@ class MetaController extends \Extend\Controller{
     	return redirect(linkTo('MetaController@meta_page'));
     }
 
-    public function getHeadMeta(){
+    public function getHeadMeta(){  // !!!!!!!!!!!!!
     	$data = [
     		'sitename' => model('Meta') -> getMeta('sitename'),
-    		'description' => model('Meta') -> getMeta('description')
+    		'description' => model('Meta') -> getMeta('description'),
+            'title' => model('Meta') -> getMeta('sitename')
     	];
     	return ['meta' => $data];
     }

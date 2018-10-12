@@ -35,7 +35,6 @@ class Review extends \Extend\Model{
 
     public function remove_review($review){
         $this -> remove(['id', '=', $review['id']]);
-        model('Meta') -> decrementField('count_reviews');
         model('Profile') -> rating($review, true);
         model('Comment') -> remove_by_review($review);
         model('Number') -> dump($review['profileid']);

@@ -1,19 +1,10 @@
 <?php 
 use Kernel\Components;
 $templatename = \Kernel\Config::get('rating-engine -> view-template');
-// Components::create('componentName', ['path to view' => [
-// 	'controller@action',
-// 	'controller2@action2'
-// ]]);
 
 Components::create('Head', [$templatename . '/layouts/head' => [
-	'PageController@text_page_meta',
-	'MetaController@getHeadMeta'
+	'PageController@page_meta_component',
 ]]);
-
-// Components::create('Header', ['layouts/header' => [
-// 	'MetaController@getHeadMeta'
-// ]]);
 
 Components::create('Footer', [$templatename . '/layouts/footer' => [
 	'MetaController@getSocialLinksMeta'

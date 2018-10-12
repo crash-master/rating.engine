@@ -47,12 +47,14 @@ $(document).ready(function(){
 			var newval = $(this).val();
 			if($(this).attr('data-old-val') != newval){
 				var url = $(this).parent().attr('data-edit');
+				newval = newval.replace(/\//gi, '**');
 				url = url.replace('?', newval);
 				console.log(url);
 				$.get(url, function(res){
 					console.log(res);
 				})
 			}
+			newval = newval.replace(/\*\*/gi, '/');
 			$(this).parent().html(newval);
 		});
 
@@ -87,6 +89,8 @@ $(document).ready(function(){
 	$('#tag-list-out [d-id]').each(function(){
 		tagRemoveBtnInit($(this));
 	})
+
+	check_site_on_exists();
 })
 
 function tagRemoveBtnInit(btn){
@@ -96,5 +100,26 @@ function tagRemoveBtnInit(btn){
 		// send to serv
 		$.get('/api/profile-tags/remove/' + profileid + '/' + tagid);
 		$(this).parent().parent().parent().remove();
+	});
+}
+
+function check_site_on_exists(){
+	$('#meta [name="site"]').on('change', function(){
+		var val = $(this).val();
+		if(val == ''){
+			return false;
+		}
+		var self = this;
+		$.getJSON('/api/exist?site='+val, function(d){
+			if(d.result == true){
+				$(self).parent().css('border-color', 'red');
+				$(self).attr('data-err', true);
+				$(self).parent().append('<br><span class="err-mess" style="font-size: 16px; color: red; position: relative; top: -13px;">Такой адрес уже зарегистрирован в системе</span>');
+			}else{
+				$(self).removeAttr('data-err');
+				$(self).parent().removeAttr('style');
+				$(self).parent().find('.err-mess').remove();
+			}
+		});
 	});
 }

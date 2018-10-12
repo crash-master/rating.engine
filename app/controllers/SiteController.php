@@ -9,7 +9,6 @@ use Kernel\{
 class SiteController extends \Extend\Controller{
     
     public function incrementSiteVisit($profileid){
-        model('Meta') -> incrementField('count_personal_site_visits');
         $profile = model('Profile') -> get(['where' => ['id', '=', $profileid]]);
         $site = model('Site') -> get(['where' => ['profileid', '=', $profileid]]);
         model('Site') -> update(['count_visits' => $site['count_visits'] + 1], ['id', '=', $site['id']]);

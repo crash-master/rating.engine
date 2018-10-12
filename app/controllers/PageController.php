@@ -7,86 +7,72 @@ use Kernel\{
 };
 
 class PageController extends \Extend\Controller{
-    
-    public function admin_page(){
-        return View::make('admin/pages.php', [
-        	'pagelist' => model('Meta') -> getTextPageList()
-        ]);
+	
+	public function admin_page(){
+		return View::make('admin/page-list', [
+			'pagelist' => model('Page') -> get_page_list()
+		]);
+	}
+
+	public function create_page(){
+		return View::make('admin/page-edit');
+	}
+
+	public function update_page($pageid){
+		return View::make('admin/page-edit', ['page' => model('Page') -> get_page(intval($pageid))]);
+	}
+
+	public function create(){
+		$post = \Kernel\Request::post();
+		model('Page') -> create($post);
+		return redirect(linkTo('PageController@admin_page'));
+	}
+
+	public function update(){
+		$post = \Kernel\Request::post();
+		model('Page') -> update_page($post);
+		return redirect(linkTo('PageController@admin_page'));
+	}
+
+	public function update_field($id, $colname, $val){
+		$val = str_replace('**', '/', $val);
+		if($colname == 'route'){
+	        model('Page') -> update([$colname => urldecode($val)], ['id', '=', $id]);
+	        model('Route_meta') -> update([$colname => urldecode($val)], ['page_id', '=', $id]);
+	    }elseif($colname == 'title'){
+	    	model('Route_meta') -> update([$colname => urldecode($val)], ['id', '=', $id]);
+	    }
+
+	    return true;
     }
 
-    public function text_page($pagename){
-    	return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/info-page.php', ['page' => model('Meta') -> getTextPage($pagename)]);
-    }
+	public function remove($pageid){
+		model('Page') -> remove_page($pageid);
+		return redirect('PageController@admin_page');
+	}
 
-    public function main_pages_admin(){
-        return View::make('admin/main-pages.php', model('Meta') -> get_main_pages());
-    }
+	public function page_meta_component($profile = false){
+		if($profile){
+			$page_meta = [
+				'title' => $profile['name'],
+				'description' => strip_tags($profile['site_obj']['description']),
+				'keywords' => $profile['name']
+			];
+		}else{
+			$route = \Kernel\Request::getUrl();
+			$route = '/'.$route;
+			$page_meta = model('Route_meta') -> get_by_route($route);
+		}
+		return ['page_meta' => $page_meta];
+	}
 
-    public function main_page_edit($pagename){
-        $pages = model('Meta') -> get_main_pages($pagename);
-        return View::make('admin/main-pages.php', [
-            'pagename' => $pagename, 
-            'page' => $pages['mainpages'][$pagename],
-            'pageedit' => true,
-            'mainPageList' => $pages['mainPageList']
-        ]);
-    }
+	public function text_page($pagename){
+		if(!model('Page') -> isset_page('/page/'.$pagename)){
+			return re_404();
+		}
 
-    public function main_page_save($pagename){
-        $data = \Kernel\Request::post();
-        $pages = model('Meta') -> get_main_pages($pagename);
-        $pages = $pages['mainpages'];
-        $pages[$pagename]['title'] = $data['title'];
-        $pages[$pagename]['keywords'] = $data['keywords'];
-        model('Meta') -> updateMeta('main-pages', json_encode($pages));
-
-        return redirect(linkTo('PageController@main_page_edit', ['pagename' => $pagename]));
-    }
-
-    public function text_page_meta(){
-    	$data = \Kernel\Request::getArgs();
-        $meta = model('Meta') -> getTextPage($data['pagename']);    
-        if(!$meta){
-            $m = model('Meta') -> get_main_pages();
-            $url = \Kernel\Request::getUrl();
-            if($url == '/'){
-                $data['pagename'] = 'home';
-            }elseif($url == '/page/rating' || $url == '/page/rating/'){
-                $data['pagename'] = 'rating';
-            }
-            if(array_search($data['pagename'], $m['mainPageList']) !== false){
-                $meta['title'] = $m['mainpages'][$data['pagename']]['title'];
-                $meta['keywords'] = $m['mainpages'][$data['pagename']]['keywords'];
-            }
-        }
-    	return ['meta_page' => $meta];
-    }
-
-    public function admin_page_edit($pagename){
-    	return View::make('admin/pages.php', [
-        	'pagelist' => model('Meta') -> getTextPageList(),
-        	'pageedit' => true,
-        	'page' => model('Meta') -> getTextPage($pagename),
-        	'pagename' => $pagename
-        ]);
-    }
-
-    public function save_page($pagename){
-    	$data = \Kernel\Request::post();
-    	$keywords = json_decode(model('Meta') -> getMeta('keywords'), true);
-    	$keywords[$pagename] = $data['keywords'];
-    	model('Meta') -> updateMeta('keywords', json_encode($keywords));
-    	$title = json_decode(model('Meta') -> getMeta('title'), true);
-    	$title[$pagename] = $data['title'];
-    	model('Meta') -> updateMeta('title', json_encode($title));
-
-    	model('Meta') -> updateMeta($pagename, $data['content']);
-
-    	return redirect(linkTo('PageController@admin_page_edit', ['pagename' => $pagename]));
-    }
-
-    
-    // Other methods
-    
-    
+		return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/info-page.php', ['page' => model('Page') -> get_page('/page/'.$pagename)]);
+	}
+	
+	
 }

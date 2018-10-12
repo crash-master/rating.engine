@@ -8,7 +8,7 @@ use Kernel\{
 class IndexController extends \Extend\Controller{
 
 	public function _404(){
-		return View::make('default/404', ['url' => Router::getUrl()]);
+		return re_404();
 	}
 
 	public function index(){

@@ -19,12 +19,11 @@ class ProfileController extends \Extend\Controller{
 	public function page($slug){
 		$profile = model('Profile') -> get_profile_by_slug($slug);
 		if(!$profile || $profile['public_flag'] != '1'){
-			return view('default/404');
+			return re_404();
 		}
 
 		$reviews = model('Review') -> get_with_comments_by_profile_id($profile['id']);
-		$count_comments = model('Comment') -> get_count_comments_tree_by_profile_id($profile['id']);
-		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/profile', compact('profile', 'reviews', 'count_comments'));
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/profile', compact('profile', 'reviews'));
 	}
 
 	public function moderation(){
@@ -34,7 +33,6 @@ class ProfileController extends \Extend\Controller{
 
 	public function confirm($id){
 		model('Profile') -> update(['public_flag' => '1'], ['id', '=', $id]);
-		model('Meta') -> incrementField('count_profiles');
 		return redirect(linkTo('ProfileController@moderation'));
 	}
 
@@ -131,10 +129,9 @@ class ProfileController extends \Extend\Controller{
 		$reviews = model('Review') -> get(['where' => ['profileid', '=', $id]]);
 		$reviews = atarr($reviews);
 		foreach($reviews as $key => $item){
-			model('Review') -> remove($item['id']);
+			model('Review') -> remove_review($item);
 		}
 		model('Profile') -> remove(['id', '=', $id]);
-		model('Meta') -> decrementField('count_profiles');
 		model('Site') -> remove(['profileid', '=', $id]);
 		model('Number') -> update_numbers();
 		return redirect('ProfileController@search_profile_page');
@@ -160,7 +157,6 @@ class ProfileController extends \Extend\Controller{
 		$data = Request::post();
 		$data['public_flag'] = '1';
 		$profile = model('Profile') -> create($data);
-		model('Meta') -> incrementField('count_profiles');
 		$post = \Kernel\Request::post();
 		$description = $data['description'];
 		model('Site') -> update(['description' => $description], ['profileid', '=', $profile['id']]);

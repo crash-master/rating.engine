@@ -7,12 +7,14 @@
 				<h5>Список страниц</h5>
 				<ul>
 					<? foreach($pagelist as $i => $p): ?>
-						<li><a href="/admin/pages/edit/<?= $p ?>"><?= $p ?></a></li>
+						<?php if (re_is_visible('/admin/pages/edit/' . $p)): ?>
+							<li><a href="/admin/pages/edit/<?= $p ?>"><?= $p ?></a></li>
+						<?php endif ?>
 					<? endforeach; ?>
 				</ul>
 			</div>
 			<div class="col-9">
-				<? if($pageedit == true): ?>
+				<? if(isset($pageedit) and $pageedit == true): ?>
 				<h5>Редактирование "<?= $pagename ?>"</h5>
 				<form action="<?= linkTo('PageController@save_page', ['pagename' => $pagename]) ?>" method="post">
 					<div class="form-group">

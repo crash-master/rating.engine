@@ -15,8 +15,8 @@ class CatsController extends \Extend\Controller{
     }
 
     public function add(){
-    	$title = \Kernel\Request::post('title');
-    	model('Cats') -> set(['title' => $title]);
+    	$post = \Kernel\Request::post();
+    	model('Cats') -> set($post);
     	return redirect(linkTo('CatsController@admin_page'));
     }
 
@@ -27,6 +27,10 @@ class CatsController extends \Extend\Controller{
 
     public function cats(){
     	return ['cat_list' => arrayToArray(model('Cats') -> all())];
+    }
+
+    public function update($id, $colname, $val){
+        return model('Cats') -> update([$colname => urldecode($val)], ['id', '=', $id]);
     }
     
     // Other methods

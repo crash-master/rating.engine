@@ -1,14 +1,17 @@
 <? vjoin('admin-layouts/header'); ?>
 <div class="container">
 	<div class="page" id="Profile-edit-page">
-		<h1 class="page-name">Редактирования профиля <? if(isset($profile)): ?> <a href="<?= linkTo('ProfileController@page', ['slug' => $profile['slug']]) ?>" target="_blank"><?=$profile['name']?></a> ID <?= $profile['id'] ?> <?endif;?></h1>
+		<h1 class="page-name">
+			Редактирования профиля 
+			<? if(isset($profile)): ?> <a href="<?= linkTo('ProfileController@page', ['slug' => $profile['slug']]) ?>" target="_blank"><?=$profile['name']?></a> ID <?= $profile['id'] ?> <?endif;?>
+		</h1>
 		<div class="row">
 			<div class="col-8 offset-2">
 				<br>
 				<form action="<?= linkTo('ProfileController@profile_edit_page') ?>" method="get">
 					<div class="row">
 						<div class="col-10">
-							<input type="text" name="s" class="form-control" placeholder="Ссылка на страницу мага" value="<?= $_GET['s'] ?>">
+							<input type="text" name="s" class="form-control" placeholder="Ссылка на страницу мага" value="<?= isset($_GET['s']) ? $_GET['s'] : '' ?>">
 						</div>
 						<div class="col-2">	
 							<button class="btn btn-primary Profile-search">Искать</button>
@@ -42,6 +45,11 @@
 						<textarea type="text" class="form-control" name="contacts" placeholder="Контакты"><?= $profile['contacts'] ?></textarea>
 						<br>
 						<textarea name="description" class="form-control" placeholder="Описание"><?= $profile['site_obj']['description'] ?></textarea>
+						<br>
+						<div class="form-check">
+							<input type="checkbox" class="form-check-input" id="public_flag" name="public" <? if($profile['public_flag'] == '1'): ?>checked<? endif; ?>>
+							<label for="public_flag" class="form-check-label">Публиковать</label>
+						</div>
 						<br>
 						<button class="btn btn-primary">Сохранить</button>
 					</form>

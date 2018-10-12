@@ -55,12 +55,12 @@ class Comment_link extends \Extend\Model{
 
 	public function get_count_comments_tree_by_link($link){
 		$links = atarr($this -> get(['link', '=', $link]));
-		$src = [];
+		$child_links = [];
 		foreach($links as $link){
-			$src[] = $link['srcid'];
+			$child_links[] = 'comment_' . $link['srcid'];
 		}
-		$links_query_str = "('" . implode ( "','", $src ) . "')";
-		$count = count($link) + model('Comment') -> length(['public_flag', '=', '1', 'AND', 'id', 'IN', $links_query_str]) - 1;
+		$links_query_str = "('" . implode ( "','", $child_links ) . "')";
+		$count = count($links) + model('Comment_link') -> length(['link', 'IN', $links_query_str]);
 		return $count;
 	}
 

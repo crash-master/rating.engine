@@ -12,7 +12,7 @@
 				</ul>
 			</div>
 			<div class="col-9">
-				<? if($pageedit == true): ?>
+				<? if(isset($pageedit) and $pageedit == true): ?>
 				<h5>Редактирование "<?= $pagename ?>"</h5>
 				<form action="<?= linkTo('PageController@main_page_save', ['pagename' => $pagename]) ?>" method="post">
 					<div class="form-group">

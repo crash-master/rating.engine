@@ -1,0 +1,12 @@
+.link-to-site{
+	margin-left: 10px;
+	font-size: 4rem;
+}
+
+.profile-list-item{
+	margin-bottom: 10px;
+}
+
+.profile-list-item .timestamp{
+	text-align: right;
+}

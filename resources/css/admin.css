@@ -44,6 +44,10 @@ body{
 	font-size: 30px;
 }
 
+#content{
+	background: #fff;
+}
+
 @media (max-width: 1650px){
 	.page{
 		margin-left: 200px;

@@ -1,0 +1,22 @@
+@media (max-width: 992px){
+	nav.main{
+		display: none;
+	}
+
+	.welcome .sitename{
+		margin-top: 100px;
+	}
+
+	.footer-links{
+	    text-align: left;
+	}
+
+	.create-comment-form .submit-btn-wrap{
+		text-align: left;
+		margin-top: 10px;
+	}
+}
+
+@media (max-width: 768px){
+	
+}

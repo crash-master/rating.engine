@@ -1,0 +1,95 @@
+/* WELCOME */
+
+.welcome{
+	background: url('../imgs/welcome.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	background-size: cover;
+	text-align: center;
+	margin-bottom: 30px;
+	border-radius: 6px;
+	width: 100%;
+	height: 300px;
+}
+
+.welcome .sitename{
+	font-size: 11rem;
+	color: white;
+	margin-top: 150px;
+	display: inline-block;
+	width: 100%;
+}
+
+.welcome .sub-sitename{
+	font-weight: bold;
+	font-size: 4.5rem;
+	color: white;
+	width: 35%;
+	display: inline-block;
+	position: relative;
+	top: -15px;
+}
+
+/* PROFILE LIST */
+
+.profile-item{
+	margin-bottom: 25px;
+	padding: 0 20px;
+}
+
+.profile-item-head{
+	margin-bottom: 10px;
+}
+
+.profile-item-head .profile-title{
+	font-size: 6rem;
+}
+
+.profile-item-head .profile-title a{
+	color: var(--yd-text-color);
+}
+
+.profile-item-head .timestamp{
+	width: 100%;
+	text-align: right;
+	line-height: 8rem;
+	font-size: 5rem;
+}
+
+.profile-item-body{}
+
+.profile-item-body .profile-thumb{
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+}
+
+.profile-item-body .profile-site-link{
+	font-size: 4.5rem;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.profile-item-body .profile-description{
+	font-size: 4rem;
+}
+
+.profile-item-body .profile-description-title{
+	font-size: 5rem;
+	margin-bottom: 4px;
+}
+
+.profile-item-foot{
+	margin-top: 10px;
+}
+
+.profile-item-foot .count-comments{
+	color: var(--yd-main-color);
+	font-size: 4.6rem;
+}
+
+.profile-item-foot .open-profile-btn-container{
+	text-align: right;
+	width: 100%;
+}

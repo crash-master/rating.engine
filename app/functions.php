@@ -76,3 +76,20 @@ function re_is_visible($admin_page_route){
 
 	return true;
 }
+
+function tag_filer($text){
+	return strip_tags($text, '<p><a><em><b><strong><h1><h2><h3><h4><h5><h6><ul><li><ol><img><del><sup><sub><hr><blockquote>');
+}
+
+function txtpage($slug){
+	return linkTo('PageController@text_page', ['pagename' => $slug]);
+}
+
+function re_404(){
+	$path = \Kernel\Config::get('rating-engine -> view-template') . '/pages/404.php';
+	$pathForCheck = 'resources/view/' . $path;
+	if(file_exists($pathForCheck)){
+		return view($path, ['url' => \Kernel\Router::getUrl()]);	
+	}
+	return view('default/404.php', ['url' => \Kernel\Router::getUrl()]);
+}

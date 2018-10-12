@@ -13,6 +13,7 @@ class CatsMigration extends \Extend\Migration{
 
         DBW::create('Cats',function($t){
             $t -> varchar('title')
+            -> varchar('slug')
             -> datetime('timestamp');
         });
 

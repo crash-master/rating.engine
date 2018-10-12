@@ -6,7 +6,7 @@
           <div class="description">Единый рейтинг магов и<br> экстрасенсов</div>
           <button class="std-btn white active-func" data-func="open-search-func">Проверить мага <i class="m-icon magnify-white"></i></button>
         </div>
-        <img class="d-block w-100" src="/resources/assets/imgs/slides/rating2-slides-1.jpg">
+        <img class="d-block w-100" src="/resources/view/attract/assets/imgs/slides/rating2-slides-1.jpg">
       </div>
       <div class="carousel-item">
         <div class="slide-info-container">
@@ -14,7 +14,7 @@
           <div class="description">Добавь мага если не<br>нашёл его на нашем сайте</div>
           <button class="std-btn white active-func" data-func="open-new-profile-form">Добавить мага <i class="m-icon plus-white"></i></button>
         </div>
-        <img class="d-block w-100" src="/resources/assets/imgs/slides/rating2-slides-2.jpg">
+        <img class="d-block w-100" src="/resources/view/attract/assets/imgs/slides/rating2-slides-2.jpg">
       </div>
       <div class="carousel-item">
         <div class="slide-info-container">
@@ -22,7 +22,7 @@
           <div class="description">Последние новости мира<br>магии</div>
           <button class="std-btn white active-func" data-func="go-to-news">Читать новости <i class="m-icon newspaper"></i></button>
         </div>
-        <img class="d-block w-100" src="/resources/assets/imgs/slides/rating2-slides-3.jpg">
+        <img class="d-block w-100" src="/resources/view/attract/assets/imgs/slides/rating2-slides-3.jpg">
       </div>
     </div>
     <div class="carousel-control-btns">

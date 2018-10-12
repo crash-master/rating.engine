@@ -14,6 +14,7 @@ class CommentController extends \Extend\Controller{
     }
 
     public function create(){
+        \Kernel\Request::clear();
     	$post = \Kernel\Request::post();
     	$post['public_flag'] = '0';
         if(isset($post['profileid']) and $post['profileid'] != 0){
@@ -36,13 +37,11 @@ class CommentController extends \Extend\Controller{
 
     public function confirm($id){
     	model('Comment') -> update(['public_flag' => '1'], ['id', '=', $id]);
-    	model('Meta') -> incrementField('count_comments');
     	return redirect(linkTo('CommentController@moderation'));
     }
 
     public function reject($id){
-    	$comment = model('Comment') -> get(['where' => ['id', '=', $id]]);
-    	model('Comment') -> remove(['id', '=', $id]);
+    	model('Comment') -> remove_comment($id);
     	return redirect(linkTo('CommentController@moderation'));
     }
 

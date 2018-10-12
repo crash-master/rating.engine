@@ -9,7 +9,9 @@ use Kernel\{
 class YDController extends \Extend\Controller{
 	
 	public function site_present($mini = false){
-		return ['mini' => $mini];
+		$sitename = model('Meta') -> getMeta('sitename');
+		$sub_sitename = model('Meta') -> getMeta('sub_sitename');
+		return ['mini' => $mini, 'sitename' => $sitename, 'sub_sitename' => $sub_sitename];
 	}
 
 	public function profile_list(){
@@ -40,18 +42,23 @@ class YDController extends \Extend\Controller{
 		}
 
 		function get_description($content, $excerpt){
-			list($excerpt) = explode(' [', $excerpt);
-			list(, $description) = explode($content, $excerpt);
-			list($description) = explode('</p>', $description);
-			$description = strip_tags($excerpt.$description);
-
-			list($description, $services) = explode('слуги:', $description);
-			$description = explode('.', $description);
-			unset($description[count($description) - 1]);
-			$description = implode('.', $description);
-			list(,$description) = explode(':', $description);
-			return $description.'.';
+			$description = $excerpt.'::::'.$content;
+			return $description;
 		}
+
+		// function get_description($content, $excerpt){
+		// 	list($excerpt) = explode(' [', $excerpt);
+		// 	list(, $description) = explode($content, $excerpt);
+		// 	list($description) = explode('</p>', $description);
+		// 	$description = strip_tags($excerpt.$description);
+
+		// 	list($description, $services) = explode('слуги:', $description);
+		// 	$description = explode('.', $description);
+		// 	unset($description[count($description) - 1]);
+		// 	$description = implode('.', $description);
+		// 	list(,$description) = explode(':', $description);
+		// 	return $description.'.';
+		// }
 
 		function get_comments($post_id){
 			$comments_url = 'http://extrasensi.org/wp-json/wp/v2/comments?post=';
@@ -62,7 +69,8 @@ class YDController extends \Extend\Controller{
 				$COMMENTS[] = [
 					'name' => $comment['author_name'],
 					'message' => strip_tags($comment['content']['rendered']),
-					'timestamp' => str_replace('T', ' ', $comment['date_gmt'])
+					'timestamp' => str_replace('T', ' ', $comment['date_gmt']),
+					'public_flag' => '1'
 				];
 			}
 			return $COMMENTS;
@@ -70,6 +78,7 @@ class YDController extends \Extend\Controller{
 
 		$posts_url = 'http://extrasensi.org/wp-json/wp/v2/posts?page=';
 		$POSTS = [];
+		$all_comments = [];
 		$flag = true;
 		$page = 1;
 		do{
@@ -87,7 +96,7 @@ class YDController extends \Extend\Controller{
 						'description' => get_description($post['content']['rendered'], $post['excerpt']['rendered']),
 						'contacts' => ['email' => get_email($post['content']['rendered'])],
 						'comments' => get_comments($post['id']),
-						'catdi' => '1',
+						'catid' => '1',
 						'public_flag' => '1',
 						'slug' => translit($post['title']['rendered'])
 					];
@@ -98,13 +107,32 @@ class YDController extends \Extend\Controller{
 					model('Site') -> set(['profileid' => $profile['id'], 'description' => $post_main['description'], 'count_visits' => '0']);
 					foreach($post_main['comments'] as $comment){
 						$link = 'profile_'.$profile['id'];
-						model('Comment') -> create($comment, $link);
+						$comment['link'] = $link;
+						$all_comments[] = $comment;
+						// model('Comment') -> create($comment, $link);
 					}
 				}
 			}
 			$page++;
 		}while(count($posts));
 
-		dd($POSTS);
+		$rand_arr = [];
+		$count = count($all_comments);
+		for($i=0; $i<$count; $i++){
+			$flag = false;
+			$r = rand(0, $count-1);
+			for($j=0; $j<count($rand_arr); $j++){
+				if($rand_arr[$j] == $r){
+					$flag = true;
+				}
+			}
+			if($flag){
+				$i--;
+				continue;	
+			} 
+			model('Comment') -> create($all_comments[$r], $all_comments[$r]['link']);
+			$rand_arr[] = $r;
+		}
+		dd($all_comments);
 	}
 }
