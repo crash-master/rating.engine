@@ -11,7 +11,7 @@ class Number extends \Extend\Model{
 	}
 
 	public function init(){
-		$this -> update_number();
+		$this -> update_numbers();
 	}
 
 	public function update_numbers(){

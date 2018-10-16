@@ -25,7 +25,7 @@ class Profile extends \Extend\Model{
         $site = $this -> getMetaDataFromSite($site_link);
         $site['profileid'] = $profile['id'];
         model('Site') -> set($site);
-        model('Site') -> domen_created($mag); // domen_created
+        model('Site') -> domen_created($profile); // domen_created
 
         $profile['slug'] = $slug;
         return $profile;

@@ -14,7 +14,7 @@ class RatingController extends \Extend\Controller{
     }
 
     public function rating($order, $limit = 0){
-        $count_on_page = 10;
+        $count_on_page = 20;
         $data = model('Profile') -> get_rating_list($order, $limit, $count_on_page);
         $len = model('Profile') -> length(['public_flag', '=', '1']);
         return View::json(['rating' => $data, 'len' => $len]);

@@ -26,7 +26,7 @@ class APIController extends \Extend\Controller{
     }
 
     public function export_json_data(){
-        $data = model('Blog') -> get_json_data_for_export();
+        $data = model('API') -> get_json_data_for_export();
         return json_encode($data);
     }
     

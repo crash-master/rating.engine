@@ -25,4 +25,4 @@ Router::get('/waiting/for/key/{key}', 'ReviewController@waiting_key_for_remove')
 // yellow drops
 Router::get('/page/profiles', 'YDController@profile_list');
 
-route('/transport', 'YDController@transport');
+// route('/transport', 'YDController@transport');

@@ -304,7 +304,6 @@ var getRating = function(tag){
 }
 
 var drawRating = function(data){
-	console.log(data)
 	var html = '';
 	for(var i in data){
 		if(typeof data[i]['id'] == 'undefined'){
@@ -321,9 +320,13 @@ var drawRating = function(data){
 			data[i]['site_obj']['description'] = 'Игорь Леонидович Николаев – потомственный сибирский маг в пятом колене. Работает официально с 1989 года. Зарекомендовал себя как самый сильный и известный колдун не только в Красноярске, но и по всей Сибири. Верховный жрец ковена Волка-Орла. Магистр черной и белой магии.';
 		}
 
-		// if(data[i]['site_obj']['screen'] == ''){
-		// 	data[i]['site_obj']['screen'] = '/resources/assets/imgs/screens/default-screen.jpg';
-		// }
+		let description_tmp = data[i]['site_obj']['description'].split('.');
+		let description = description_tmp[0] + '.' + description_tmp[1];
+		if(description.split(' ').length < 30){
+			description += description_tmp[2] + '...';
+		}else{
+			description += '...';
+		}
 
 		if(typeof data[i].cat.title == 'undefined'){
 			data[i].cat = {'title': 'Без категории'}
@@ -368,7 +371,7 @@ var drawRating = function(data){
 					'</div>' +
 					'<div class="row">' +
 						'<div class="col-12 txt-grey bottom">' +
-							data[i]['site_obj']['description'] +
+							description +
 						'</div>' +
 					'</div>' +
 				'</div>' +
@@ -387,7 +390,7 @@ var loadRatingThumbnails = function(){
 	$.get($(thumb).attr('data-site-thumbnail'), function(res){
 		// console.log(res);
 		if(res == ''){
-			res = '/resources/assets/imgs/screens/default-screen.jpg';
+			res = '/resources/view/attract/assets/imgs/screens/default-screen.jpg';
 		}
 		$(thumb).attr('src', res);
 		$(thumb).removeAttr('data-site-thumbnail');

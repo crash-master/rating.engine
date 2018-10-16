@@ -4,7 +4,7 @@
 		<!--  profile info -->
 		<div class="col-12 col-lg-6 col-xl-6">
 			<div class="screen-container">
-				<img src="<?= ($profile['site_obj'] and !empty($profile['site_obj']['screen'])) ? $profile['site_obj']['screen'] : "/resources/assets/imgs/screens/default-screen.jpg" ?>" class="screen">
+				<img src="<?= ($profile['site_obj'] and !empty($profile['site_obj']['screen'])) ? $profile['site_obj']['screen'] : "/resources/view/attract/assets/imgs/screens/default-screen.jpg" ?>" class="screen">
 			</div>
 			<h3 class="txt-grey Profile-name"><span class="top number txt-grey-dark"><span><?= $profile['number_txt'] ?></span></span> <?= $profile['name'] ?></h3>
 			<noindex>

@@ -32,6 +32,9 @@ function dateFormat($date){
 	if(strpos($date, 'в')){
 		return $date;
 	}
+	if(empty($date)){
+		return false;
+	}
 	if(strpos($date, '-') === false){
 		$time = $date;
 	}else{

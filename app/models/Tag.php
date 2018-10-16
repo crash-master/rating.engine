@@ -20,11 +20,9 @@ class Tag extends \Extend\Model{
     }
 
     public function get_by_profile($profile){
-    	$links = model('Tag_profile') -> get(['where' => ['profileid', '=', $profile['id']]]);
+        $profileid = isset($profile['id']) ? $profile['id'] : $profile;
+    	$links = model('Tag_profile') -> get(['where' => ['profileid', '=', $profileid]]);
     	$links = arrayToArray($links);
-    	if(!$links[0]){
-    		$links = [];
-    	}
 
     	$tags = [];
     	foreach($links as $link){

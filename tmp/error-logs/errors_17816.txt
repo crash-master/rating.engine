@@ -22,3 +22,15 @@
 ==================================================================================================
 [2018-10-12 20:42:33] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
 ==================================================================================================
+[2018-10-13 00:08:53] E_WARNING (code 2) | file_get_contents(): Filename cannot be empty IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 31
+==================================================================================================
+[2018-10-13 00:19:20] E_WARNING (code 2) | file_get_contents(): Filename cannot be empty IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 31
+==================================================================================================
+[2018-10-13 00:20:01] E_WARNING (code 2) | file_get_contents(): Filename cannot be empty IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 31
+==================================================================================================
+[2018-10-13 00:20:38] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+==================================================================================================
+[2018-10-13 00:20:55] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+==================================================================================================
+[2018-10-13 00:21:15] E_WARNING (code 2) | file_get_contents(): Filename cannot be empty IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 31
+==================================================================================================

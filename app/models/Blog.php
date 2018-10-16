@@ -28,6 +28,9 @@ class Blog{
     }
 
     public function thumbnail($request_url){
+        if(!$request_url){
+            return false;
+        }
 		$data = json_decode(file_get_contents($request_url), true);
 		// dd($data['media_details']);
         if($data['media_details']['sizes']['large']){

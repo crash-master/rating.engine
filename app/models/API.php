@@ -15,9 +15,6 @@ class API{
 		$profile = $this -> profile_transform($profile, $siteurl);
 
 		$reviews = arrayToArray(model('Review') -> get(['where' => ['profileid', '=', $profile['id'], 'AND', 'public_flag', '=', '1'], 'limit' => [0, 3], 'order' => ['id', 'DESC']]));
-		if(!$reviews[0]){
-			$reviews = [];
-		}
 		$count = count($reviews);
 		for($i=0;$i<$count;$i++){
 			$reviews[$i]['date_of_create'] = $reviews[$i]['timestamp'];
@@ -70,10 +67,21 @@ class API{
 			'rating_value' => $profile['rating']
 		];
 		$profile['date_of_create'] = $profile['timestamp'];
+		$profile['number'] = model('Number') -> get_number($profile['id']);
 		$profile['category'] = model('Cats') -> get(['where' => ['id', '=', $profile['catid']]]);
+		$profile['category'] = $profile['category']['title'];
 		$profile['site_url'] = $siteurl . linkTo('SiteController@incrementSiteVisit', ['profileid' => $profile['id']]);;
 		$profile['site'] = url_without_prefix($profile['site']);
 		$profile['url_to_profile'] = $siteurl . linkTo('ProfileController@page', ['slug' => $profile['slug']]);
+		$tags = model('Tag') -> get_by_profile($profile['id']);
+		$profile['tags'] = [];
+		foreach ($tags as $tag) {
+			$profile['tags'][] = [
+				'title' => $tag['title'],
+				'url' => $siteurl . linkTo('TagController@page', ['slug' => $tag['slug']])
+			];
+		}
+
 		unset($profile['count_like']);
 		unset($profile['count_dislike']);
 		unset($profile['count_neutral']);
