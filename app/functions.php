@@ -81,7 +81,7 @@ function re_is_visible($admin_page_route){
 }
 
 function tag_filer($text){
-	return strip_tags($text, '<p><a><em><b><strong><h1><h2><h3><h4><h5><h6><ul><li><ol><img><del><sup><sub><hr><blockquote>');
+	return strip_tags($text, '<p><a><em><b><strong><h1><h2><h3><h4><h5><h6><ul><li><ol><img><del><sup><sub><hr><blockquote><font>');
 }
 
 function txtpage($slug){

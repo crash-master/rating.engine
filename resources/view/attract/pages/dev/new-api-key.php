@@ -1,6 +1,6 @@
 <? vjoin('attract/layouts/header'); ?>
 <div class="container">
-	<section class="page" id="text-page">
+	<section class="page" id="create-new-api">
 		<br>
 		<h2 class="block-title">Создание нового API key</h2>
 		<form action="<?= linkTo('APIAuthController@create_key') ?>" method="post">
@@ -17,16 +17,6 @@
 							<i class="m-icon web"></i>
 							<input type="text" name="access_url" placeholder="Url которому будет выдан API key">
 						</div>
-
-						<!-- 
-						<div class="input checkbox">
-							<input type="hidden" name="agree" value="0">
-							<div class="box agree-box">
-								<i class="m-icon main-icon checkbox-blank-outline"></i>
-								<i class="m-icon second-icon checkbox-marked"></i>
-							</div>
-							<div class="placeholder txt-grey">Я согласен/согласна с правилами сайта</div>
-						</div> -->
 						<br>
 						<button class="std-btn icon-fix send-btn disable">Создать <i class="m-icon arrow-right-red"></i> <i class="m-icon arrow-right"></i></button>
 					</div>
@@ -44,4 +34,29 @@
 		</form>
 	</section>
 </div>
+<script>
+	$(document).ready(function(){
+		$('#create-new-api .input input').on('change', function(){
+			let inps = $('#create-new-api .input input');
+			let flag = true;
+			for(let input of inps){
+				console.log($(input).val());
+				if($(input).val() == ''){
+					flag = false;
+				}
+			}
+			if(flag){
+				let btn = $('#create-new-api .send-btn');
+				if(btn.hasClass('disable')){
+					btn.removeClass('disable');
+				}
+			}else{
+				let btn = $('#create-new-api .send-btn');
+				if(!btn.hasClass('disable')){
+					btn.addClass('disable');
+				}
+			}
+		});
+	});
+</script>
 <? vjoin('attract/layouts/footer'); ?>

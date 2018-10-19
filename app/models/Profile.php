@@ -73,7 +73,8 @@ class Profile extends \Extend\Model{
                     $profile['number_txt'] = ($profile['number_txt'] < 9) ? '0' . $profile['number_txt'] : $profile['number_txt'];
                 break;
                 case 'tags': $profile['tags'] = model('Tag') -> get_by_profile($profile); break;
-                case 'count_comments': $profile['count_comments'] = model('Comment') -> get_count_comments_tree_by_profile_id($profile['id']);
+                case 'count_comments': $profile['count_comments'] = model('Comment') -> get_count_comments_tree_by_profile_id($profile['id']); break;
+                case 'reviews': $profile['reviews'] = model('Review') -> get_by_profile_id($profile['id']);
             }
         }
 
@@ -155,6 +156,20 @@ class Profile extends \Extend\Model{
         $profile = $this -> profile_fields_transform(model('Profile') -> get(['id', '=', $profileid]), ['to_profile']);
         return $profile;
     }  
+
+    public function get_high_list(){
+        $data = model('Profile') -> get(['where' => ['public_flag', '=', 1], 'order' => ['rating', 'DESC'], 'limit' => [0, 5]]);
+        $data = arrayToArray($data);
+        $count = count($data);
+        for($i=0; $i<$count; $i++){
+            $data[$i]['number'] = ($i < 9) ? '0' . ($i + 1) : $i + 1;
+            $data[$i]['site_link'] = linkTo('SiteController@incrementSiteVisit', ['profileid' => $data[$i]['id']]);
+            $data[$i]['site'] = url_without_prefix($data[$i]['site']);
+            $data[$i]['timestamp'] = dateFormat($data[$i]['timestamp']);
+        }
+
+        return $data;
+    }
 
         /////// RATING ///////
 

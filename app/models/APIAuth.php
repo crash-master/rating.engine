@@ -19,8 +19,9 @@ class APIAuth extends \Extend\Model{
 
     public function create_key($data){
     	$data['date_of_issue'] = 'NOW()';
+        // dd($data);
     	$this -> set($data);
-    	$data = $this -> get(['where' => ['email', '=', $data['email']]]);
+    	$data = $this -> last();
     	$data['api_key'] = $this -> gen_key($data['timestamp']);
     	$this -> update($data, ['id', '=', $data['id']]);
 

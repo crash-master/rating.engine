@@ -1,0 +1,22 @@
+[2018-10-18 16:07:55] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:08:11] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:08:12] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:08:12] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:08:12] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:08:12] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:08:12] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\APIController.php IN LINE 37
+==================================================================================================
+[2018-10-18 16:51:15] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\attract\layouts\popups\search-output.php IN LINE 1
+==================================================================================================
+[2018-10-18 20:34:09] E_WARNING (code 2) | file_get_contents(): php_network_getaddresses: getaddrinfo failed: ���� ���� ����������.  IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 9
+-------------------------------------------------
+[2018-10-18 20:34:09] E_WARNING (code 2) | file_get_contents(http://news.astralmagic.ru/wp-json/wp/v2/posts): failed to open stream: php_network_getaddresses: getaddrinfo failed: ���� ���� ����������.  IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 9
+-------------------------------------------------
+[2018-10-18 20:34:09] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Blog.php IN LINE 13
+==================================================================================================
