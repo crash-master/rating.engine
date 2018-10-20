@@ -1,0 +1,12 @@
+[2018-10-20 14:52:07] E_WARNING (code 2) | Illegal string offset 'profileid' IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\RecomendedController.php IN LINE 18
+-------------------------------------------------
+[2018-10-20 14:52:07] E_WARNING (code 2) | Illegal string offset 'profileid' IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\RecomendedController.php IN LINE 18
+-------------------------------------------------
+[2018-10-20 14:52:07] E_WARNING (code 2) | Illegal string offset 'profileid' IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\RecomendedController.php IN LINE 18
+-------------------------------------------------
+[2018-10-20 14:52:07] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\recomended.php IN LINE 49
+-------------------------------------------------
+[2018-10-20 14:52:07] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\recomended.php IN LINE 49
+-------------------------------------------------
+[2018-10-20 14:52:07] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\recomended.php IN LINE 49
+==================================================================================================

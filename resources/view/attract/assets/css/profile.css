@@ -239,7 +239,37 @@
 	padding-left: 4px;
 }
 
+#recomended{
+	border-bottom: 0;
+	padding: 0;
+}
 
+.r-item{
+	background: #eee;
+	padding: 10px;
+}
+
+.r-screen{
+	width: 100%;
+}
+
+.r-screen img{
+	width: 100%;
+	height: auto;
+}
+
+.r-title{
+	font-size: 6rem;
+	margin-top: 10px;
+}
+
+.r-title a{
+	color: #616161;
+}
+
+.r-site{
+	font-size: 5.5rem;
+}
 
 
 

@@ -74,7 +74,7 @@ class Profile extends \Extend\Model{
                 break;
                 case 'tags': $profile['tags'] = model('Tag') -> get_by_profile($profile); break;
                 case 'count_comments': $profile['count_comments'] = model('Comment') -> get_count_comments_tree_by_profile_id($profile['id']); break;
-                case 'reviews': $profile['reviews'] = model('Review') -> get_by_profile_id($profile['id']);
+                case 'reviews': $profile['reviews'] = model('Review') -> get_by_profile_id($profile['id']); break;
             }
         }
 

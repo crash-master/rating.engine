@@ -38,3 +38,7 @@ Components::create('tags-cloud', [$templatename . '/layouts/blocks/tags-cloud' =
 	'TagController@get_tag_list'
 ]]);
 
+Components::create('Recomended', [$templatename . '/layouts/blocks/recomended' => [
+	'RecomendedController@get_recomended'
+]]);
+

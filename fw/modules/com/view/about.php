@@ -1,12 +1,12 @@
 <?php Kernel\View::join(Kernel\Module::pathToModule('com').'view/head') ?>
 
-<div class="container">
+<div class="container white-text">
 
-	<?php Kernel\View::join(Kernel\Module::pathToModule('com').'view/breadcrumbs') ?>
+	<?php Kernel\View::join(Kernel\Module::pathToModule('com').'view/header') ?>
     
     <h1>Com</h1>
-    <p>Module for fw framework <em>Ver. 1.1</em> for framework ver. 5</p>
-    <p><a href="/com/help">Documentation helper</a></p>
+    <p>Module for fw framework <strong class="teal-text">Ver. 2.0</strong> for FW</p>
+    <p><a href="/com">Go to dashboard</a></p>
     
 </div>
 

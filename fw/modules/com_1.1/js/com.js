@@ -30,28 +30,4 @@ $(document).ready(function(){
 
 		return false;
 	});
-
-	APIRequest();
-	$('.confirm').on('click', function(){
-		let a = confirm("Are you sure?");
-		if(!a){
-			return false;
-		}
-	});
 });
-
-var APIRequest = function(){
-	$('[data-request]').on('keydown', function(e){
-		if(e.keyCode == 13){
-			let path = $(this).attr('data-request');
-			path = path.split('{')[0];
-			let val = $(this).val();
-			if(val != ''){
-				$.get(path + val, function(ans){
-					alert(ans);
-				});
-			}
-			$(this).val('');
-		}
-	});
-}

@@ -44,8 +44,11 @@ Router::post('name', 'ProfileController@profile_update', '/admin/profile_update'
 route('pass', 'IndexController@admin_login', '/admin/login');
 Router::post('admin-create-new-profile', 'ProfileController@admin_create_profile', '/admin/create-new-profile');
 Router::get('/admin/create-new-profile', 'ProfileController@admin_create_new_profile_page');
+route('/admin/recomended', 'RecomendedController@admin_page');
+route('/admin/recomended/remove/{profileid}', 'RecomendedController@remove');
 
 Router::get('/admin/tags', 'TagController@admin_page');
 Router::get('/admin/tags/remove/{tagid}', 'TagController@remove');
 Router::get('/admin/tags/update/{id}/{colname}/{val}', 'TagController@update');
 Router::post('create-tag', 'TagController@create');
+Router::post('recomended-add', 'RecomendedController@add_new_profile', '/admin/recomended/add-new');
