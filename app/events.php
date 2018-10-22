@@ -22,6 +22,8 @@ Events::add('call_action', function($params){
 			}
 		}
 	}
+
+	model('Media') -> always_resize();
 });
 
 //Events::add('call_action_404', function($params){

@@ -1,0 +1,127 @@
+<?php
+
+/*  Automatically was generated from a template fw/templates/model.php */
+
+class Media extends \Extend\Model{
+
+	public $sets;
+	public $lg_size;
+	public $md_size;
+	public $sm_size;
+	public $xs_size;
+
+	public function __construct(){
+		$this -> sets = new \Sets\MediaSet;
+		$this -> lg_size = 1200;
+		$this -> md_size = 768;
+		$this -> sm_size = 320;
+		$this -> xs_size = 150;
+	}
+
+	public function get_media($id, $size){
+		$size_list = ['lg', 'md', 'sm', 'xs'];
+		$rows = [$size, 'timestamp', 'type', 'title', 'id'];
+		$media = $this -> get(['rows' => $rows, 'where' => ['id', '=', $id]]);
+		$media['size'] = $size;
+		if(empty($media[$size])){
+			$inx = array_search($size, $size_list);
+			$count = count($size_list);
+			while($inx > 0){
+				$inx--;
+				$size = $size_list[$inx];
+				$rows[0] = $size;
+				$media = $this -> get(['rows' => $rows, 'where' => ['id', '=', $id]]);
+				if(!empty($media[$size])){
+					$media['size'] = $size;
+					return $media;
+				}
+			}
+		}
+		return $media;
+	}
+
+	public function get_src($media){
+		return $media[$media['size']];
+	}
+
+	public function set_new_media($media, $title){
+		$tmp_title = sha1(rand(100000, 9999999).$media);
+		$media_tmp_name = 'tmp/media/' . '__' . $tmp_title;
+		include_once('app/vendor/ImageResize.php');
+		$image = new ImageResize($media);
+		$image -> resizeToWidth($this -> lg_size);
+		$image -> save($media_tmp_name);
+		$b64 = $this -> gen_b64_meta($title) . base64_encode(file_get_contents($media_tmp_name));
+		unlink($media_tmp_name);
+		$this -> set(['lg' => $b64, 'type' => $this -> get_type($title), 'title' => $title ? $title : $tmp_title]);
+		$last = $this -> last();
+		return $last['id'];
+
+	}
+
+	public function continue_resizing($size, $size_txt, $prev_img, $mediaid){
+		$path_to_img = $this -> b64_to_file($prev_img);
+		include_once('app/vendor/ImageResize.php');
+		$image = new ImageResize($path_to_img);
+		$image -> resizeToWidth($size);
+		$image -> save($path_to_img);
+		$b64 = $this -> gen_b64_meta($path_to_img) . base64_encode(file_get_contents($path_to_img));
+		unlink($path_to_img);
+		$this -> update([$size_txt => $b64], ['id', '=', $mediaid]);
+	}
+
+	public function get_type($filename){
+		$fname = explode('.', $filename);
+		$fname = strtolower($fname[count($fname) - 1]);
+		if($fname == 'jpg' || $fname == 'jpeg'){
+			return 'image/jpeg';
+		}
+
+		return 'image/png';
+	}
+
+	public function gen_b64_meta($filename){
+		return 'data:'.$this -> get_type($filename).';base64,';
+	}
+
+	public function b64_to_file($b64){
+		list($meta, $b64) = explode('base64,', $b64);
+		$format = strpos($meta, 'image/jpeg') !== false ? 'jpg' : 'png';
+		$tmp_name = 'tmp/media/'.sha1(rand(10000, 9999999)).'.'.$format;
+		file_put_contents($tmp_name, base64_decode($b64));
+		return $tmp_name;
+	}
+
+	public function always_resize(){
+		$where = [
+			'xs', '=', '',
+			'OR',
+			'sm', '=', '',
+			'OR',
+			'md', '=', ''
+		];
+		$search = $this -> get(['where' => $where, 'limit' => [0, 1], 'order' => ['id', 'ASC']]);
+		if(!isset($search['id'])){
+			return false;
+		}
+
+		if(empty($search['md'])){
+			$size = $this -> md_size;
+			$size_txt = 'md';
+			$prev_img = $search['lg'];
+		}elseif(empty($search['sm'])){
+			$size = $this -> sm_size;
+			$size_txt = 'sm';
+			$prev_img = $search['md'];
+		}elseif(empty($search['xs'])){
+			$size = $this -> xs_size;
+			$size_txt = 'xs';
+			$prev_img = $search['sm'];
+		}else{
+			return false;
+		}
+
+		$this -> continue_resizing($size, $size_txt, $prev_img, $search['id']);
+	}
+
+}

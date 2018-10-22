@@ -22,7 +22,7 @@ class APIController extends \Extend\Controller{
 
 	public function get_iframe_profile_page(){
 		$profile = model('Profile') -> first();
-		$profile = model('Profile') -> profile_fields_transform($profile, ['to_profile']);
+		$profile = model('Profile') -> fields_transform($profile, ['to_profile']);
 		return view('attract/pages/dev/get-iframe-profile', ['siteurl' => model('Meta') -> getMeta('siteurl'), 'default_profile' => $profile]);
 	}
 
@@ -43,7 +43,7 @@ class APIController extends \Extend\Controller{
 	public function get_iframe_top($theme){
 		$profiles = model('Profile') -> get_high_list();
 		foreach($profiles as $i => $profile){
-			$profiles[$i] = model('Profile') -> profile_fields_transform($profile, ['to_profile', 'number_txt']);
+			$profiles[$i] = model('Profile') -> fields_transform($profile, ['to_profile', 'number_txt']);
 			$profiles[$i]['number'] = $profiles[$i]['number_txt'];
 		}
 		$sitename = model('Meta') -> getMeta('sitename');
@@ -69,7 +69,7 @@ class APIController extends \Extend\Controller{
 
 	public function get_iframe_profile($slug, $theme){
 		$profile = model('Profile') -> get_profile_by_slug($slug);
-		$profile = model('Profile') -> profile_fields_transform($profile, ['reviews', 'to_profile']);
+		$profile = model('Profile') -> fields_transform($profile, ['reviews', 'to_profile']);
 		$sitename = model('Meta') -> getMeta('sitename');
 		$siteurl = model('Meta') -> getMeta('siteurl');
 		$theme = explode('&', $theme);

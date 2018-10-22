@@ -96,19 +96,8 @@ class ProfileController extends \Extend\Controller{
 		$data['public_flag'] = ($data['public'] == 'on') ? '1' : '0';
 		$file = $_FILES['screen']['tmp_name'];
 		if($file){
-			$nf = './tmp/'.basename($_FILES['screen']['name']);
-			copy($file, $nf);
-			include_once('app/vendor/resize.php');
-			$f = images_size($nf, $nf, 600);
-			$type = explode('.', $_FILES['screen']['name']);
-			$type = $type[count($type) - 1];
-			$d = file_get_contents($f);
-			$base64 = 'data:image/' . $type . ';base64,' . base64_encode($d);
-			$data['screen'] = $base64;
-
-			// clean
-			@unlink($f);
-			@unlink($nf);
+			$media = model('Media');
+			$data['screen'] = $media -> set_new_media($file, $_FILES['screen']['name']);
 		}else{
 			unset($data['screen']);
 		}

@@ -48,7 +48,7 @@
 									<div class="card" style="margin-bottom: 25px;">
 									  <div class="card-body">
 									    <h5 class="card-title"><?= $item['username'] ?> <small>(<?= $item['timestamp'] ?>)</small></h5>
-									    <h6 class="card-subtitle mb-2 text-muted">Профиль: <a href="<?= linkTo('ProfileController@page', ['id' => $item['slug']]); ?>" target="_blank"><?= $item['profile']['name'] ?></a></h6>
+									    <h6 class="card-subtitle mb-2 text-muted">Профиль: <a href="<?= $item['to_profile'] ?>" target="_blank"><?= $item['profile']['name'] ?></a></h6>
 									    <p class="card-text">
 									    	<? if($item['image'] ): ?>
 									    		<img src="<?= $item['image'] ?>" width="100%">

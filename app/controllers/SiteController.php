@@ -23,7 +23,10 @@ class SiteController extends \Extend\Controller{
 
     public function get_site_thumbnail($id){
         $site = model('Site') -> get(['where' => ['id', '=', $id]]);
-        return $site['screen'];
+        if(empty($site['screen']) or strpos($site['screen'], 'base64')){
+            return $site['screen'];
+        }
+        return model('Media') -> get_src(model('Media') -> get_media($site['screen'], 'sm'));
     }
     
 }

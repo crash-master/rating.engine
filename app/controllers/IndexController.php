@@ -61,6 +61,34 @@ class IndexController extends \Extend\Controller{
 	public function moderation_page(){
 		return View::make('admin/moderation');
 	}
+
+	public function transport_profile_screen_to_media(){
+		$sites = model('Site') -> get(['screen', 'LIKE', '%base64%']);
+		foreach($sites as $site){
+			$media = model('Media');
+			$file = $media -> b64_to_file($site['screen']);
+			list(, $filename) = explode('media/', $file);
+			$site['screen'] = $media -> set_new_media($file, $filename);
+			unlink($file);
+			model('Site') -> update(['screen' => $site['screen']], ['id', '=', $site['id']]);
+		}
+
+		return count($sites);
+	}
+
+	public function transport_review_image_to_media(){
+		$reviews = model('Review') -> get(['image', 'LIKE', '%base64%']);
+		foreach($reviews as $review){
+			$media = model('Media');
+			$file = $media -> b64_to_file($review['image']);
+			list(, $filename) = explode('media/', $file);
+			$review['image'] = $media -> set_new_media($file, $filename);
+			unlink($file);
+			model('Review') -> update(['image' => $review['image']], ['id', '=', $review['id']]);
+		}
+
+		return count($reviews);
+	}
 	
 }
 
