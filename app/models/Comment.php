@@ -9,7 +9,7 @@ class Comment extends \Extend\Model{
 	public function __construct(){
 		$this -> sets = new \Sets\CommentSet;
 	}
-
+	
 	public function get_moderation_list(){
 		$comments = arrayToArray($this -> get(['where' => ['public_flag', '=', '0']]));
 		$count = count($comments);
@@ -36,7 +36,7 @@ class Comment extends \Extend\Model{
 					$comments[$i]['profile'] = model('Profile') -> get(['id', '=', $comments[$i]['review']['profileid']]);
 				}
 			}
-			
+
 		}
 
 		return $comments;
@@ -134,6 +134,6 @@ class Comment extends \Extend\Model{
 		}
 		return $res_comments;
 	}
-	
+
 
 }

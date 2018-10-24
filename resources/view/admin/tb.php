@@ -25,7 +25,7 @@
 					</form>
 				<? endif; ?>
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>
 <?php vjoin('admin-layouts/footer'); ?>

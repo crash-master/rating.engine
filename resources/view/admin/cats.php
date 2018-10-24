@@ -47,13 +47,13 @@
 						<tbody>
 							<?php foreach ($cat_list as $key => $item): ?>
 								<tr>
-									<th scope="row"><?= $key + 1 ?></th>
+									<th scope="row"><?= $key + 1 ?></th>							
 									<td data-edit="/admin/cats/update/<?= $item['id'] ?>/title/?"><?= $item['title'] ?></td>
 									<td data-edit="/admin/cats/update/<?= $item['id'] ?>/slug/?"><?= $item['slug'] ?></td>
 									<td>
 										<a class="danger-link" href="<?= linkTo('CatsController@remove', ['id' => $item['id']]) ?>">Удалить</a>
 									</td>
-								</tr>
+									</tr>
 							<?php endforeach ?>
 						</tbody>
 					</table>
