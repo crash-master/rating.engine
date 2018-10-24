@@ -23,12 +23,6 @@ function dataHrefInit(){
   });
 }
 
-/**
- * [mainEventsInit initialization secondary evets]
- * @method mainEventsInit
- * @return {[void]}       [description]
- */
-
 function mainEventsInit(){
   $('.danger-link').click(function(){
     var ans = confirm('Удалить?');
@@ -49,6 +43,7 @@ function mainEventsInit(){
 function closePopUpInit(){
   $('.hidden-bg, .close-popup').on('click', function(){
 		$('.hidden-bg').hide();
+    $('.search-result').hide();
 		$('.popup').removeClass('active');
 	});
 }
@@ -65,17 +60,4 @@ function goToReview(){
 	setTimeout(function(){
 		reviewCont.find('.review-foot a', 0).trigger('click');
 	}, 500);
-}
-
-function firstLetter(){
-	var nu = $('[data-fl-content]');
-		if(typeof nu != 'undefined'){
-			for(var i in nu){
-				var value = $(nu[i]).attr('data-fl-content');
-				if(value == ''){
-					continue;
-				}
-				$(nu[i]).html(value[0]);
-			}
-		}
 }

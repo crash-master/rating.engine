@@ -11,6 +11,7 @@ var Search = function(){
 
 		$('.search-open').on('click', function(){
 			self.open();
+			$('.search-result').show();
 		});
 	}
 
@@ -22,13 +23,11 @@ var Search = function(){
 	this.model = function(el){
 		word = $(el).val();
 		$.getJSON(self.urlTemplate + word, function(d){
-			console.log(d);
 			self.draw(d);
 		});
 	}
 
 	this.draw = function(d){
-		$(self.resultContainer).fadeIn('normal');
 		$(self.resultContainer).html(d.result);
 	}
 

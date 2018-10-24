@@ -48,7 +48,6 @@ $(document).ready(function(){
 	addNewReview();
 	check_site_on_exists();
 	disable_submit_btn();
-	firstLetter();
 });
 
 var INPUT_image = false;

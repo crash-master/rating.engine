@@ -35,14 +35,11 @@ class Profile extends \Extend\Model{
 		$profiles = arrayToArray(model('Profile') -> get(['where' => ['name', 'LIKE', '%'.$request.'%', 'OR', 'site', 'LIKE', '%'.$request.'%'], 'limit' => [0, 5]]));
 		$count = count($profiles);
 		$profiles_public = [];
-		$n = 0;
 		for($i=0; $i<$count; $i++){
 			if($profiles[$i]['public_flag'] == '0'){
 				return false;
 			}
-			$profiles_public[$i] = $this -> fields_transform($profiles[$i], ['to_profile', 'site', 'timestamp']);
-			$profiles_public[$i]['number'] = ($n < 9) ? '0' . ($n + 1) : $n + 1;
-			$n++;
+			$profiles_public[$i] = $this -> fields_transform($profiles[$i], ['to_profile', 'site', 'timestamp', 'number', 'number_txt']);
 		}
 
 		return $profiles_public;
