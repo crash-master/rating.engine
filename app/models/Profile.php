@@ -261,7 +261,7 @@ class Profile extends \Extend\Model{
 		}
 		$count = count($data);
 		for($i=0; $i<$count; $i++){
-			$data[$i] = $this -> fields_transform($data[$i], ['timestamp', 'number', 'site_link', 'site', 'to_profile', 'site_obj', 'cat', 'count_comments']);
+			$data[$i] = $this -> fields_transform($data[$i], ['timestamp', 'number', 'number_txt', 'site_link', 'site', 'to_profile', 'site_obj', 'cat', 'count_comments']);
 			if(!$data[$i]['site_obj']){
 				$data[$i]['site_obj'] = false;
 			}else{

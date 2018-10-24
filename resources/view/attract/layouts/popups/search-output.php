@@ -2,7 +2,7 @@
 	<div class="rating-item">
 	<div class="row">
 		<div class="col-1">
-			<div class="top number txt-grey-dark"><span><?= $profile['number'] ?></span></div>
+			<div class="top number txt-grey-dark"><span><?= $profile['number_txt'] ?></span></div>
 		</div>
 		<div class="col-10 col-lg-7 col-xl-7 offset-1 offset-md-1 offset-sm-1 offset-lg-0 offset-xl-0">
 			<div class="top Profile-info">

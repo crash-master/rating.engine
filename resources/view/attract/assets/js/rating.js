@@ -16,7 +16,7 @@ var Rating = function(){
     }else{
       var url = '/api/rating/order/' + order + '/limit/' + limit;
     }
-    console.log(url);
+
     $('#rating .preloader').show();
     self.model(url, function(){
       self.loadRatingThumbnails();
@@ -71,7 +71,7 @@ var Rating = function(){
           '<div class="col-3 d-none d-xl-block">' +
             '<div class="cover-container">' +
               '<div class="number-container">' +
-                '<div class="number txt-grey-dark"><span>' + num + '</span></div>' +
+                '<div class="number txt-grey-dark"><span>' + data[i]['number_txt'] + '</span></div>' +
               '</div>' +
               '<img src="" data-site-thumbnail="/get-site-thumbnail/' + data[i]['site_obj']['id'] + '" class="cover">' +
               // '<img src="' + data[i]['site_obj']['screen'] + '" class="cover">' +
