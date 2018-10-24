@@ -1,19 +1,19 @@
 <? vjoin('attract/layouts/header') ?>
 
 <script>
+	let rating = new Rating();
 	$(document).ready(function(){
-		var ORDER = '';
-		setInterval(function(){
-			var val = $('input[name="order"]').val();
-			if(val != ORDER){
-				ORDER = val;
-				$('#rating .items-container').html('');
-				CURRENT_COUNT_RATING_LIST = 0;
-				RATING_LIST_COUNTER = 1;
-				getRating();
-			}
-		}, 200);
-		// getRating();
+			rating.get();
+			$('#rating-order .option').on('click', function(){
+				setTimeout(function(){
+					console.log($('input[name="order"]').val());
+					$('#rating .items-container').html('');
+					$('.load-more').show();
+		      rating.ratingListCounter = 1;
+		      rating.currentCountRatingList = 0;
+		      rating.get();
+				}, 300);
+	    });
 	});
 </script>
 

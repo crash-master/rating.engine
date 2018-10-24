@@ -23,6 +23,13 @@
 
 	<script type="text/javascript" src="/resources/vendor/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/resources/vendor/bootstrap-4.1.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/funcs.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/mobile-nav.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/form-control.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/search.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/comments.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/check-site-on-exists.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/rating.js"></script>
 	<script type="text/javascript" src="/resources/view/attract/assets/js/app.js"></script>
 	<!-- <script type="text/javascript" src="/resources/js/disable-submit-btn.js"></script> -->
 </head>
