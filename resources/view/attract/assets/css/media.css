@@ -23,7 +23,7 @@
 	.news-item-big,
 	.news-item{
 		margin-bottom: 40px;
-	}    
+	}
 
 	.news-item-big .description{
 		margin-top: -210px;
@@ -87,15 +87,15 @@
 		text-align: left;
 		margin-top: 5px;
 	}
-	
+
 	#profile .new-review-big-icon{
 		display: none;
 	}
-	
+
 	.r-screen{
 		display: none;
 	}
-	
+
 	.r-item{
 		min-height: auto;
 	}

@@ -14,7 +14,7 @@ function dataFuncInit(){
       default: console.log('undefined data-func');
     }
   });
-}
+} 
 
 function dataHrefInit(){
   $('[data-href]').click(function(){
@@ -31,7 +31,7 @@ function mainEventsInit(){
       return false;
     }
   });
-  
+
   // img-radio btn
   $('.img-radio .radio').on('click', function(){
     $(this).parent().find('.radio').removeClass('active');

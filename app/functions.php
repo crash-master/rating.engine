@@ -92,7 +92,120 @@ function re_404(){
 	$path = \Kernel\Config::get('rating-engine -> view-template') . '/pages/404.php';
 	$pathForCheck = 'resources/view/' . $path;
 	if(file_exists($pathForCheck)){
-		return view($path, ['url' => \Kernel\Router::getUrl()]);	
+		return view($path, ['url' => \Kernel\Router::getUrl()]);
 	}
 	return view('default/404.php', ['url' => \Kernel\Router::getUrl()]);
+}
+
+function compile_css($css_file){
+	$_compile = str_replace("\t", '', $css_file);
+	$len = strlen($_compile);
+	$f = false;
+	$compile = '';
+	$quot_open = false;
+	for($i=0; $i<$len; $i++){
+		if($_compile[$i] == '"' or $_compile[$i] == "'"){
+			$quot_open = !$quot_open;
+		}
+
+		if($_compile[$i] == '{'){
+			$f = true;
+		}elseif($_compile[$i] == '}'){
+			$f = false;
+		}
+
+		if($f and $_compile[$i] == ' ' and !$quot_open){
+			continue;
+		}
+		$compile .= $_compile[$i];
+	}
+	$compile = preg_replace('!/\*.*?\*/!s', '', $compile);
+	return $compile;
+}
+
+
+function _compress_css($string) {
+	/* Strips Comments */
+  $string = preg_replace('!/\*.*?\*/!s','', $string);
+  $string = preg_replace('/\n\s*\n/',"\n", $string);
+
+  /* Minifies */
+  $string = preg_replace('/[\n\r \t]/',' ', $string);
+  $string = preg_replace('/ +/',' ', $string);
+  $string = preg_replace('/ ?([,:;{}]) ?/','$1',$string);
+
+  /* Kill Trailing Semicolon, Contributed by Oliver */
+  $string = preg_replace('/;}/','}',$string);
+
+  /* Return Minified CSS */
+  return $string;
+}
+
+function _css($path_to_css_dir = "", $files, $out = "./resources/css/master.min.css"){
+	if(strpos($path_to_css_dir, './') !== 0){
+		$path_to_css_dir = '.' . $path_to_css_dir;
+	}
+	if(strpos($out, './') !== 0){
+		$out = '.' . $out;
+	}
+	$time_of_edit = filemtime($out);
+	$compress_flag = false;
+
+	foreach($files as $file){
+		$path = $path_to_css_dir . $file;
+		if(filemtime($path) > $time_of_edit){
+			$compress_flag = true;
+			break;
+		}
+	}
+
+	if($compress_flag){
+		$css = '';
+		$_files = [];
+		foreach($files as $file){
+			$path = $path_to_css_dir . $file;
+			$css_file = file_get_contents($path);
+			$_files[] = $path;
+			$css .= _compress_css($css_file);
+		}
+		file_put_contents($out, $css);
+	}
+
+	$out = str_replace('./', '/', $out);
+	return '<link rel="stylesheet" href="' . $out . '" />';
+}
+
+function _js($path_to_css_dir = "", $files, $out = "./resources/js/master.min.js"){
+	if(strpos($path_to_css_dir, './') !== 0){
+		$path_to_css_dir = '.' . $path_to_css_dir;
+	}
+	if(strpos($out, './') !== 0){
+		$out = '.' . $out;
+	}
+
+	$time_of_edit = filemtime($out);
+	$compress_flag = false;
+
+	foreach($files as $file){
+		$path = $path_to_css_dir . $file;
+		if(filemtime($path) > $time_of_edit){
+			$compress_flag = true;
+			break;
+		}
+	}
+
+	if($compress_flag){
+		$js = '';
+		$_files = [];
+		foreach($files as $file){
+			$path = $path_to_css_dir . $file;
+			$js_file = file_get_contents($path);
+			$_files[] = $path;
+			$js .= "\n" . $js_file;
+		}
+		file_put_contents($out, $js);
+	}
+
+	$out = str_replace('./', '/', $out);
+	return '<script src="' . $out . '" ></script>';
 }
