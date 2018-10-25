@@ -1,0 +1,62 @@
+#rating{
+	margin-top: 30px;
+}
+
+#rating .order-field{
+	text-align: right;
+}
+
+#rating .cover-container{
+	display: inline-block;
+	width: 260px;
+	margin-left: 20px;
+	height: 135px;
+	overflow: hidden;
+}
+
+#rating .number-container{
+    position: absolute;
+    top: 31%;
+    /*margin-top: -35px;*/
+    width: inherit;
+    text-align: center;
+    padding: 5px 0;
+    background-color: #eee;
+    transition-duration: .3s;
+}
+
+#rating .rating-item .number span{
+	left: 0;
+}
+
+#rating .rating-item-content{
+	padding-left: 30px;
+}
+
+#rating .rating-item{
+	padding-top: 20px;
+}
+
+#rating .rating-item img.cover{
+	width: 260px;
+}
+
+#rating .rating-item:hover .number-container{
+	opacity: 0;
+}
+
+.more-btn-container{
+	padding-top: 30px;
+	text-align: center;
+}
+
+#rating .preloader{
+	width: 100%;
+	text-align: center;
+	padding-top: 30px;
+	display: none;
+}
+
+#rating .preloader{
+	display: inline-block;
+}

@@ -3,7 +3,7 @@
       <div class="carousel-item active">
         <div class="slide-info-container">
           <div class="caption">Защитись от обмана <i class="m-icon lock-alert"></i></div>
-          <div class="description">Единый рейтинг магов и<br> экстрасенсов</div>
+          <div class="description">Народный рейтинг магов и<br> экстрасенсов</div>
           <button class="std-btn white active-func" data-func="open-search-func">Проверить мага <i class="m-icon magnify-white"></i></button>
         </div>
         <img class="d-block w-100" src="/resources/view/attract/assets/imgs/slides/rating2-slides-1.jpg">

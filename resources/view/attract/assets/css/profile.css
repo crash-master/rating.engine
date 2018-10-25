@@ -102,6 +102,13 @@
 	line-height: 7rem;
 }
 
+#profile .new-review-big-icon{
+	background: url('../imgs/new-review-big-icon.png');
+	background-position: center;
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+
 .send-btn .arrow-right{
 	display: none;
 }
@@ -247,6 +254,7 @@
 .r-item{
 	background: #eee;
 	padding: 10px;
+	min-height: 95px;
 }
 
 .r-screen{
@@ -254,13 +262,14 @@
 }
 
 .r-screen img{
-	width: 100%;
-	height: auto;
+	width: auto;
+	height: 75px;
+	float: left;
+	margin-right: 10px;
 }
 
 .r-title{
-	font-size: 6rem;
-	margin-top: 10px;
+	font-size: 5rem;
 }
 
 .r-title a{
@@ -268,7 +277,7 @@
 }
 
 .r-site{
-	font-size: 5.5rem;
+	font-size: 4.5rem;
 }
 
 

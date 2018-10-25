@@ -14,19 +14,13 @@
 	overflow: hidden;
 }
 
-#rating .number-container{
-    position: absolute;
-    top: 31%;
-    /*margin-top: -35px;*/
-    width: inherit;
-    text-align: center;
-    padding: 5px 0;
-    background-color: #eee;
-    transition-duration: .3s;
-}
-
 #rating .rating-item .number span{
 	left: 0;
+}
+
+#rating .rating-item .number{
+	display: inline-block;
+	margin-right: 7px;
 }
 
 #rating .rating-item-content{
@@ -39,10 +33,6 @@
 
 #rating .rating-item img.cover{
 	width: 260px;
-}
-
-#rating .rating-item:hover .number-container{
-	opacity: 0;
 }
 
 .more-btn-container{

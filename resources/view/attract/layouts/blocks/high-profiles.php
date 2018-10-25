@@ -1,5 +1,5 @@
 <section class="block" id="home-rating">
-		<h2 class="block-title">Лучшие маги по версии пользователей сайта</h2>
+		<h2 class="block-title">Лучшие специалисты по версии пользователей сайта</h2>
 		<div class="content">
 			<? foreach($high_list as $i => $item): ?>
 			<div class="rating-item">

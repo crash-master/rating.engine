@@ -87,6 +87,19 @@
 		text-align: left;
 		margin-top: 5px;
 	}
+	
+	#profile .new-review-big-icon{
+		display: none;
+	}
+	
+	.r-screen{
+		display: none;
+	}
+	
+	.r-item{
+		min-height: auto;
+	}
+
 
 }
 
@@ -108,5 +121,4 @@
 	#single-article .block-title {
 	    margin-bottom: 20px;
 	}
-
 }

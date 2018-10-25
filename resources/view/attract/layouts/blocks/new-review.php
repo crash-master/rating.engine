@@ -1,6 +1,6 @@
 <section class="new-review">
 	<div class="row">
-		<div class="col-12 col-lg-6 col-xl-6">
+		<div class="col-12 col-lg-8 col-xl-8">
 			<div class="notification txt-grey">
 				Ваш отзыв был отправлен на модерацию.<br>Спасибо!
 			</div>
@@ -37,8 +37,8 @@
 				<button class="std-btn icon-fix send-btn">Отправить <i class="m-icon arrow-right-red"></i> <i class="m-icon arrow-right"></i></button>
 			</div>
 		</div>
-		<div class="col-12 col-lg-6 col-xl-6 txt-grey">
-			<?= model('Meta') -> getMeta('rules-for-adding-reviews'); ?>
+		<div class="col-12 col-lg-4 col-xl-4 txt-grey new-review-big-icon">
+			
 		</div>
 	</div>
 </section>

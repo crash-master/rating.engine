@@ -70,9 +70,6 @@ var Rating = function(){
         '<div class="row">' +
           '<div class="col-3 d-none d-xl-block">' +
             '<div class="cover-container">' +
-              '<div class="number-container">' +
-                '<div class="number txt-grey-dark"><span>' + data[i]['number_txt'] + '</span></div>' +
-              '</div>' +
               '<img src="" data-site-thumbnail="/get-site-thumbnail/' + data[i]['site_obj']['id'] + '" class="cover">' +
               // '<img src="' + data[i]['site_obj']['screen'] + '" class="cover">' +
             '</div>' +
@@ -81,6 +78,7 @@ var Rating = function(){
             '<div class="row">' +
               '<div class="col-12 col-lg-8 col-xl-8">' +
                 '<div class="top Profile-info">' +
+									'<div class="number txt-grey-dark"><span>' + data[i]['number_txt'] + '</span></div>' +
                   '<a href="' + data[i]['to_profile'] + '" class="std-a Profile-name">' + data[i].name + '</a><span class="txt-grey Profile-site"> - ' + data[i].site + '</span>' +
                 '</div>' +
                 '<div class="bottom location txt-grey">' +

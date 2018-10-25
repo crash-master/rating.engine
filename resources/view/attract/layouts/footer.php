@@ -13,11 +13,11 @@
 					<a href="<?= linkTo('PageController@text_page', ['pagename' => 'privacy-policy']) ?>" class="std-a footer-link">Политика конфиденциальности</a>
 					<a href="<?= linkTo('PageController@text_page', ['pagename' => 'denial-of-responsibility']) ?>" class="std-a footer-link">Отказ от ответственности</a>
 				</div>
-				<div class="social-nav">
+				<!-- <div class="social-nav">
 					<a href="<?= $social['vk'] ?>"><i class="m-icon vk"></i></a>
 					<a href="<?= $social['twitter'] ?>"><i class="m-icon twitter"></i></a>
 					<a href="<?= $social['facebook'] ?>"><i class="m-icon facebook"></i></a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</footer>

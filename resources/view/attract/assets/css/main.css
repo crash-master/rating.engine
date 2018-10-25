@@ -155,6 +155,12 @@ header{
 	font-size: 8rem;
 }
 
+.logo img{
+	width: 120%;
+	position: relative;
+	top: -5px;
+}
+
 nav.main{
 	text-align: center;
 }
@@ -595,4 +601,8 @@ button.close .item:last-of-type{
 .tag:hover{
 	background-color: #bbb;
 	color: #212121;
+}
+
+.rating-item .timestamp{
+	display: none;
 }

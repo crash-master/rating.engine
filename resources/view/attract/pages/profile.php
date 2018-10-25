@@ -44,7 +44,7 @@
 			<? endif; ?>
 			<? if($profile['site_obj']['domen_created']): ?>
 				<p class="site-title txt-grey">
-					Домен создан: <span class="txt-grey-dark"><?= $profile['site_obj']['domen_created'] ?></span>
+					Дата создания сайта: <span class="txt-grey-dark"><?= $profile['site_obj']['domen_created'] ?></span>
 				</p>
 			<? endif; ?>
 			<? if($profile['contacts']): ?>

@@ -20,7 +20,9 @@
 	<header id="header">
 		<div class="row">
 			<div class="col-9 col-lg-2 col-xl-2">
-				<div class="logo txt-grey mariupol-bold" onclick="document.location = '/'"><?= model('Meta') -> getMeta('sitename') ?></div>
+				<div class="logo txt-grey mariupol-bold" onclick="document.location = '/'">
+					<img src="/resources/view/attract/assets/imgs/logo.png" alt="Logo">
+				</div>
 			</div>
 			<div class="col-8">
 				<nav class="main">

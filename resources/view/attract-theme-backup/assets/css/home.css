@@ -1,0 +1,237 @@
+#home-info .content{
+	font-size: 4rem;
+	color: #616161;
+}
+
+.rating-item{
+	background: #eee;
+	padding: 15px 0;
+	margin-bottom: 15px;
+}
+
+.rating-item:last-of-type{
+	margin-bottom: 0;
+}
+
+.rating-item .number{
+	text-align: center;
+	font-family: MariupolBold;
+	font-size: 6rem;
+}
+
+.number span {
+    display: inline-block;
+    padding: 0px;
+    border-left: 5px solid #ff4936;
+    line-height: 4.5rem;
+    padding-left: 3px;
+    position: relative;
+    left: 25px;
+}
+
+.rating-item .bottom{
+	margin-top: 10px;
+}
+
+.rating-item .top,
+.rating-item .bottom{
+	padding-right: 25px;
+}
+
+.rating-item .Profile-info{
+	font-size: 5rem;
+}
+
+.rating-item .location{
+	font-size: 4rem;
+}
+
+.rating-item .timestamp{
+	width: 100%;
+	text-align: right;
+}
+
+.stats{
+	font-size: 5rem;
+	text-align: right;
+}
+
+.stats .m-icon{
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 3px;
+	margin-left: 5px;
+	margin-right: 2px;
+}
+
+#last-reviews{
+	background-color: #e0e0e0;
+	margin-top: 40px;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+.review-item{
+	margin-bottom: 25px;
+}
+
+.review-item:last-of-type{
+	margin-bottom: 0;
+}
+
+.review-head{
+	font-size: 5rem;
+	margin-bottom: 10px;
+}
+
+#last-reviews .block-title{
+	margin-bottom: 20px;
+}
+
+.review-body{
+	font-size: 4rem;
+	margin-bottom: 10px;
+	padding-right: 15px;
+}
+
+.review-item .thumb .m-icon{
+	width: 48px;
+	height: 48px;
+}
+
+.review-item .thumb{
+	text-align: right;
+}
+
+.review-item .timestamp{
+	margin-right: 10px;
+}
+
+#stats{
+	border: 10px solid #e0e0e0;
+	margin-top: 40px;
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-bottom: 2px;
+}
+
+#stats .block-title{
+	margin-bottom: 20px;
+}
+
+#stats .line-item,
+#stats .stats-foot{
+	font-size: 6rem;
+	margin-bottom: 20px;
+}
+
+#stats .stats-foot{
+    color: #d0d0d0;
+    position: relative;
+    top: -17px;
+    left: 12px;
+    font-size: 6rem;
+}
+
+#stats .stats-foot .m-icon{
+	width: 40px;
+    height: 60px;
+    top: 18px;
+    margin-right: 10px;
+}
+
+.news-item-big{
+	width: 100%;
+	overflow: hidden;
+}
+
+.news-item-big .description{
+	position: absolute;
+	top: 100%;
+	height: 170px;
+	background-color: rgba(255, 255, 255, .7);
+	margin-top: -170px;
+	padding: 15px 15px;
+	width: 95%;
+}
+
+.news-item-big .timestamp{
+	margin-top: 10px;
+}
+
+.news-item-big .news-title{
+	font-size: 8rem;
+	margin-bottom: 10px;
+}
+
+.news-item-big .news-cover{
+	width: 100%;
+	height: auto;
+}
+
+.news-item .description{
+	margin-top: 10px;
+	padding-bottom: 20px;
+	border-bottom: 3px solid #616161;
+}
+
+.news-item .news-title{
+	font-size: 5rem;
+	font-family: MariupolBold;
+	margin-bottom: 5px;
+}
+
+.news-item .timestamp{
+	font-family: MariupolMedium;
+	font-size: 4rem;
+}
+
+.more-news .arrow-right{
+	display: none;
+}
+
+.more-news:hover .arrow-right{
+	display: inline-block;
+}
+
+.more-news:hover .arrow-right-red{
+	display: none;
+}
+
+.more-news{
+	margin-top: 15px;
+}
+
+.news-cover{
+	width: 100%;
+}
+
+.news-item-big{
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	width: 100%;
+	height: 450px;
+}
+
+#newProfiles .content{
+	padding-top: 20px;
+	background-color: #e0e0e0;
+}
+
+.ng-item{
+	padding: 15px;
+	padding-top: 0;
+	padding-bottom: 20px;
+}
+
+.ng-item .Profile-info{
+	font-size: 5rem;
+}
+
+.ng-item .timestamp{
+	text-align: right;
+	font-size: 4rem;
+}
+

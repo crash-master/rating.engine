@@ -37,7 +37,7 @@ class Recomended extends \Extend\Model{
     	$data = [];
     	foreach($recomended_list as $i => $item){
     		$data[$i] = model('Profile') -> get(['id', '=', $item['profileid']]);
-    		$data[$i] = model('Profile') -> fields_transform($data[$i], ['site', 'to_profile', 'site_obj', 'media']);
+    		$data[$i] = model('Profile') -> fields_transform($data[$i], ['site', 'to_profile', 'site_obj', 'media_xs']);
     	}
     	return $data;
     }
