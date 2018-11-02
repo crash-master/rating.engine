@@ -14,7 +14,7 @@ function dataFuncInit(){
       default: console.log('undefined data-func');
     }
   });
-} 
+}
 
 function dataHrefInit(){
   $('[data-href]').click(function(){
@@ -60,4 +60,37 @@ function goToReview(){
 	setTimeout(function(){
 		reviewCont.find('.review-foot a', 0).trigger('click');
 	}, 500);
+}
+
+function excerptNewsItemsOnHomePage(){
+  if(document.location.pathname != '/'){
+    return false;
+  }
+
+  let params = {
+    len: {
+      min: 100,
+      max: 110
+    },
+    numberOfWords: 10,
+    numberOfSentence: 1
+  }
+
+	let excerpt = new ExcerptJS(params);
+	excerpt.input($('.news-item-big .description').find('p:eq(1)').html());
+	$('.news-item-big .description').find('p:eq(1)').html(excerpt.out('symbols') + '...');
+
+	let newsItems = $('.news-item');
+	for(let i of newsItems){
+		let txt = $(i).find('.description p:eq(1)').html();
+		excerpt.input(txt);
+		$(i).find('.description p:eq(1)').html(excerpt.out('symbols') + '...');
+	}
+
+	params.len.min = 30;
+	params.len.max = 35;
+	let excerptNewsTitle = new ExcerptJS(params);
+	excerptNewsTitle.input($('.news-item-big a.news-title').html());
+	$('.news-item-big a.news-title').html(excerptNewsTitle.out('symbols') + '...')
+
 }

@@ -488,7 +488,7 @@ button.close .item:last-of-type{
 
 .input.select.with-icon .placeholder{
 	margin-left: 35px;
-}	
+}
 
 .input.select.with-icon .main-icon{
 	position: absolute;
@@ -547,7 +547,7 @@ button.close .item:last-of-type{
 	z-index: 100;
 	box-shadow: 0 0 10px #aaa;
 	transition-duration: .3s;
-	top: -450px;
+	top: -850px;
 	opacity: 0;
 	padding-bottom: 30px;
 }

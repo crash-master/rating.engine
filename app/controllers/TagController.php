@@ -23,18 +23,7 @@ class TagController extends \Extend\Controller{
 		$data = arrayToArray(model('Profile') -> get(['where' => ['public_flag','=','1', 'AND', 'id', 'IN', $profileids_str], 'order' => ['rating','DESC']]));
         $count = count($data);
         for($i=0; $i<$count; $i++){
-            $data[$i]['timestamp'] = dateFormat($data[$i]['timestamp']);
-            $data[$i]['number'] = $i + 1;
-            $data[$i]['site_link'] = linkTo('SiteController@incrementSiteVisit', ['profileid' => $data[$i]['id']]);
-            $data[$i]['site'] = url_without_prefix($data[$i]['site']);
-            $data[$i]['to_profile'] = linkTo('ProfileController@page', ['slug' => $data[$i]['slug']]);
-            $data[$i]['site_obj'] = model('Site') -> get(['where' => ['profileid', '=', $data[$i]['id']]]);
-            $data[$i]['cat'] = model('Cats') -> get(['where' => ['id', '=', $data[$i]['catid']]]);
-            if(!$data[$i]['site_obj']){
-                $data[$i]['site_obj'] = false;
-            }else{
-                $data[$i]['site_obj']['screen'] = '';
-            }
+						$data[$i] = model('Profile') -> fields_transform($data[$i], ['timestamp', 'number_txt', 'site_link', 'site', 'to_profile', 'site_obj', 'cat']);
         }
 
         return View::json(['rating' => $data, 'len' => model('Meta') -> getMeta('count_profiles') - 1]);
@@ -46,7 +35,7 @@ class TagController extends \Extend\Controller{
 		}
 		return json_encode(['exist' => false]);
 	}
-    
+
 	public function create(){
 		$data = \Kernel\Request::post();
 		model('Tag') -> set($data);
@@ -74,6 +63,6 @@ class TagController extends \Extend\Controller{
 	public function create_profile_tag_link($profileid, $tagid){
 		return model('Tag_profile') -> set(['profileid' => $profileid, 'tagid' => $tagid]);
 	}
-    
-    
+
+
 }

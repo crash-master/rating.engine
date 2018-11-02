@@ -35,6 +35,9 @@ $(document).ready(function(){
 		}
 	});
 
+// excerpt news description
+
+	excerptNewsItemsOnHomePage()
 
 
 	mainEventsInit();

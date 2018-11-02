@@ -1,20 +1,20 @@
 <? vjoin('attract/layouts/header') ?>
 
 <script>
+	let rating = new Rating();
 	$(document).ready(function(){
-		var ORDER = '';
-		setInterval(function(){
-			var val = $('input[name="order"]').val();
-			if(val != ORDER){
-				ORDER = val;
-				$('#rating .items-container').html('');
-				CURRENT_COUNT_RATING_LIST = 0;
-				RATING_LIST_COUNTER = 1;
-				getRating(<?= $tag['id'] ?>);
-			}
-		}, 200);
-		// getRating();
-	});
+			rating.get(<?= $tag['id'] ?>);
+			// $('#rating-order .option').on('click', function(){
+			// 	setTimeout(function(){
+			// 		console.log($('input[name="order"]').val());
+			// 		$('#rating .items-container').html('');
+			// 		$('.load-more').show();
+			// 		rating.ratingListCounter = 1;
+			// 		rating.currentCountRatingList = 0;
+			// 		rating.get(<?= $tag['id'] ?>);
+			// 	}, 300);
+			// });
+		});
 </script>
 
 <div class="container" id="rating">
@@ -31,7 +31,7 @@
 	</div>
 
 	<div class="preloader">
-		<img src="/resources/assets/imgs/103.gif">
+		<img src="/resources/view/attract/assets/imgs/103.gif">
 	</div>
 
 	<!-- <div class="rating-item">
@@ -49,7 +49,7 @@
 					<div class="col-12 col-lg-8 col-xl-8">
 						<div class="top Profile-info">
 							<a href="#" class="std-a Profile-name">Маг Валдай</a><span class="txt-grey Profile-site"> - Profilevalday.ru</span>
-						</div>	
+						</div>
 						<div class="bottom location txt-grey">
 							Страна <span class="txt-grey-dark">Украина</span>, город <span class="txt-grey-dark">Киев</span>
 						</div>
@@ -93,7 +93,7 @@
 					<div class="col-12 col-lg-8 col-xl-8">
 						<div class="top Profile-info">
 							<a href="#" class="std-a Profile-name">Маг Валдай</a><span class="txt-grey Profile-site"> - Profilevalday.ru</span>
-						</div>	
+						</div>
 						<div class="bottom location txt-grey">
 							Страна <span class="txt-grey-dark">Украина</span>, город <span class="txt-grey-dark">Киев</span>
 						</div>
@@ -137,7 +137,7 @@
 					<div class="col-12 col-lg-8 col-xl-8">
 						<div class="top Profile-info">
 							<a href="#" class="std-a Profile-name">Маг Валдай</a><span class="txt-grey Profile-site"> - Profilevalday.ru</span>
-						</div>	
+						</div>
 						<div class="bottom location txt-grey">
 							Страна <span class="txt-grey-dark">Украина</span>, город <span class="txt-grey-dark">Киев</span>
 						</div>
@@ -165,7 +165,7 @@
 			</div>
 		</div>
 	</div> -->
-	
+
 </div>
 
 <? vjoin('attract/layouts/footer') ?>

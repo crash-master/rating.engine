@@ -45,6 +45,7 @@
 	<script type="text/javascript" src="/resources/view/attract/assets/js/rating.js"></script>
 	<script type="text/javascript" src="/resources/view/attract/assets/js/app.js"></script> -->
 	<?= _js('/resources/view/attract/assets/js/', [
+			'libs/excerpt.js',
 			'funcs.js',
 			'mobile-nav.js',
 			'form-control.js',

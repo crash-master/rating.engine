@@ -2,21 +2,23 @@ var Rating = function(){
 	var self = this;
 	this.currentCountRatingList = 0;
   this.ratingListCounter = 1;
-  
+
   this.get = function(tag){
     self.controller(tag);
   }
 
-	this.controller = function(){
+	this.controller = function(tag){
     tag = (typeof tag == 'undefined') ? 'order' : tag;
+		console.log(tag);
     var limit = self.currentCountRatingList;
     var order = $('input[name="order"]').val();
-    if(order == '' || typeof order == 'undefined'){
+    if(tag != 'order'){
+    // if(order == '' || typeof order == 'undefined'){
       var url = '/api/tag/' + tag + '/limit/' + limit;
     }else{
       var url = '/api/rating/order/' + order + '/limit/' + limit;
     }
-
+		console.log(url);
     $('#rating .preloader').show();
     self.model(url, function(){
       self.loadRatingThumbnails();
@@ -45,15 +47,15 @@ var Rating = function(){
         continue;
       }
       var count_review = parseInt(data[i].count_like) + parseInt(data[i].count_dislike) + parseInt(data[i].count_neutral);
-  
+
       var num = self.ratingListCounter++;
       num = num < 10 ? '0' + num : num;
-  
+
       if(data[i]['site_obj'] == false){
         data[i]['site_obj'] = {'screen': '/resources/assets/imgs/screens/default-screen.jpg'};
         data[i]['site_obj']['description'] = 'Игорь Леонидович Николаев – потомственный сибирский маг в пятом колене. Работает официально с 1989 года. Зарекомендовал себя как самый сильный и известный колдун не только в Красноярске, но и по всей Сибири. Верховный жрец ковена Волка-Орла. Магистр черной и белой магии.';
       }
-  
+
       let description_tmp = data[i]['site_obj']['description'].split('.');
       let description = description_tmp[0] + '.' + description_tmp[1];
       if(description.split(' ').length < 30){
@@ -61,11 +63,11 @@ var Rating = function(){
       }else{
         description += '...';
       }
-  
+
       if(typeof data[i].cat.title == 'undefined'){
         data[i].cat = {'title': 'Без категории'}
       }
-  
+
       html += '<div class="rating-item">' +
         '<div class="row">' +
           '<div class="col-3 d-none d-xl-block">' +
@@ -89,7 +91,7 @@ var Rating = function(){
                   'Категория: <span class="txt-grey-dark">' + data[i].cat.title + '</span>' +
                 '</div>' +
               '</div>' +
-  
+
               '<div class="col-12 col-lg-4 col-xl-4">' +
                 '<div class="top stats txt-grey-dark">' +
                   '<i class="m-icon thumb-up-green"></i> ' + data[i].count_like +
@@ -110,7 +112,7 @@ var Rating = function(){
         '</div>' +
       '</div>';
     }
-  
+
     $('#rating .items-container').append(html);
 	}
 
