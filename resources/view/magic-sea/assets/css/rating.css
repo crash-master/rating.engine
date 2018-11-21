@@ -1,0 +1,62 @@
+#rating{
+    padding-top: 30px;
+}
+
+#rating .page-title .m-icon{
+	height: 44px;
+    width: 32px;
+    top: 11px;
+    left: 10px;
+}
+
+#rating .page-head .select{
+    display: inline-block;
+    transform: scale(0.8);
+    position: relative;
+    left: 17px;
+}
+
+#rating .page-head .order-field{
+	text-align: right;
+}
+
+#rating .top-list li{
+    margin-left: -40px;
+}
+
+#rating .top-site {
+    width: 200px;
+}
+
+#rating .top-rating{
+	width: 185px;
+}
+
+#rating .top-rating .dislike{
+	top: 5px;
+	margin-left: 5px;
+}
+
+#rating .top-rating .comment-text-multiple-blue{
+	top: 6px;
+	margin-left: 5px;
+}
+
+#rating .page-title{
+	margin-top: -14px;
+}
+
+#rating .load-more{
+    border: 1px solid var(--main-color);
+    background: transparent;
+    color: var(--main-color);
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition-duration: .2s;
+}
+
+#rating .load-more:hover{
+    padding: 10px 20px;
+}

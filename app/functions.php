@@ -209,3 +209,14 @@ function _js($path_to_css_dir = "", $files, $out = "./resources/js/master.min.js
 	$out = str_replace('./', '/', $out);
 	return '<script src="' . $out . '" ></script>';
 }
+
+function get_random_color(){
+	$colors = ["#EF5350", "#E91E63", "#B71C1C", "#8E24AA",
+  "#4A148C", "#D500F9", "#1E88E5", "#0D47A1", "#512DA8",
+  "#7C4DFF", "#00838F", "#00BFA5", "#004D40", "#388E3C",
+  "#827717", "#FDD835", "#FFA000", "#E65100", "#4E342E",
+  "#424242", "#37474F"];
+  $count = count($colors);
+
+	return $colors[rand(0, $count - 1)];
+}

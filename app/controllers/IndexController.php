@@ -48,7 +48,7 @@ class IndexController extends \Extend\Controller{
 	}
 
 	public function admin_login(){
-		$pass = \Kernel\Request::post('pass'); 
+		$pass = \Kernel\Request::post('pass');
 		$passdb = model('Meta') -> getMeta('password');
 		$pass = sha1($pass);
 		if($pass == $passdb){
@@ -89,6 +89,5 @@ class IndexController extends \Extend\Controller{
 
 		return count($reviews);
 	}
-	
-}
 
+}

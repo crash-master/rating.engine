@@ -7,7 +7,7 @@ use Kernel\{
 };
 
 class PageController extends \Extend\Controller{
-	
+
 	public function admin_page(){
 		return View::make('admin/page-list', [
 			'pagelist' => model('Page') -> get_page_list()
@@ -73,6 +73,6 @@ class PageController extends \Extend\Controller{
 
 		return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/info-page.php', ['page' => model('Page') -> get_page('/page/'.$pagename)]);
 	}
-	
-	
+
+
 }

@@ -12,7 +12,7 @@
 					<a href="<?= txtpage('contacts') ?>" class="nav-item">Контакты</a>
 				</nav>
 			</div>
-			
+
 			<div class="col-8 col-lg-4 col-xl-4">
 				<div class="search">
 					<input type="text" class="yd-input" placeholder="Поиск">

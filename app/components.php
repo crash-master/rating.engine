@@ -1,4 +1,4 @@
-<?php 
+<?php
 use Kernel\Components;
 $templatename = \Kernel\Config::get('rating-engine -> view-template');
 
@@ -41,4 +41,3 @@ Components::create('tags-cloud', [$templatename . '/layouts/blocks/tags-cloud' =
 Components::create('Recomended', [$templatename . '/layouts/blocks/recomended' => [
 	'RecomendedController@get_recomended'
 ]]);
-

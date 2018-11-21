@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     'system' => [
         'showFuncName' => 'show',
         'modules' => require_once('fw/config/modules.config.php'),
@@ -23,12 +23,12 @@ return [
     ],
 
     'rating-engine' => [
-        'view-template' => 'attract',
+        'view-template' => 'magic-sea',
         'blog' => [
             'url' => 'http://news.astralmagic.ru/',
             'count_articles' => 3
         ],
         'admin-panel' => require_once('fw/config/re-admin-panel.config.php')
     ]
-    
+
 ];

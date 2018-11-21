@@ -1,0 +1,64 @@
+[2018-11-19 22:08:56] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\high-profiles.php IN LINE 8
+-------------------------------------------------
+[2018-11-19 22:08:56] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:08:56] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-19 22:14:44] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:14:44] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-19 22:15:28] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:15:28] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-19 22:16:20] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:16:20] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-19 22:18:39] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:18:39] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-19 22:19:30] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:19:30] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-19 22:20:30] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\last-reviews-block.php IN LINE 5
+-------------------------------------------------
+[2018-11-19 22:20:30] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:39:55] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\magic-sea\layouts\latest-mags-block.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:48:17] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:48:17] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:48:22] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:48:22] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:48:23] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:48:23] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:48:25] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:48:25] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:48:37] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:48:37] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:49:35] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:49:35] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:49:36] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:49:36] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
+[2018-11-20 00:49:37] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\last-profiles.php IN LINE 4
+-------------------------------------------------
+[2018-11-20 00:49:37] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\yellow-drops\layouts\sidebar.php IN LINE 5
+==================================================================================================
