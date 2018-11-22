@@ -7,7 +7,7 @@
 			<!-- li*10>.top-number{#$}+.top-name{Макс Топинг $}+(.top-site>a[href="#"]{max-toping$.com.ua})+.top-rating{<i class="m-icon like"></i> $$}+.top-timestamp{07-06-12 22:10}+(.top-btn-show>a.btn-profile-show[href="#"]{Посмотреть <i class="m-icon eye"></i>}) -->
 			<? foreach($high_list as $i => $item): ?>
 				<li>
-					<div class="top-number">#<?= $item['number'] ?></div>
+					<div class="top-number">#<?= $i+1 ?></div>
 					<div class="top-name"><a href="<?= linkTo('ProfileController@page', ['slug' => $item['slug']]) ?>"><?= $item['name'] ?></a></div>
 					<div class="top-site"><?= $item['site'] ?></div>
 					<div class="top-rating"><i class="m-icon <? if($item['rating'] >= 0): ?>like<? else: ?>dislike<? endif; ?>"></i> <?= $item['rating'] ?></div>

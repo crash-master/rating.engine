@@ -75,8 +75,8 @@ $(document).ready(function(){
 		val = val.split(':');
 		var tagid = val[0];
 		var slug = val[1];
-		var a = '<div class="col-4"><button class="btn" d-id="' + tagid + '">Удалить</button></div>';
-		var li = '<li class="list-group-item" tag-id="' + tagid + '"><div class="row"><div class="col-8">' + title + ' <small>(' + slug + ')</small></div> ' + a + '</div></li>';
+		var a = '<span class="badge badge-pill" style="cursor: pointer; padding: 5px; font-size: 16px; color: #FF4136" d-id="' + tagid + '"><i class="fa fa-times-circle" aria-hidden="true"></i></span>';
+		var li = '<li class="list-group-item d-flex justify-content-between align-items-center" tag-id="' + tagid + '">' + title + ' /' + slug + '/ ' + a + '</li>';
 		if($('#tag-list-out').find('[tag-id="' + tagid + '"]').length){
 			return false;
 		}
@@ -99,7 +99,7 @@ function tagRemoveBtnInit(btn){
 		var tagid = $(this).attr('d-id');
 		// send to serv
 		$.get('/api/profile-tags/remove/' + profileid + '/' + tagid);
-		$(this).parent().parent().parent().remove();
+		$(this).parent().remove();
 	});
 }
 

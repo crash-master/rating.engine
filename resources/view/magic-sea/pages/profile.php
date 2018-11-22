@@ -36,10 +36,10 @@
 				</div>
 				<? endif; ?>
 				<? if($profile['contacts']): ?>
-				<div class="info-item row">
+				<!-- <div class="info-item row">
 					<span class="left-part"><strong>Контактные данные</strong></span>
 					<span class="right-part"><?= $profile['contacts'] ?></span>
-				</div>
+				</div> -->
 				<? endif; ?>
 				<div class="info-item row">
 					<span class="left-part"><strong>Описание</strong></span>

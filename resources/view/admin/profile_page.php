@@ -1,91 +1,143 @@
 <? vjoin('admin-layouts/header'); ?>
 <div class="container">
 	<div class="page" id="Profile-edit-page">
-		<h1 class="page-name">
-			Редактирования профиля 
+		<div class="jumbotron">
+		  <h1 class="display-6">Редактирования профиля
 			<? if(isset($profile)): ?> <a href="<?= linkTo('ProfileController@page', ['slug' => $profile['slug']]) ?>" target="_blank"><?=$profile['name']?></a> ID <?= $profile['id'] ?> <?endif;?>
-		</h1>
-		<div class="row">
-			<div class="col-8 offset-2">
-				<br>
-				<form action="<?= linkTo('ProfileController@profile_edit_page') ?>" method="get">
-					<div class="row">
-						<div class="col-10">
-							<input type="text" name="s" class="form-control" placeholder="Ссылка на страницу мага" value="<?= isset($_GET['s']) ? $_GET['s'] : '' ?>">
-						</div>
-						<div class="col-2">	
-							<button class="btn btn-primary Profile-search">Искать</button>
-						</div>	
-					</div>	
-				</form>
-			</div>	
-		</div>
+			</h1>
 
-		<? if (isset($profile)): ?>
-			<hr>
+			<hr class="my-4">
+
 			<div class="row">
-				<div class="col-8 offset-2">
-					<form action="/admin/profile_update?s=<?= $_GET['s'] ?>" method="post" enctype="multipart/form-data">
-						<br>
-						<input type="hidden" name="mid" value="<?= $profile['id'] ?>">
-						<input type="text" class="form-control" name="name" placeholder="Название мага" value="<?= $profile['name'] ?>">
-						<br>
-						<label for="screen">Скриншот</label><br>
-						<input type="file" id="screen" name="screen" placeholder="Скриншот сайта">
-						
-						<? if($profile['site_obj']['screen']): ?>
-							<br>
-							<img src="<?= $profile['site_obj']['screen'] ?>" style="max-width: 256px" alt="Icon"></span>
-						<? endif; ?>
-
-						<br>
-						<br>
-						<input type="text" name="site" class="form-control" placeholder="Редактирование url сайта" value="<?= $profile['site'] ?>">
-						<br>
-						<textarea type="text" class="form-control" name="contacts" placeholder="Контакты"><?= $profile['contacts'] ?></textarea>
-						<br>
-						<textarea name="description" class="form-control" placeholder="Описание"><?= $profile['site_obj']['description'] ?></textarea>
-						<br>
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="public_flag" name="public" <? if($profile['public_flag'] == '1'): ?>checked<? endif; ?>>
-							<label for="public_flag" class="form-check-label">Публиковать</label>
-						</div>
-						<br>
-						<button class="btn btn-primary">Сохранить</button>
-					</form>
+				<div class="col-6 offset-3">
 					<br>
-					<div class="row">
-							<div class="col-6">
-								<h5>Выбранные теги</h5>
-								<ul class="list-group" id="tag-list-out">
-									<? foreach($profile['tags'] as $tag): ?>
-										<li class="list-group-item" tag-id="<?= $tag['id'] ?>">
-											<div class="row">
-												<div class="col-8"><?= $tag['title'] ?> <small>(<?= $tag['slug'] ?>)</small></div> 
-												<div class="col-4"><button class="btn" d-id="<?= $tag['id'] ?>">Удалить</button></div>
-											</div>
-										</li>
-									<? endforeach; ?>
-								</ul>
-							</div>
-							<div class="col-6">
-								<h5>Существующие теги</h5>
+					<form action="<?= linkTo('ProfileController@profile_edit_page') ?>" method="get">
+						<div class="row">
+							<div class="col-12">
 								<div class="form-group">
-									<select id="tag-list" class="form-control">
-										<option value="">Не выбрано</option>
-										<? foreach($tag_list as $tag): ?>
-											<option value="<?= $tag['id'] ?>:<?= $tag['slug'] ?>"><?= $tag['title'] ?></option>
-										<? endforeach; ?>
-									</select>
+									<div class="input-group mb-2">
+							      <input type="text" name="s" class="form-control" placeholder="Ссылка на страницу мага" value="<?= isset($_GET['s']) ? $_GET['s'] : '' ?>">
+							      <div class="input-group-append">
+											<button class="input-group-text btn Profile-search">Искать</button>
+							      </div>
+							    </div>
 								</div>
 							</div>
 						</div>
-						<br>
-					<a class="danger-link" href="<?= linkTo('ProfileController@remove', ['id' => $profile['id']]); ?>">Удалить мага</a>
-				</div>	
+					</form>
+				</div>
 			</div>
-		<? endif; ?>
+
+			<? if (isset($profile)): ?>
+				<br>
+				<br>
+				<form action="/admin/profile_update?s=<?= $_GET['s'] ?>" method="post" enctype="multipart/form-data">
+				<div class="row">
+						<input type="hidden" name="mid" value="<?= $profile['id'] ?>">
+						<div class="col-4">
+							<? if($profile['site_obj']['screen']): ?>
+								<img src="<?= $profile['site_obj']['screen'] ?>" style="width: 100%; height: auto; border: 1px solid #158CBA; border-radius: 3px; border-bottom-width: 4px;" alt="Icon"></span>
+							<? endif; ?>
+							<br>
+							<br>
+							<div class="form-group">
+								<div class="input-group mb-3">
+						      <div class="custom-file">
+						        <input type="file" class="custom-file-input" id="screen" name="screen">
+						        <label class="custom-file-label" for="screen">Загрузка изображения</label>
+						      </div>
+						      <div class="input-group-append">
+						        <button class="input-group-text" id="">Загрузить</button>
+						      </div>
+						    </div>
+
+							</div>
+						</div>
+
+						<div class="col-8">
+							<div class="form-group">
+								<label for="name">Название мага</label>
+								<input type="text" id="name" class="form-control" name="name" placeholder="Название мага" value="<?= $profile['name'] ?>">
+							</div>
+							<div class="form-group">
+								<label for="site">Редактирование url сайта</label>
+								<input type="text" id="site" class="form-control" name="site" placeholder="Редактирование url сайта" value="<?= $profile['site'] ?>">
+							</div>
+							<div class="form-group">
+								<label for="contacts">Контакты</label>
+								<textarea type="text" id="contacts" class="form-control" name="contacts" placeholder="Контакты"><?= $profile['contacts'] ?></textarea>
+							</div>
+							<div class="form-group">
+								<label for="description">Описание</label>
+								<textarea name="description" style="height: 180px;" id="description" class="form-control" placeholder="Описание"><?= $profile['site_obj']['description'] ?></textarea>
+							</div>
+							<div class="form-group">
+								<div class="custom-control custom-checkbox">
+						      <input type="checkbox" class="custom-control-input" id="public_flag" name="public" <? if($profile['public_flag'] == '1'): ?>checked<? endif; ?>>
+						      <label class="custom-control-label" for="public_flag">Публиковать</label>
+						    </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<button class="btn btn-primary">Сохранить</button>
+						</div>
+					</div>
+				</form>
+
+				<div class="row">
+					<div class="col-12">
+						<hr>
+						<div class="row">
+								<div class="col-6">
+									<h6>Выбранные теги</h6>
+									<div class="alert alert-dismissible alert-secondary empty-tag-list-out d-none">
+									  <strong>Ни один тег не добавлен.</strong> Для добавления выберите нужный тег из списка тегов
+									</div>
+									<ul class="list-group" id="tag-list-out">
+										<? foreach($profile['tags'] as $tag): ?>
+										  <li class="list-group-item d-flex justify-content-between align-items-center" tag-id="<?= $tag['id'] ?>">
+										    <?= $tag['title'] ?> /<?= $tag['slug'] ?>/
+										    <span class="badge badge-pill" style="cursor: pointer; padding: 5px; font-size: 16px; color: #FF4136" d-id="<?= $tag['id'] ?>"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+										  </li>
+										<? endforeach; ?>
+									</ul>
+
+								</div>
+								<div class="col-6">
+									<h6>Существующие теги</h6>
+									<div class="form-group">
+										<select id="tag-list" class="form-control">
+											<option value="">Не выбрано</option>
+											<? foreach($tag_list as $tag): ?>
+												<option value="<?= $tag['id'] ?>:<?= $tag['slug'] ?>"><?= $tag['title'] ?></option>
+											<? endforeach; ?>
+										</select>
+									</div>
+								</div>
+							</div>
+							<br>
+							<br>
+						<a class="danger-link btn btn-danger" href="<?= linkTo('ProfileController@remove', ['id' => $profile['id']]); ?>"><i class="fa fa-trash"></i> Удалить мага</a>
+					</div>
+				</div>
+			<? endif; ?>
+		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		setInterval(function(){
+			let container = $('#tag-list-out');
+			if(container.find('li').length == 0){
+				$('.empty-tag-list-out').removeClass("d-none");
+			}else{
+				$('.empty-tag-list-out').addClass("d-none");
+			}
+		}, 250);
+	});
+</script>
 
 <? vjoin('admin-layouts/footer'); ?>

@@ -90,7 +90,7 @@ class Profile extends \Extend\Model{
 		if(empty($profile['site_obj']['screen']) or strpos($profile['site_obj']['screen'], 'base64')){
 			return $profile;
 		}
-		$profile['media'] = model('Media') -> get_media($profile['site_obj']['screen'], $size); 
+		$profile['media'] = model('Media') -> get_media($profile['site_obj']['screen'], $size);
 		$profile['site_obj']['screen'] = model('Media') -> get_src($profile['media']);
 		return $profile;
 	}
@@ -100,7 +100,7 @@ class Profile extends \Extend\Model{
 		if(!$profile){
 			return false;
 		}
-		$profile = $this -> fields_transform($profile, ['site_link', 'timestamp', 'site_obj', 'cat', 'site', 'domen_created', 'number_txt', 'tags', 'media_md']);
+		$profile = $this -> fields_transform($profile, ['site_link', 'timestamp', 'site_obj', 'cat', 'site', 'domen_created', 'number_txt', 'number', 'tags', 'media_md']);
 
 		model('Profile') -> update(['count_views' => $profile['count_views'] + 1], ['slug', '=', $slug]);
 		model('Meta') -> incrementField('count_profile_views');
@@ -150,7 +150,7 @@ class Profile extends \Extend\Model{
 			$favicon = $dom -> find('link[rel="icon"]', 0);
 			if($favicon){
 				 $favicon = $favicon -> getAttribute('href');
-			
+
 				if(strstr($favicon, 'http') === false){
 					$favicon = $url . $favicon;
 				}
@@ -169,10 +169,10 @@ class Profile extends \Extend\Model{
 	public function get_by_id($profileid){
 		$profile = $this -> fields_transform(model('Profile') -> get(['id', '=', $profileid]), ['to_profile']);
 		return $profile;
-	}  
+	}
 
 	public function get_high_list(){
-		$data = model('Profile') -> get(['where' => ['public_flag', '=', 1], 'order' => ['rating', 'DESC'], 'limit' => [0, 5]]);
+		$data = model('Profile') -> get(['where' => ['public_flag', '=', 1], 'order' => ['rating', 'DESC'], 'limit' => [0, 10]]);
 		$data = arrayToArray($data);
 		$count = count($data);
 		for($i=0; $i<$count; $i++){
@@ -214,7 +214,7 @@ class Profile extends \Extend\Model{
 			$newProfileRating = intval($profile['rating']) - 1;
 			$newCount = intval($profile['count_like']) - 1;
 		}
-		
+
 		$data = [
 			'rating' => $newProfileRating,
 			'count_like' => $newCount
@@ -231,7 +231,7 @@ class Profile extends \Extend\Model{
 			$newProfileRating = intval($profile['rating']) + 1;
 			$newCount = intval($profile['count_dislike']) - 1;
 		}
-		
+
 		$data = [
 			'rating' => $newProfileRating,
 			'count_dislike' => $newCount

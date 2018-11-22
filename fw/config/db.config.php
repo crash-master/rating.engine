@@ -2,15 +2,15 @@
 
 return [
     'dbtype' => 'mysql',
-    
+
     'host' => 'localhost',
-    
+
     'user' => 'root',
-    
+
     'password' => '',
-    
-    'dbname' => 'mag-master',
-    
+
+    'dbname' => 'alex_comarov99_backup',
+
     'charset' => 'utf8'
-    
+
 ];
