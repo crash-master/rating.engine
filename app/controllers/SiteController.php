@@ -7,7 +7,7 @@ use Kernel\{
 };
 
 class SiteController extends \Extend\Controller{
-    
+
     public function incrementSiteVisit($profileid){
         $profile = model('Profile') -> get(['where' => ['id', '=', $profileid]]);
         $site = model('Site') -> get(['where' => ['profileid', '=', $profileid]]);
@@ -28,5 +28,9 @@ class SiteController extends \Extend\Controller{
         }
         return model('Media') -> get_src(model('Media') -> get_media($site['screen'], 'sm'));
     }
-    
+
+		public function auto_set_site_thumbnail($siteid){
+			model('Site') -> make_site_screen($siteid);
+		}
+
 }

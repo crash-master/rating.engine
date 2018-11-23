@@ -147,6 +147,7 @@ $(document).ready(function(){
 	$('.add-user-container button.send-form').on('click', function(){
 		if($(this).hasClass('disable'))
 			return false;
+		$(this).addClass('disable');
 		var container = '.add-user-container';
 		var data = takeData(container);
 		data['create-profile'] = true;
@@ -319,12 +320,14 @@ var takeData = function(container){
 var showNotif = function(message, time, bgcolor, brcolor){
 	time = (typeof time == 'undefined') ? 3000 : time;
 	$('.notification').html(message).fadeIn('normal');
+	$('.global-background').addClass('active');
 	if(typeof bgcolor != 'undefined' && typeof brcolor != 'undefined')
 		$('.notification').css({'background-color': bgcolor, 'border-color': brcolor});
 	setTimeout(function(){
 		$('.notification').fadeOut('normal', function(){
 			$('.notification').removeAttr('style');
 		});
+		$('.global-background').removeClass('active');
 	}, time);
 }
 

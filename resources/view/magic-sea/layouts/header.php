@@ -1,4 +1,6 @@
 <? isset($profile) ? vjoin('Head', ['profile' => $profile]) : vjoin('Head'); ?>
+<div class="bg-hider"></div>
+
 
 <header id="header">
 	<div class="container">

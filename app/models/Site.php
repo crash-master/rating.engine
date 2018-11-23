@@ -36,4 +36,21 @@ class Site extends \Extend\Model{
 
 	}
 
+	public function make_site_screen($siteid){
+		$site = $this -> get(['id', '=', $siteid]);
+		$profile = model("Profile") -> get(['id', '=', $site['profileid']]);
+		$url = $profile['site'];
+		$screen = file_get_contents("http://mini.s-shot.ru/1366x768/800/png/?{$url}");
+		$base64 = base64_encode($screen);
+		if(empty($base64)){
+			return false;
+		}
+	  $screen_b64 = 'data:image/png;base64,' . $base64;
+		$path = model('Media') -> b64_to_file($screen_b64);
+		$title = explode('/', $path);
+		$title = $title[count($title) - 1];
+		$mediaid = model('Media') -> set_new_media($path, $title);
+		$this -> update(['screen' => $mediaid], ['id', '=', $siteid]);
+	}
+
 }

@@ -52,3 +52,5 @@ Router::get('/admin/tags/remove/{tagid}', 'TagController@remove');
 Router::get('/admin/tags/update/{id}/{colname}/{val}', 'TagController@update');
 Router::post('create-tag', 'TagController@create');
 Router::post('recomended-add', 'RecomendedController@add_new_profile', '/admin/recomended/add-new');
+
+route('/admin/auto-refresh-site-thumbnail/{siteid}', "SiteController@auto_set_site_thumbnail");

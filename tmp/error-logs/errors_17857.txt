@@ -1,0 +1,4 @@
+[2018-11-22 21:23:57] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+-------------------------------------------------
+[2018-11-22 21:23:57] E_WARNING (code 2) | file_get_contents(http://hdrezka.ag/series/thriller/47-sherlok-2010.html): failed to open stream: HTTP request failed!  IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Profile.php IN LINE 123
+==================================================================================================

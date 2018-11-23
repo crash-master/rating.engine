@@ -30,3 +30,7 @@ Router::get('/page/profiles', 'YDController@profile_list');
 // transport
 route('/app/transport-profile-screens', 'IndexController@transport_profile_screen_to_media');
 route('/app/transport-review-images', 'IndexController@transport_review_image_to_media');
+
+route('/screen-test', function(){
+
+});
