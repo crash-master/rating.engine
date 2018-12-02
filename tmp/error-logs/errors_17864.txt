@@ -1,0 +1,2 @@
+[2018-11-29 20:56:09] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\profile_page.php IN LINE 119
+==================================================================================================

@@ -29,6 +29,11 @@ class CommentController extends \Extend\Controller{
             $link = 'comment_'.$post['commentid'];
             unset($post['profileid']);
             unset($post['reviewid']);
+        }elseif(isset($post['articleid']) and $post['articleid'] != 0){
+            $link = 'article_'.$post['articleid'];
+            unset($post['profileid']);
+            unset($post['reviewid']);
+            unset($post['commentid']);
         }
 
         model('Comment') -> create($post, $link);

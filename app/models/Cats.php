@@ -16,4 +16,8 @@ class Cats extends \Extend\Model{
     	return atarr($this -> all());
     }
 
+    public function get_cat_by_id($catid){
+    	return $this -> get(['id', '=', $catid]);
+    }
+
 }

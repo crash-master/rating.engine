@@ -124,4 +124,41 @@ class Media extends \Extend\Model{
 		$this -> continue_resizing($size, $size_txt, $prev_img, $search['id']);
 	}
 
+	public function get_media_list($size, $count_on_page, $page_num){
+		$page_num--;
+		$from = $count_on_page * $page_num; 
+		$media = $this -> get(['rows' => [$size, 'id', 'timestamp'], 'limit' => [$from, $count_on_page], 'order' => ['id', 'DESC']]);
+		foreach ($media as $i => $item) {
+			$media[$i]['size'] = $size;
+			$media[$i]['src'] = $this -> get_src($media[$i]);
+			unset($media[$i][$media['size']]);
+		}
+		return $media;
+	}
+
+	public function get_pagination($count_on_page, $current){
+		$total = $this -> length();
+		$count_pages = ceil($total / $count_on_page);
+		$items = [
+			0 => [
+				'prev' => $current == 1 ? false : linkTo('MediaController@admin_page', ['page_num' => $current - 1]),
+				'next' => $current == $count_pages ? false : linkTo('MediaController@admin_page', ['page_num' => $current + 1])
+			],
+			1 => []
+		];
+		for($i=1; $i<=$count_pages; $i++){
+			$items[1][] = [
+				'num' => $i,
+				'link' => linkTo('MediaController@admin_page', ['page_num' => $i]),
+				'current' => $current == $i ? true : false
+			];
+		}
+
+		return $items;
+	}
+
+	public function remove_media($media_id){
+		return $this -> remove(['id', '=', $media_id]);
+	}
+
 }

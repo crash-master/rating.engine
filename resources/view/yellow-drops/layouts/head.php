@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/resources/view/yellow-drops/assets/css/profile-list.css" type="text/css">
 
 	<link rel="stylesheet" href="/resources/view/yellow-drops/assets/css/media.css" type="text/css">
+	<link rel="stylesheet" href="/resources/view/yellow-drops/assets/css/alt.css" type="text/css">
 
 	<script type="text/javascript" src="/resources/view/yellow-drops/vendor/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/resources/view/yellow-drops/assets/js/comments.js"></script>

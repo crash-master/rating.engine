@@ -1,0 +1,51 @@
+*{
+	font-family: Arial;
+}
+
+body{
+	background-color: #f2f3ec;
+}
+
+.yd-btn{
+	border-radius: 0;
+	padding: 6px 10px;
+}
+
+.profile-item-body .profile-thumb{
+    border: 1px solid var(--yd-main-color);
+    border-radius: 0;
+}
+
+.yd-input,
+.search-result,
+.comment-item-body{
+	border-radius: 0;
+}
+
+.yd-input::placeholder{
+	color: #eee;
+}
+
+nav.main a{
+	transition-duration: .2s;
+}
+
+#profile .profile-thumbnail{
+	border-radius: 0;
+	border: 1px solid var(--yd-main-color);
+}
+
+.circ,
+.sitename,
+.sub-site-name{
+	display: none !important;
+}
+
+.big-site-present{
+	background: transparent;
+	background-color: #fbfcf7;
+	background-image: url('../imgs/assoc.jpg');
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	background-position: center;
+}

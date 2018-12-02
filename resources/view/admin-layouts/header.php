@@ -5,6 +5,8 @@
 		<ul>
 			<? if(re_is_visible(linkTo('MetaController@meta_page'))): ?><li><a href="<?= linkTo('MetaController@meta_page') ?>"><i class="fa fa-info-circle" aria-hidden="true"></i> Мета информация</a></li><? endif; ?>
 			<? if(re_is_visible(linkTo('PageController@admin_page'))): ?><li><a href="<?= linkTo('PageController@admin_page') ?>"><i class="fa fa-window-maximize" aria-hidden="true"></i> Страницы</a></li><? endif; ?>
+			<? if(re_is_visible(linkTo('ArticleController@admin_article_list_page'))): ?><li><a href="<?= linkTo('ArticleController@admin_article_list_page') ?>"><i class="fa fa-thumb-tack" aria-hidden="true"></i> Статьи</a></li><? endif; ?>
+			<? if(re_is_visible(linkTo('MediaController@admin_page'))): ?><li><a href="<?= linkTo('MediaController@admin_page') ?>"><i class="fa fa-picture-o" aria-hidden="true"></i> Изображения</a></li><? endif; ?>
 			<? if(re_is_visible(linkTo('TBController@admin_page'))): ?><li><a href="<?= linkTo('TBController@admin_page') ?>"><i class="fa fa-file-text" aria-hidden="true"></i> Текстовые блоки</a></li><? endif; ?>
 			<? if(re_is_visible(linkTo('CatsController@admin_page'))): ?><li><a href="<?= linkTo('CatsController@admin_page') ?>"><i class="fa fa-th-list" aria-hidden="true"></i> Категории</a></li><? endif; ?>
 			<? if(re_is_visible(linkTo('TagController@admin_page'))): ?><li><a href="<?= linkTo('TagController@admin_page') ?>"><i class="fa fa-tags" aria-hidden="true"></i> Теги</a></li><? endif; ?> <!-- Услуги -->

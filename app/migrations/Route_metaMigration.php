@@ -18,6 +18,7 @@ class Route_metaMigration extends \Extend\Migration{
              -> text('extra')
              -> varchar('route')
              -> int('page_id')
+             -> int('article_id')
              -> datetime('timestamp');
         });
 

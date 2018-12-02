@@ -10,12 +10,75 @@ class Site extends \Extend\Model{
 		$this -> sets = new \Sets\SiteSet;
 	}
 
+	public function create($profileid){
+		$profile = model('Profile') -> get(['id', '=', $profileid]);
+		$site_url = $profile['site'];
+
+		$site_link = linkToLink($site_url);
+		$site = $this -> getMetaDataFromSite($site_link);
+		$site['profileid'] = $profile['id'];
+		$this -> set($site);
+		$site = $this -> last();
+		$this -> domen_created($profile); // domen_created
+		$this -> make_site_screen($site['id']);
+	}
+
+	public function getMetaDataFromSite($url){
+		include_once("./app/vendor/simple_html_dom.php");
+		$html = @file_get_contents($url);
+		if(!$html){
+			return [
+				'title' => 'Неизвестно',
+				'description' => 'Неизвестно',
+				'keywords' => 'Неизвестно',
+				'favicon' => 'Неизвестно'
+			];
+		}
+		$dom = str_get_html($html);
+		$title = '';
+		$title = $dom -> find('title', 0);
+		if($title){
+			 $title = mb_strimwidth($title -> innertext, 0, 250, "...");
+		}
+		$description = '';
+		$keywords = '';
+		$favicon = '';
+		try{
+			$description = $dom -> find('meta[name="description"]', 0);
+			if($description){
+				 $description = mb_strimwidth($description -> getAttribute('content'), 0, 250, "...");
+			}
+			$keywords = $dom -> find('meta[name="keywords"]', 0);
+			if($keywords){
+				 $keywords = mb_strimwidth($keywords -> getAttribute('content'), 0, 250, "...");
+			}
+			$favicon = $dom -> find('link[rel="icon"]', 0);
+			if($favicon){
+				 $favicon = $favicon -> getAttribute('href');
+
+				if(strstr($favicon, 'http') === false){
+					$favicon = $url . $favicon;
+				}
+			}
+		}catch (Exception $e){
+
+		}
+		return [
+			'title' => $title,
+			'description' => $description,
+			'keywords' => $keywords,
+			'favicon' => $favicon
+		];
+	}
+
 	 public function domen_created($profile){ // domen_created
 		$domen = urlencode(url_without_prefix($profile['site']));
 		$url = 'http://api.whois.vu/?q='.$domen;
 		$result = json_decode(file_get_contents($url), true);
 		if($result['created']){
 			$this -> update(['domen_created' => $result['created']], ['profileid', '=', $profile['id']]);
+		}else{
+			$this -> update(['domen_created' => "Неизвестно"], ['profileid', '=', $profile['id']]);
 		}
 		return false;
 	}

@@ -1,9 +1,9 @@
-<div class="page-part-container" id="comments">
+<div id="comments">
 	<div class="count-comments">Количество отзывов <strong><big><?= count($reviews) ?></big></strong></div>
 	<div class="comments-list row">
 		<? if(count($reviews)): $i = 0; ?>
 			<? foreach($reviews as $i => $item): $i++; ?>
-				<div class="col-lg-6">
+				<div class="col-12">
 					<div class="card-comment" data-item-i="<?= $i; ?>">
 						<div class="cc-header">
 							<div class="row">

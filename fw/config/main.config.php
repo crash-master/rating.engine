@@ -23,7 +23,7 @@ return [
     ],
 
     'rating-engine' => [
-        'view-template' => 'magic-sea',
+        'view-template' => 'attract',
         'blog' => [
             'url' => 'http://news.astralmagic.ru/',
             'count_articles' => 3

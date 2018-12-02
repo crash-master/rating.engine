@@ -24,6 +24,10 @@ Events::add('call_action', function($params){
 	}
 
 	model('Media') -> always_resize();
+
+	if(intval(time() / 10) % 5 == 0){
+		model('Monitor') -> fix_all();
+	}
 });
 
 //Events::add('call_action_404', function($params){

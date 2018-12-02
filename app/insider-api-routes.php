@@ -17,6 +17,3 @@ Router::get('/api/review/create-email-order-for-remove/{reviewid}', 'ReviewContr
 Router::get('/api/exist', 'ProfileController@exist');
 Router::get('/get-site-thumbnail/{id}', 'SiteController@get_site_thumbnail');
 Router::get('/api/update-site-description/{profileid}', 'SiteController@update_description');
-
-Router::get('/api/profile-tags/remove/{profileid}/{tagid}', 'TagController@remove_profile_tag_link');
-Router::get('/api/profile-tags/create/{profileid}/{tagid}', 'TagController@create_profile_tag_link');

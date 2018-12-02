@@ -21,13 +21,7 @@ class Profile extends \Extend\Model{
 		}
 		$this -> update(['slug' => strtolower($slug)], ['id', '=', $profile['id']]);
 
-		$site_link = linkToLink($profile['site']);
-		$site = $this -> getMetaDataFromSite($site_link);
-		$site['profileid'] = $profile['id'];
-		model('Site') -> set($site);
-		$site = model('Site') -> last();
-		model('Site') -> domen_created($profile); // domen_created
-		model('Site') -> make_site_screen($site['id']);
+		model('Site') -> create($profile['id'], $profile['site']);
 		$profile['slug'] = $slug;
 		return $profile;
 	}
@@ -78,6 +72,7 @@ class Profile extends \Extend\Model{
 				case 'media_lg': $profile = $this -> get_profile_media($profile, 'lg'); break;
 				case 'media_sm': $profile = $this -> get_profile_media($profile, 'sm'); break;
 				case 'media_xs': $profile = $this -> get_profile_media($profile, 'xs'); break;
+				case 'category': $profile['category'] = model('Cats') -> get_cat_by_id($profile['catid']); break;
 			}
 		}
 
@@ -101,7 +96,7 @@ class Profile extends \Extend\Model{
 		if(!$profile){
 			return false;
 		}
-		$profile = $this -> fields_transform($profile, ['site_link', 'timestamp', 'site_obj', 'cat', 'site', 'domen_created', 'number_txt', 'number', 'tags', 'media_md']);
+		$profile = $this -> fields_transform($profile, ['site_link', 'timestamp', 'site_obj', 'cat', 'site', 'domen_created', 'number_txt', 'number', 'tags', 'media_md', 'category']);
 
 		model('Profile') -> update(['count_views' => $profile['count_views'] + 1], ['slug', '=', $slug]);
 		model('Meta') -> incrementField('count_profile_views');
@@ -117,54 +112,6 @@ class Profile extends \Extend\Model{
 			$data[$i]['site_obj'] = model('Site') -> get(['where' => ['profileid', '=', $data[$i]['id']]]);
 		}
 		return $data;
-	}
-
-	public function getMetaDataFromSite($url){
-		include_once("./app/vendor/simple_html_dom.php");
-		$html = @file_get_contents($url);
-		if(!$html){
-			return [
-				'title' => 'Неизвестно',
-				'description' => 'Неизвестно',
-				'keywords' => 'Неизвестно',
-				'favicon' => 'Неизвестно'
-			];
-		}
-		$dom = str_get_html($html);
-		$title = '';
-		$title = $dom -> find('title', 0);
-		if($title){
-			 $title = $title -> innertext;
-		}
-		$description = '';
-		$keywords = '';
-		$favicon = '';
-		try{
-			$description = $dom -> find('meta[name="description"]', 0);
-			if($description){
-				 $description = $description -> getAttribute('content');
-			}
-			$keywords = $dom -> find('meta[name="keywords"]', 0);
-			if($keywords){
-				 $keywords = $keywords -> getAttribute('content');
-			}
-			$favicon = $dom -> find('link[rel="icon"]', 0);
-			if($favicon){
-				 $favicon = $favicon -> getAttribute('href');
-
-				if(strstr($favicon, 'http') === false){
-					$favicon = $url . $favicon;
-				}
-			}
-		}catch (Exception $e){
-
-		}
-		return [
-			'title' => $title,
-			'description' => $description,
-			'keywords' => $keywords,
-			'favicon' => $favicon
-		];
 	}
 
 	public function get_by_id($profileid){

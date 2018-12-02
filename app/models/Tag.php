@@ -35,4 +35,15 @@ class Tag extends \Extend\Model{
     	return $tags;
     }
 
+    public function get_by_article_id($article_id){
+        $tag_links = model('Tag_article') -> get_tags_by_article_id($article_id);
+        $query = "('" . implode ( "','", $tag_links ) . "')";
+        $tags = $this -> get(['id', 'IN', $query]);
+        return $tags;
+    }
+
+    public function get_articles_by_tag_slug($slug){
+
+    }
+
 }

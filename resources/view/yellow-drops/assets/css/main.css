@@ -9,6 +9,7 @@
 	padding: 0;
 	border: 0;
 	font-family: SegoeRegular;
+	box-sizing: border-box;
 }
 
 html{

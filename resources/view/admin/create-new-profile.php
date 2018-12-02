@@ -31,10 +31,26 @@
 					    </select>
 					  </div>
 					  <button type="submit" class="btn btn-primary">Сохранить</button>
+					  <div class="saved-loader" style="display: none;">
+					  	<h5>Сохранение...</h5>
+					  	<div class="progress" style="width: 200px">
+						  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+						</div>
+					  </div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$('button[type="submit"]').on('click', function(){
+			$(this).hide();
+			$(this).parent().find('.saved-loader').show();
+		});
+	});
+</script>
+
 <?php vjoin('admin-layouts/footer'); ?>

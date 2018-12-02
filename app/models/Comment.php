@@ -47,6 +47,11 @@ class Comment extends \Extend\Model{
 		return $this -> get_by($link);
 	}
 
+	public function get_by_article_id($article_id){
+		$link = 'article_' . $article_id;
+		return $this -> get_by($link);
+	}
+
 	public function get_by($link){
 		$comments = model('Comment_link') -> get_comments_by_link($link);
 		$count_comments = count($comments);
@@ -59,6 +64,14 @@ class Comment extends \Extend\Model{
 
 	public function remove_by_review($review){
 		$comments = $this -> get_by_review_id($review['id']);
+		foreach($comments as $comment){
+			$this -> remove_comment($comment['id']);
+		}
+		return true;
+	}
+
+	public function remove_by_article($article){
+		$comments = $this -> get_by_article_id($article['id']);
 		foreach($comments as $comment){
 			$this -> remove_comment($comment['id']);
 		}

@@ -64,5 +64,12 @@ class TagController extends \Extend\Controller{
 		return model('Tag_profile') -> set(['profileid' => $profileid, 'tagid' => $tagid]);
 	}
 
+	public function remove_article_tag_link($article_id, $tag_id){
+		return model('Tag_article') -> remove_tag_from_article($article_id, $tag_id);
+	}
+
+	public function create_article_tag_link($article_id, $tag_id){
+		return model('Tag_article') -> add_tag_to_article($article_id, $tag_id);
+	}
 
 }

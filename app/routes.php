@@ -21,6 +21,9 @@ Router::post('main-meta', 'MetaController@save_main_meta', '/admin/meta/save/mai
 Router::post('social-links', 'MetaController@save_social_links', '/admin/meta/save/social-links');
 Router::get('/redirect/original-url/{profileid}','SiteController@incrementSiteVisit');
 Router::get('/waiting/for/key/{key}', 'ReviewController@waiting_key_for_remove');
+route('/article/{slug}', 'ArticleController@single_article');
+route('/articles', 'ArticleController@article_list');
+route('/articles/page/{page_num}', 'ArticleController@article_list');
 
 // yellow drops
 Router::get('/page/profiles', 'YDController@profile_list');
@@ -31,6 +34,6 @@ Router::get('/page/profiles', 'YDController@profile_list');
 route('/app/transport-profile-screens', 'IndexController@transport_profile_screen_to_media');
 route('/app/transport-review-images', 'IndexController@transport_review_image_to_media');
 
-route('/screen-test', function(){
-
+route('/monitor', function(){
+	return model('Monitor') -> fix_all();
 });

@@ -70,6 +70,27 @@ nav.main li .fa{
 	background: #fff;
 }
 
+.a-panel-img{
+	width: 100%;
+	height: auto; 
+	border: 1px solid #158CBA; 
+	border-radius: 3px; 
+	border-bottom-width: 4px;
+}
+
+.media-item{
+	margin-bottom: 20px;
+}
+
+#img-view .modal-dialog{
+	max-width: 100% !important;
+	width: 800px;
+}
+
+#img-view .img-view-big-img{
+	width: 100%
+}
+
 @media (max-width: 1650px){
 	.page{
 		margin-left: 200px;

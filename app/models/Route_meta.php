@@ -18,4 +18,8 @@ class Route_meta extends \Extend\Model{
 		return $this -> get(['page_id', '=', $page_id]);
 	}
 
+	public function get_by_article_id($article_id){
+		return $this -> get(['article_id', '=', $article_id]);
+	}
+
 }

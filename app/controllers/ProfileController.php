@@ -85,10 +85,13 @@ class ProfileController extends \Extend\Controller{
 			return View::make('admin/profile_page');
 		}
 		$profile = model('Profile') -> get_profile_by_slug($slug);
-		if(!$profile['site_obj']){
-			model('Site') -> set(['profileid' => $profile['id'], 'count_visits' => '0']);
-		}
-		return View::make('admin/profile_page', ['profile' => $profile, 'tag_list' => model('Tag') -> get_tag_list()]);
+		$categories = model('Cats') -> full_list();
+
+		return View::make('admin/profile_page', [
+			'profile' => $profile,
+			'tag_list' => model('Tag') -> get_tag_list(),
+			'categories' => $categories
+		]);
 	}
 
 	public function profile_update(){

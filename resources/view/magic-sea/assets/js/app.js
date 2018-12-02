@@ -42,6 +42,7 @@ $(document).ready(function(){
 	});
 
 	$('button.search-on').on('click',function(){
+		$('.close-mob-nav').trigger('click');
 		var sc = $('.search-container');
 		if($(sc).hasClass('active')){
 			$(sc).removeClass('active');
@@ -56,10 +57,10 @@ $(document).ready(function(){
 
 		var sc = $('.add-user-container');
 		$(sc).removeClass('active');
-		$('.close-mob-nav').trigger('click');
 	});
 
 	$('button.add-user').on('click',function(){
+		$('.close-mob-nav').trigger('click');
 		var sc = $('.add-user-container');
 		if($(sc).hasClass('active')){
 			$(sc).removeClass('active');
@@ -71,13 +72,13 @@ $(document).ready(function(){
 
 		var sc = $('.search-container');
 		$(sc).removeClass('active');
-		$('.close-mob-nav').trigger('click');
 	});
 
 	$('.global-background').click(function(){
 		$('.add-user-container.active').removeClass('active');
 		$('.search-container.active').removeClass('active');
 		$(this).removeClass('active');
+		$('.close-mob-nav').trigger('click');
 	})
 
 	$('.checkbox .box').on('click', checkbox);
@@ -129,11 +130,15 @@ $(document).ready(function(){
 	// $('.mobile-nav .service-nav').html($('.service-btns').html());
 
 	$('.close-mob-nav').on('click', function(){
+		$('.mob-menu').fadeIn('normal');
+		$('.global-background').removeClass('active');
 		$('.mobile-nav').removeClass('active');
 		$('.close-mob-nav').hide();
 	})
 
 	$('.mob-menu').on('click', function(){
+		$(this).fadeOut('normal');
+		$('.global-background').addClass('active');
 		$('.mobile-nav').addClass('active');
 		$('.close-mob-nav').show();
 	})
@@ -169,6 +174,9 @@ $(document).ready(function(){
 	});
 
 	$('.add-comments-form button.send-form').on('click', function(){
+		if($(this).hasClass('disable')){
+			return false;
+		}
 		var container = '.add-comments-form';
 		var data = takeData(container);
 		data['create-review'] = true;
@@ -284,6 +292,32 @@ $(document).ready(function(){
 			}
 		}
 	}catch(e){}
+
+	if(document.location.pathname == '/'){
+		let params = {
+		    len: {
+		      min: 270,
+		      max: 300
+		    },
+		    numberOfWords: 20,
+		    numberOfSentence: 2
+		  }
+	  let outFormat = 'symbols';
+
+	  let excerpt = new ExcerptJS(params);
+	  let comments = $('.last-comments .lc-comment');
+	  if(comments.length){
+	  	for(let comment of comments){
+	  		let inpText = $(comment).html();
+	  		excerpt.input(inpText);
+	  		let outText = excerpt.out(outFormat);
+	  		if(inpText != outText){
+	  			let link = $(comment).parent().parent().parent().find('.lc-name a').attr('href');
+	  			$(comment).html(outText + '...' + ' <a class="review-read-more" href="' + link + '">Читать дальше</a>');
+	  		}
+	  	}
+	  }
+	}
 
 });
 

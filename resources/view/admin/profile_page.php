@@ -36,7 +36,7 @@
 						<input type="hidden" name="mid" value="<?= $profile['id'] ?>">
 						<div class="col-4">
 							<? if($profile['site_obj']['screen']): ?>
-								<img src="<?= $profile['site_obj']['screen'] ?>" style="width: 100%; height: auto; border: 1px solid #158CBA; border-radius: 3px; border-bottom-width: 4px;" alt="Icon"></span>
+								<img src="<?= $profile['site_obj']['screen'] ?>" class="a-panel-img" alt="Icon"></span>
 							<? endif; ?>
 							<br>
 							<br>
@@ -47,7 +47,13 @@
 						        <label class="custom-file-label" for="screen">Загрузка изображения</label>
 						      </div>
 						      <div class="input-group-append">
-						        <button class="input-group-text" id="">Загрузить</button>
+						        <button type="submit" class="input-group-text" id="">Загрузить</button>
+						        <div class="saved-loader" style="display: none; position: absolute; margin: 45px 0 0 -200px;">
+								  	<h5>Загрузка...</h5>
+								  	<div class="progress" style="width: 200px">
+									  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+									</div>
+							  </div>
 						      </div>
 						    </div>
 
@@ -62,6 +68,14 @@
 							<div class="form-group">
 								<label for="site">Редактирование url сайта</label>
 								<input type="text" id="site" class="form-control" name="site" placeholder="Редактирование url сайта" value="<?= $profile['site'] ?>">
+							</div>
+							<div class="form-group">
+								<label for="catid">Выбор категории</label>
+								<select name="catid" id="catid" class="form-control">
+									<?php foreach ($categories as $i => $cat): ?>
+										<option value="<?= $cat['id'] ?>" <?= $cat['id'] == $profile['catid'] ? 'selected' : '' ?>><?= $cat['title'] ?></option>
+									<?php endforeach ?>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="contacts">Контакты</label>
@@ -81,7 +95,13 @@
 					</div>
 					<div class="col-12">
 						<div class="form-group">
-							<button class="btn btn-primary">Сохранить</button>
+							<button type="submit" class="btn btn-primary">Сохранить</button>
+							<div class="saved-loader" style="display: none;">
+							  	<h5>Сохранение...</h5>
+							  	<div class="progress" style="width: 200px">
+								  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+								</div>
+							  </div>
 						</div>
 					</div>
 				</form>
@@ -108,7 +128,7 @@
 								<div class="col-6">
 									<h6>Существующие теги</h6>
 									<div class="form-group">
-										<select id="tag-list" class="form-control">
+										<select id="tag-list" class="form-control" data-path-to-create="/admin/api/profile-tags/create/" data-path-to-remove="/admin/api/profile-tags/remove/">
 											<option value="">Не выбрано</option>
 											<? foreach($tag_list as $tag): ?>
 												<option value="<?= $tag['id'] ?>:<?= $tag['slug'] ?>"><?= $tag['title'] ?></option>
@@ -137,6 +157,15 @@
 				$('.empty-tag-list-out').addClass("d-none");
 			}
 		}, 250);
+	});
+</script>
+
+<script>
+	$(document).ready(function(){
+		$('button[type="submit"]').on('click', function(){
+			$(this).hide();
+			$(this).parent().find('.saved-loader').show();
+		});
 	});
 </script>
 

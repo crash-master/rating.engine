@@ -1,8 +1,5 @@
 $(document).ready(function(){
-	// var textarea = $('#wysivyg');
-	// if(typeof textarea != 'undefined'){
-	// 	$(textarea).markItUp(myHtmlSettings);
-	// }
+
 	$.trumbowyg.svgPath = '/resources/css/libs/icons.svg';
 	$('#content').trumbowyg();
 
@@ -66,7 +63,8 @@ $(document).ready(function(){
 	});
 
 	$('#tag-list').on('change',function(){
-		var profileid = $('[name="mid"]').val();
+		let pathToCreate = $(this).attr('data-path-to-create');
+		var entityid = $('[name="mid"]').val();
 		var val = $(this).val();
 		if(val == ''){
 			return false;
@@ -82,7 +80,7 @@ $(document).ready(function(){
 		}
 		$('#tag-list-out').append(li);
 		// send to serv
-		$.get('/api/profile-tags/create/' + profileid + '/' + tagid);
+		$.get(pathToCreate + entityid + '/' + tagid);
 		tagRemoveBtnInit('[d-id="' + tagid + '"]');
 	});
 
@@ -94,11 +92,12 @@ $(document).ready(function(){
 })
 
 function tagRemoveBtnInit(btn){
+	let pathToRemove = $('#tag-list').attr('data-path-to-remove');
 	$(btn).on('click', function(){
-		var profileid = $('[name="mid"]').val();
+		var entityid = $('[name="mid"]').val();
 		var tagid = $(this).attr('d-id');
 		// send to serv
-		$.get('/api/profile-tags/remove/' + profileid + '/' + tagid);
+		$.get(pathToRemove + entityid + '/' + tagid);
 		$(this).parent().remove();
 	});
 }

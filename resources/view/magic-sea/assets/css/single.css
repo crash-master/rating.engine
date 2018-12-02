@@ -57,10 +57,11 @@
 
 .info-item strong{
 	color: #111;
+	font-size: 18px;
 }
 
 .right-part{
-	margin-left: 20px;
+	margin-left: 16px;
 	display: inline-block;
 	width: 65%;
 }
@@ -87,9 +88,18 @@
 	background-color: white;
 }
 
+.open-add-comments-form-container{
+	width: 100%;
+	text-align: right;
+}
+
+.open-add-comments-form-container.up{
+	margin-top: -52px;
+}
+
 .add-comments-form .dialog-arrow{
 	margin-top: -25px;
-    margin-left: 70px;
+    margin-left: 420px;
 }
 
 .count-comments{
@@ -102,14 +112,15 @@
 }
 
 #single .comments-list{
-	margin-top: 20px;
+	overflow: auto;
+    max-height: 850px;
 }
 
 #single .card-comment{
 	/* box-shadow: 0 0 6px #bbb; */
   border: 1px solid var(--main-color);
 	padding: 15px;
-	margin-bottom: 30px;
+	margin-top: 20px;
 	background-color: white;
     border-radius: 3px;
 }
@@ -289,4 +300,27 @@
 
 #single .dialog-arrow.page-menu-arrow{
 	display: none;
+}
+
+.screen-container{
+	margin-bottom: 20px;
+}
+
+.screen{
+	width: 100%;
+	height: auto;
+	border: 1px solid var(--main-color);
+	border-radius: 5px;
+}
+
+.au-form{
+	box-sizing: border-box;
+    padding-left: 13px;
+}
+
+.site-favicon{
+	max-width: 32px;
+	position: relative;
+	top: 5px;
+	display: inline-block;
 }

@@ -231,3 +231,16 @@ a.f-link:hover{
 .new-users .block-body{
 	padding-bottom: 15px;
 }
+
+.review-read-more{
+    display: inline-block;
+    margin-left: 3px;
+    color: var(--main-color);
+    text-decoration: none;
+    margin-top: 1px;
+    width: 150px;
+}
+
+.review-read-more:hover{
+	text-decoration: underline;
+}

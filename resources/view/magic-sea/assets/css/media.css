@@ -89,6 +89,11 @@
 		/*margin-top: 30px;*/
 		margin-left: 17px;
 	}
+
+	#single .comments-list{
+		overflow: initial;
+		max-height: initial;
+	}
 }
 
 @media (max-width: 768px){
@@ -175,12 +180,78 @@
 	}
 
 	.top-name{
-		width: 50%;
+		width: 62%;
+		font-size: 21px;
 	}
 
 	#rating .top-name {
 	    width: 32%;
 	}
+
+	.top-rating{
+		width: 50px;
+	}
+
+	/* ---- FONT SIZE ---- */
+
+	.check-block p {
+	    font-size: 22px;
+	    line-height: 30px;
+	}
+
+	.stats .stat-name {
+	    font-size: 25px;
+	}
+
+	.top-rating{
+		font-size: 18px;
+	}
+
+	.lc-name{
+		font-size: 22px;
+	}
+
+	.lc-timestamp{
+		font-size: 18px;
+	}
+
+	.lc-comment{
+		font-size: 19px;
+	}
+
+	.nu-name{
+		font-size: 23px;
+	}
+
+	.nu-site{
+		font-size: 20px;
+	}
+
+	.nu-timestamp{
+		font-size: 18px;
+	}
+
+	#footer .copyright{
+		font-size: 24px;
+	}
+
+	.footer-nav ul li{
+		margin-top: 28px;
+	}
+
+	.footer-nav ul li a{
+		font-size: 20px;
+	}
+
+	.social-links{
+		display: none;
+	}
+
+	.cc-body{
+		font-size: 19px;
+	}
+
+	/* --- END FORNT SIZE ---*/
 }
 
 @media (max-width: 460px){

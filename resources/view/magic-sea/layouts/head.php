@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="/resources/view/magic-sea/assets/css/media.css">
 
     <script type="text/javascript" src="/resources/vendor/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="/resources/view/magic-sea/assets/js/libs/excerpt.js"></script>
 		<script type="text/javascript" src="/resources/view/magic-sea/assets/js/disable-submit-btn.js"></script>
 		<script type="text/javascript" src="/resources/view/magic-sea/assets/js/check-site-on-exists.js"></script>
 		<script type="text/javascript" src="/resources/view/magic-sea/assets/js/app.js"></script>
