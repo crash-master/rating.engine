@@ -385,3 +385,4 @@ var drawRating = function(data){
 	$('#rating .top-list').append(html);
 	
 }
+

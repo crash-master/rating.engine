@@ -48,8 +48,31 @@ class Comment extends \Extend\Model{
 	}
 
 	public function get_by_article_id($article_id){
-		$link = 'article_' . $article_id;
-		return $this -> get_by($link);
+		$link = 'article_'.$article_id;
+		$res_comments = $this -> get_by_with_answers($link);
+		return $res_comments;
+	}
+
+	public function get_by_profile_id($profile_id){
+		$link = 'profile_'.$profile_id;
+		$res_comments = $this -> get_by_with_answers($link);
+		return $res_comments;
+	}
+
+	public function get_by_with_answers($link){
+		$comments = $this -> get_by($link);
+		$res_comments = [];
+		foreach($comments as $comment){
+			$res_comments[] = $comment;
+			$link = 'comment_' . $comment['id'];
+			$comments_answers = $this -> get_by($link);
+			foreach($comments_answers as $answer){
+				$answer['answer_flag'] = true;
+				$res_comments[] = $answer;
+			}
+		}
+
+		return $res_comments;
 	}
 
 	public function get_by($link){
@@ -104,23 +127,6 @@ class Comment extends \Extend\Model{
 			model('Comment_link') -> create_link($cur_comment['id'], $link);
 		}
 		return true;
-	}
-
-	public function get_by_profile_id($profile_id){
-		$link = 'profile_'.$profile_id;
-		$comments = $this -> get_by($link);
-		$res_comments = [];
-		foreach($comments as $comment){
-			$res_comments[] = $comment;
-			$link = 'comment_' . $comment['id'];
-			$comments_answers = $this -> get_by($link);
-			foreach($comments_answers as $answer){
-				$answer['answer_flag'] = true;
-				$res_comments[] = $answer;
-			}
-		}
-
-		return $res_comments;
 	}
 
 	public function get_count_comments_tree_by_profile_id($profile_id){

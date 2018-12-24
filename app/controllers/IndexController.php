@@ -17,6 +17,31 @@ class IndexController extends \Extend\Controller{
 		]);
 	}
 
+	public function search_clean($word){
+		$word = urldecode($word);
+		$profiles = model('Profile') -> search_request($word);
+		$articles = model('Article') -> search_request($word);
+
+		if(!$profiles and !$articles){
+			return View::json(['result' => false, 'count' => 0, 'count_profiles' => 0, 'count_articles' => 0]);
+		}
+
+		foreach($profiles as $i => $profile){
+			$profiles[$i]['type'] = 'profile';
+		}
+
+		foreach($articles as $i => $article){
+			$articles[$i]['type'] = 'article';
+			unset($articles[$i]['thumbnail']);
+		}
+
+		$count_profiles = count($profiles);
+		$count_articles = count($articles);
+		$count = $count_profiles + $count_articles;
+
+		return View::json(['result' => array_merge($profiles, $articles), 'count' => $count, 'count_profiles' => $count_profiles, 'count_articles' => $count_articles]);
+	}
+
 	public function app_init(){
 		model('Meta') -> init();
 		$profiles = arrayToArray(model('Profile') -> get(['where' => ['slug', '=', '']]));

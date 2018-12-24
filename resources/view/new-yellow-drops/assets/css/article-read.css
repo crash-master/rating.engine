@@ -1,0 +1,43 @@
+.single-article{
+	margin-top: 25px;
+}
+
+.single-article .article-title{
+	font-size: 9.5rem;
+	font-family: var(--font-main-medium);
+	color: var(--main-text-color);
+	font-weight: normal;
+	line-height: 12rem;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.single-article .article-timestamp{
+	font-size: 4rem;
+	margin-bottom: 15px;
+}
+
+.single-article .article-tags{
+	margin-bottom: 30px;
+}
+
+.single-article .article-content{
+	line-height: 7rem;
+}
+
+.single-article .article-content p,
+.single-article .article-content span{
+	font-size: 5rem !important;
+	color: var(--main-text-color) !important;
+	font-family: var(--font-main-regular) !important;
+}
+
+.single-article .article-screen{
+	width: 100%;
+}
+
+.single-article .article-content img{
+    max-width: 100%;
+    margin: 10px 0;
+}
+

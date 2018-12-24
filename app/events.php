@@ -51,6 +51,15 @@ Events::add('after_db_query', function($params){
 	}
 });
 
+Events::add("before_making_page", function($params){
+	// include functions.php if exists
+	$templatename = \Kernel\Config::get('rating-engine -> view-template');
+	$path = 'resources/view/' . $templatename . '/functions.php';
+	if(file_exists($path)){
+		include_once($path);
+	}
+});
+
 
 //Events::add('after_query_fetch', function($params){
 //    dd($params);

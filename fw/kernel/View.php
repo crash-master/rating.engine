@@ -22,6 +22,10 @@ class View{
         }
 
         self::$currentPage = $name;
+        Events::register('before_making_page', [
+            'name' => $name,
+            'vars' => self::$vars
+        ]);
         return self::makeAndParse($name);
     }
 
@@ -45,11 +49,6 @@ class View{
         }
 
         $dirList = ['./resources/view/'];
-        // $packages = PackageControll::getPackageList();
-        // $count = count($packages['path']);
-        // for($i=0;$i<$count;$i++){
-        //     $dirList[] = $packages['path'][$i] . '/resources/view/';
-        // }
 
         $count = count($dirList);
         for($i=0;$i<$count;$i++){
@@ -156,7 +155,6 @@ class View{
 
     public static function addLayoutMapItem($name, $file){
         if(self::$layoutMapCreate_flag){
-            // dd(debug_backtrace());
             self::$layoutMap[$name] = $file;
         }
     }

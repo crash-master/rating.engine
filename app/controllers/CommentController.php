@@ -59,9 +59,13 @@ class CommentController extends \Extend\Controller{
         return ['profileid' => $profileid, 'commentid' => $commentid];
     }
 
-    public function comments($profileid = 0, $commentid = 0){
+    public function comments($profileid = false, $articleid = false){
         if($profileid){
             $comments = model('Comment') -> get_by_profile_id($profileid);
+        }
+        
+        if($articleid){
+            $comments = model('Comment') -> get_by_article_id($articleid);
         }
 
         return ['comments' => $comments];

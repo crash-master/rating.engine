@@ -19,13 +19,15 @@ class ArticleController extends \Extend\Controller{
 		return view('admin/articles/article-create-update', [
 			'update_flag' => true,
 			'article' => model('Article') -> get_article_by_id($article_id),
-			'tag_list' => model('Tag') -> get_tag_list()
+			'tag_list' => model('Tag') -> get_tag_list(),
+			'categories' => model('Cats') -> full_list()
 		]);
 	}
 
 	public function admin_create_page(){
 		return view('admin/articles/article-create-update', [
-			'update_flag' => false
+			'update_flag' => false,
+			'categories' => model('Cats') -> full_list()
 		]);
 	}
 
@@ -55,13 +57,23 @@ class ArticleController extends \Extend\Controller{
 		$count_on_page = 10;	
 		$page_num --;
 		$articles = model('Article') -> get_article_list($count_on_page, $page_num);
-		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/article-list', compact('articles'));
+		$page_num++;
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/article-list', compact('articles', 'page_num'));
+	}
+
+	public function article_list_by_category($cat_slug, $page_num = 1){
+		$count_on_page = 10;	
+		$page_num --;
+		$articles = model('Article') -> get_article_list_by_cat_slug($cat_slug, $count_on_page, $page_num);
+		$category = model('Cats') -> get_cat_by_slug($cat_slug);
+		$page_num++;
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/articles', compact('articles', 'category', 'page_num'));
 	}
 
 	public function pagination($current_page){
 		$count_articles = model('Article') -> count_published_articles();
 		$count_on_page = 10;	
-		$count_page = ceil($count_articles / $counte_on_page);
+		$count_page = ceil($count_articles / $count_on_page);
 		$pagination = [];
 		for($i=0; $i<$count_page; $i++){
 			$pagination[] = [
@@ -78,11 +90,20 @@ class ArticleController extends \Extend\Controller{
 		if(!$article['published']){
 			return re_404();
 		}
-		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/article', compact('article'));
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/single-article', compact('article'));
 	}
 
 	public function remove($article_id){
 		model('Article') -> remove_article($article_id);
 		return redirect('ArticleController@admin_article_list_page');
+	}
+
+	public function article_list_by_tag_slug($tag_slug, $page_num = 1){
+		$count_on_page = 10;
+		$page_num --;
+		$articles = model('Article') -> get_article_list_by_tag_slug($tag_slug, $count_on_page, $page_num);
+		$tag = model('Tag') -> get_tag_by_slug($tag_slug);
+		$page_num++;
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/articles', compact('articles', 'tag', 'page_num'));
 	}
 }

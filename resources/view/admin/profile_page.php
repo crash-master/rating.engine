@@ -82,14 +82,17 @@
 								<textarea type="text" id="contacts" class="form-control" name="contacts" placeholder="Контакты"><?= $profile['contacts'] ?></textarea>
 							</div>
 							<div class="form-group">
-								<label for="description">Описание</label>
-								<textarea name="description" style="height: 180px;" id="description" class="form-control" placeholder="Описание"><?= $profile['site_obj']['description'] ?></textarea>
-							</div>
-							<div class="form-group">
 								<div class="custom-control custom-checkbox">
-						      <input type="checkbox" class="custom-control-input" id="public_flag" name="public" <? if($profile['public_flag'] == '1'): ?>checked<? endif; ?>>
-						      <label class="custom-control-label" for="public_flag">Публиковать</label>
-						    </div>
+							      <input type="checkbox" class="custom-control-input" id="public_flag" name="public" <? if($profile['public_flag'] == '1'): ?>checked<? endif; ?>>
+							      <label class="custom-control-label" for="public_flag">Публиковать</label>
+							    </div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<label for="description">Описание</label>
+								<div id="description"><?= $profile['site_obj']['description'] ?></div>
+								<!-- <textarea name="description" style="height: 180px;" id="description" class="form-control" placeholder="Описание"><?= $profile['site_obj']['description'] ?></textarea> -->
 							</div>
 						</div>
 					</div>

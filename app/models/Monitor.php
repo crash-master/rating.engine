@@ -261,7 +261,7 @@ class Monitor extends \Extend\Model{
 		$report['monfix_profile_without_site'] = $this -> monfix_profile_without_site();
 		$report['monfix_profile_rating'] = $this -> monfix_profile_rating();
 		$report['monfix_site_stats'] = $this -> monfix_site_stats();
-		$report['monfix_media_without_link'] = $this -> monfix_media_without_link();
+		// $report['monfix_media_without_link'] = $this -> monfix_media_without_link();
 		$report['monfix_recomended'] = $this -> monfix_recomended();
 		$report['monfix_site'] = $this -> monfix_site();
 		return $report;

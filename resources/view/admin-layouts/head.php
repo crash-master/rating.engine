@@ -20,3 +20,5 @@
 	<?= \Kernel\View::js(['*' => ['admin.js']]) ?>
 </head>
 <body>
+
+<? vjoin('admin/media-modal.php'); ?>

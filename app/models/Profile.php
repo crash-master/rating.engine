@@ -133,6 +133,31 @@ class Profile extends \Extend\Model{
 		return $data;
 	}
 
+	public function get_profiles_by_cat_slug($cat_slug, $page_num = 1){
+		$count_on_page = 10;
+		$profile_ids = model('Cats') -> get_profile_ids_by_cat_slug($cat_slug);
+		$query_str = "('" . implode ( "','", $profile_ids ) . "')";
+        $where = ['public_flag', '=', '1', 'AND', 'id', 'IN', $query_str];
+        $order = ['id', 'DESC'];
+        $limit = [$count_on_page * $page_num, $count_on_page];
+        $profiles = atarr($this -> get(['where' => $where, 'order' => $order, 'limit' => $limit]));
+        foreach($profiles as $inx => $profile){
+        	$profiles[$inx] = $this -> fields_transform($profiles[$inx], ['tags', 'site_obj', 'to_profile', 'media_sm']);
+        }
+
+        return $profiles;
+	}
+
+	public function get_count_published_profiles($cat_id){
+		if(!$cat_id){
+			return $this -> length(['public_flag', '=', '1']);
+		}
+
+        $len = $this -> length(['public_flag', '=', '1', 'AND', 'catid', '=', $cat_id]);
+        return $len;
+	}
+
+
 		/////// RATING ///////
 
 	/**

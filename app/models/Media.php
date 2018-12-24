@@ -127,10 +127,11 @@ class Media extends \Extend\Model{
 	public function get_media_list($size, $count_on_page, $page_num){
 		$page_num--;
 		$from = $count_on_page * $page_num; 
-		$media = $this -> get(['rows' => [$size, 'id', 'timestamp'], 'limit' => [$from, $count_on_page], 'order' => ['id', 'DESC']]);
+		$media = $this -> get(['rows' => ['id', 'timestamp'], 'limit' => [$from, $count_on_page], 'order' => ['id', 'DESC']]);
 		foreach ($media as $i => $item) {
 			$media[$i]['size'] = $size;
-			$media[$i]['src'] = $this -> get_src($media[$i]);
+			// $media[$i]['src'] = $this -> get_src($media[$i]);
+			$media[$i]['src'] = linkTo('MediaController@get_binary_img', ['media_id' => $item['id'], 'size' => $size]);
 			unset($media[$i][$media['size']]);
 		}
 		return $media;
@@ -159,6 +160,24 @@ class Media extends \Extend\Model{
 
 	public function remove_media($media_id){
 		return $this -> remove(['id', '=', $media_id]);
+	}
+
+	public function get_binary($media_id, $size = 'md'){
+		$media = $this -> get_src($this -> get_media($media_id, $size));
+		list($meta, $b64) = explode('base64,', $media);
+		$format = strpos($meta, 'image/jpeg') !== false ? 'jpg' : 'png';
+		return ['bin' => base64_decode($b64), 'format' => $format];
+	}
+
+	public function get_all_media_list(){
+		return atarr($this -> get(['rows' => ['id'], 'order' => ['id', 'DESC']]));
+	}
+
+	public function transform_binary_links($media_list, $size = 'sm'){
+		foreach($media_list as $i => $item){
+			$media_list[$i]['bin_link'] = linkTo('MediaController@get_binary_img', ['media_id' => $item['id'], 'size' => $size]);
+		}
+		return $media_list;
 	}
 
 }

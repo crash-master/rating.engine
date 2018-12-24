@@ -62,17 +62,6 @@ class ProfileController extends \Extend\Controller{
 		return View::json(['result' => $html, 'count' => $count]);
 	}
 
-	public function search_clean($word){
-		$word = urldecode($word);
-		$profiles = model('Profile') -> search_request($word);
-
-		if(!$profiles){
-			return View::json(['result' => false]);
-		}
-
-		return View::json(['result' => $profiles, 'count' => $count]);
-	}
-
 	public function search_profile_page(){
 		return View::make('admin/profile_page');
 	}
@@ -112,7 +101,6 @@ class ProfileController extends \Extend\Controller{
 		}
 
 		$data['slug'] = strtolower($data['slug']);
-		// dd($data);
 		model('Profile') -> update($data, ['id', '=', $data['mid']]);
 		model('Site') -> update($data, ['profileid', '=', $data['mid']]);
 		return redirect(linkTo('ProfileController@profile_edit_page').'?s='.$_GET['s']);
@@ -154,6 +142,22 @@ class ProfileController extends \Extend\Controller{
 		$description = $data['description'];
 		model('Site') -> update(['description' => $description], ['profileid', '=', $profile['id']]);
 		return redirect(linkTo('ProfileController@profile_edit_page') . '?s=' . linkTo('ProfileController@page', ['slug' => $profile['slug']]));
+	}
+
+	public function profile_list_by_category($cat_slug, $page_num = 1){
+		$page_num--;
+		$profiles = model('Profile') -> get_profiles_by_cat_slug($cat_slug, $page_num);
+		$page_num ++;
+		$category = model('Cats') -> get_cat_by_slug($cat_slug);
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/profiles', compact('profiles', 'page_num', 'category'));
+	}
+
+	public function profile_list_by_tag($tag_slug, $page_num = 1){
+		$page_num--;
+		$profiles = model('Profile') -> get_profiles_by_tag_slug($tag_slug, $page_num);
+		$page_num ++;
+		$tag = model('Tag') -> get_tag_by_slug($tag_slug);
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/profiles-by-tag', compact('profiles', 'page_num', 'tag'));
 	}
 	
 }

@@ -1,0 +1,16 @@
+html{
+	/* colors */
+	--selected-color: #f5c23f;
+	--selected-color-light: #ffdc83;
+	--figure-bg-color: #f7f7f7;
+	--figure-bg-dark-color: #ececec;
+	--selected-text-color: #f3b107;
+	--main-text-color: #0f0c1a;
+	--figure-text-color: #000;
+
+	/* fonts */
+	font-size: 3.5px;
+	--font-main-regular: "NotoSansSC-Regular";
+	--font-main-medium: "NotoSansSC-Medium";
+	--font-main-bold: "NotoSansSC-Bold";
+}

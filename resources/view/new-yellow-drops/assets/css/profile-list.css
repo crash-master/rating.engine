@@ -1,0 +1,49 @@
+.profiles{}
+
+.profile-item{
+	margin-bottom: 30px;
+	clear: both;
+}
+
+.profiles .profile-item .profile-name{
+	font-size: 9.5rem;
+	font-family: var(--font-main-medium);
+	color: var(--main-text-color);
+	font-weight: normal;
+	line-height: 12rem;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+.profiles .profile-item .profile-name a{
+	color: inherit;
+}
+
+.profiles .profile-item .profile-name a:hover{
+	text-decoration: none;
+	color: var(--selected-text-color);
+}
+
+.profiles .profile-item .profile-timestamp{
+	font-size: 4rem;
+	margin-bottom: 15px;
+}
+
+.profiles .profile-item .profile-thumb{
+	float: left;
+	margin-right: 15px;
+	width: 220px;
+	height: 220px;
+	background-size: cover;
+    background-position: center top;
+}
+
+.profile-item .profile-description{
+	margin-bottom: 15px;
+	line-height: 7.3rem;
+    min-height: 220px;
+}
+
+.profile-item .read-more{
+	text-align: right;
+}

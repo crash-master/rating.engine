@@ -1,0 +1,90 @@
+/* LAST PROFILES */
+
+.last-profiles .yd-block-content{
+	background-color: var(--figure-bg-color);
+}
+
+.last-profiles .profile-item{
+	min-height: 124px;
+	cursor: pointer;
+	padding: 12px;
+	transition-duration: .2s;
+}
+
+.last-profiles .profile-item:first-of-type{
+	margin-top: 0;
+}
+
+.last-profiles .profile-thumb{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-right: 12px;
+	transition-duration: .2s;
+	/*background-image: url('../imgs/damir-thumb.png');*/
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center top;
+}
+
+.last-profiles .profile-name{
+	font-size: 4.5rem;
+	font-family: var(--font-main-medium);
+}
+
+.last-profiles .profile-site{
+	color: var(--selected-text-color);
+	margin: 14px 0;
+	font-family: var(--font-main-medium);
+	font-size: 4.5rem;
+}
+
+.last-profiles .profile-item .date-of-create{
+	font-size: 4rem;
+}
+
+.last-profiles .profile-item .hover-icon{
+	top: 30px;
+	left: 20px;
+	opacity: 0;
+}
+
+.last-profiles .profile-item:hover{
+	background-color: var(--figure-bg-dark-color);
+}
+
+.last-profiles .profile-item:hover .hover-icon{
+	opacity: 1;
+	left: 30px;
+}
+
+/* LAST REVIEWS */
+
+.last-reviews .review-item{
+	margin-bottom: 20px;
+}
+
+.last-reviews .review-name{
+	margin-bottom: 14px;
+}
+
+.last-reviews .review-name a{
+	color: var(--main-text-color);
+	font-family: var(--font-main-bold);
+}
+
+.last-reviews .review-name a:hover{
+	text-decoration: none;
+	color: var(--selected-text-color);
+}
+
+.last-reviews .review-content{
+	font-size: 4rem;
+	line-height: 6rem;
+}
+
+/* TAGS CLOUD */
+
+.tags-cloud{}
+
+.tags-cloud .yd-tag{}

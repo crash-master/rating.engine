@@ -1,0 +1,72 @@
+@media (max-width: 1200px){
+	.nav-main li{
+		margin-right: 3.5%;
+	}
+}
+
+@media (max-width: 992px){
+	.header,
+	.header .site-present{
+		height: 350px;
+	}
+
+	.sidebar{
+		display: none;
+	}
+
+	.proved-profiles .proved-thumb{
+		height: 200px;
+	}
+
+	.nav-main{
+		display: none;
+	}
+
+	.simple-pagination .btn-label{
+		display: none;
+	}
+}
+
+@media (max-width: 768px){
+	.header,
+	.header .site-present{
+		height: 250px;
+	}
+
+	.simple-pagination .next-page .yd-btn {
+	    margin-left: -25px;
+	}
+}
+
+@media (max-width: 560px){
+	.header,
+	.header .site-present{
+		height: 200px;
+	}
+
+	.header .site-present{
+		background-size: 150%;
+    	background-position: left center;
+	}
+
+	.header .container{
+		padding: 0;
+	}
+
+	.proved-profiles .proved-thumb{
+		height: 230px;
+	}
+
+	.profiles .profile-item .profile-thumb{
+		margin-right: 0;
+	    width: 100%;
+	    margin-bottom: 15px;
+	}
+
+	.comment-head .answer-btn-container {
+	    display: block;
+	    margin-top: 10px;
+	}
+
+	    
+}

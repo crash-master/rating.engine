@@ -1,4 +1,5 @@
 <?php vjoin('admin-layouts/header'); ?>
+
 <div class="container">
 	<div class="page" id="articles">
 		<div class="jumbotron">
@@ -37,6 +38,15 @@
 										<input type="checkbox" class="custom-control-input" id="with_comments" name="with_comments" <?= (isset($article) and $article['with_comments'] == '1') ? 'checked' : '' ?>>
 										<label class="custom-control-label" for="with_comments">Включить комментарии</label>
 									</div>
+								</div>
+								<div class="form-group">
+									<label for="catid">Выбор категории</label>
+									<select name="catid" id="catid" class="form-control">
+										<option value="0">Без категории</option>
+										<?php foreach ($categories as $i => $cat): ?>
+											<option value="<?= $cat['id'] ?>" <?= $cat['id'] == $article['category']['id'] ? 'selected' : '' ?>><?= $cat['title'] ?></option>
+										<?php endforeach ?>
+									</select>
 								</div>
 							</div>
 							<div class="col-12 col-lg-5 col-xl-5">

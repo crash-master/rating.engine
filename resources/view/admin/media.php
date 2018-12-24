@@ -5,10 +5,35 @@
 		<div class="jumbotron">
 		  <h1 class="display-4">Загруженные изображения</h1>
 			<hr class="my-4">
+			<form action="/admin/media/upload" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+						<input type="hidden" name="media-upload">
+						<div class="form-group">
+							<div class="input-group mb-3">
+						      <div class="custom-file">
+						        <input type="file" class="custom-file-input" id="media_file" name="media_file">
+						        <label class="custom-file-label" for="media_file">Загрузка изображения</label>
+						      </div>
+						      <div class="input-group-append">
+						        <button type="submit" class="input-group-text">Загрузить</button>
+						        <div class="saved-loader" style="display: none; position: absolute; margin: 45px 0 0 -200px;">
+								  	<h5>Загрузка...</h5>
+								  	<div class="progress" style="width: 200px">
+									  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+									</div>
+							  </div>
+						      </div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<hr class="my-4">
 			<div class="row">
-				<? for($i=0; $i<4; $i++): ?>
-					<div class="col-3">
-						<?php for($j=$i; $j<$count_media; $j += 4): ?>
+				<? for($i=0; $i<3; $i++): ?>
+					<div class="col-12 col-xl-4 col-lg-6 col-md-6">
+						<?php for($j=$i; $j<$count_media; $j += 3): ?>
 							<? $media = $media_list[$j]; ?>
 							<div class="card media-item">
 							  <img class="card-img-top" src="<?= $media['src'] ?>" data-toggle="modal" data-target="#img-view" data-img-view-id="<?= $media['id'] ?>">

@@ -2,6 +2,11 @@ $(document).ready(function(){
 
 	$.trumbowyg.svgPath = '/resources/css/libs/icons.svg';
 	$('#content').trumbowyg();
+	$('#description').trumbowyg();
+
+	setTimeout(function(){
+		customMedia();
+	}, 200);
 
 	$('.danger-link').click(function(){
 		var ans = confirm('Удалить?');
@@ -120,5 +125,43 @@ function check_site_on_exists(){
 				$(self).parent().find('.err-mess').remove();
 			}
 		});
+	});
+}
+
+function customMedia(){
+	$('.trumbowyg-insertImage-button').on('click', function(){
+		$('.media-model-btn').trigger('click');
+		let modal = $('#mediaModal');
+		let img_link = '/binary-img/id/{media_id}/size/{size}';
+		let modalBody = modal.find('.modal-body');
+		let mediaContainer = modalBody.find('.media-container');
+		let closeModal = modal.find('.close:eq(0)');
+		let insertField = $('.trumbowyg-modal-box [name="url"]');
+		if(mediaContainer.html() == ''){
+			$.getJSON('/api/media-list', function(d){
+				let html = '';
+				for(let item of d){
+					html += '<div class="media-item" data-media-id="' + item.id + '" data-src="' + item.bin_link + '" style="background-image: url(' + item.bin_link + ')"></div>';
+				}
+				mediaContainer.html(html);
+
+				// events
+				mediaContainer.find('.media-item')
+				.on('click', function(){
+					let id = $(this).attr('data-media-id');
+					let link = img_link.replace('{media_id}', id).replace('{size}', 'lg');
+					insertField.val(link);
+					closeModal.trigger('click');
+				})
+				.on('mouseover', function(){
+					if($(this).hasClass('quality')){
+						return false;
+					}
+					let id = $(this).attr('data-media-id');
+					let link = img_link.replace('{media_id}', id).replace('{size}', 'md');
+					$(this).css('background-image', 'url(' + link + ')').addClass('quality');
+				});
+			});
+		}
 	});
 }

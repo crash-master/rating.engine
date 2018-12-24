@@ -1,0 +1,38 @@
+.single-profile{
+
+}
+
+.single-profile .profile-screen{
+	width: 100%;
+	height: auto;
+	margin-bottom: 15px;
+}
+
+.single-profile .profile-title,
+.single-profile .profile-description .description-title{
+	font-size: 9.5rem;
+	font-family: var(--font-main-medium);
+	color: var(--main-text-color);
+	font-weight: normal;
+	line-height: 12rem;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.single-profile .profile-site{
+	margin-bottom: 10px;
+}
+
+.single-profile .profile-timestamp{
+	font-size: 4rem;
+	margin-bottom: 20px;
+}
+
+.single-profile .profile-description{
+	line-height: 7rem;
+}
+
+.single-profile .profile-description .description-title{
+	font-size: 5.5rem;
+	margin-bottom: 5px;
+}

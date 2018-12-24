@@ -10,6 +10,12 @@ class Site extends \Extend\Model{
 		$this -> sets = new \Sets\SiteSet;
 	}
 
+	public function get_site_obj_by_profile_id($profile_id){
+		$site_obj = $this -> get(['profileid', '=', $profile_id]);
+
+		return $site_obj;
+	}
+
 	public function create($profileid){
 		$profile = model('Profile') -> get(['id', '=', $profileid]);
 		$site_url = $profile['site'];
