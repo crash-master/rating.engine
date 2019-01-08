@@ -13,6 +13,18 @@ function checkOnSecureList($current_route){
 	return array_search('admin', explode('/', $current_route)) && array_search($current_route, $exeption) === false;
 }
 
+function monitor_manager(){
+	if(model('Settings') -> get_setting('monitor_flag') == 'on'){
+		$monitor_time_period = model('Settings') -> get_setting('monitor_time_period');
+		$last_monitor_work = model('Option') -> get_option('last_monitor_work');
+		$period = floor(24 * 60 * 60 / $monitor_time_period);
+		if(empty($last_monitor_work) or time() - $last_monitor_work > $period){
+			model('Monitor') -> fix_all();
+			model('Option') -> set_option('last_monitor_work', time());
+		}
+	}
+}
+
 Events::add('call_action', function($params){
 	if(is_string($params['actionName'])){
 		$route = linkTo($params['controllerName'].'@'.$params['actionName']);
@@ -25,9 +37,7 @@ Events::add('call_action', function($params){
 
 	model('Media') -> always_resize();
 
-	if(intval(time() / 10) % 5 == 0){
-		model('Monitor') -> fix_all();
-	}
+	monitor_manager();
 });
 
 //Events::add('call_action_404', function($params){

@@ -11,7 +11,16 @@ class ArticleController extends \Extend\Controller{
 	// admin pages
 	public function admin_article_list_page(){
 		return view('admin/articles/article_list', [
-			'article_list' => model('Article') -> get_all()
+			'article_list' => model('Article') -> get_all(),
+			'cat_list' => model('Cats') -> all()
+		]);
+	}
+
+	public function admin_article_list_page_filtered_by_cat($cat_slug){
+		return view('admin/articles/article_list', [
+			'article_list' => model('Article') -> get_article_list_by_cat_slug($cat_slug, PHP_INT_MAX, 0),
+			'cat_list' => model('Cats') -> all(),
+			'current_cat_slug' => $cat_slug
 		]);
 	}
 
@@ -54,7 +63,7 @@ class ArticleController extends \Extend\Controller{
 	}
 
 	public function article_list($page_num = 1){
-		$count_on_page = 10;	
+		$count_on_page = model('Settings') -> get_setting('count_articles_on_page');	
 		$page_num --;
 		$articles = model('Article') -> get_article_list($count_on_page, $page_num);
 		$page_num++;
@@ -62,7 +71,7 @@ class ArticleController extends \Extend\Controller{
 	}
 
 	public function article_list_by_category($cat_slug, $page_num = 1){
-		$count_on_page = 10;	
+		$count_on_page = model('Settings') -> get_setting('count_articles_on_page');	
 		$page_num --;
 		$articles = model('Article') -> get_article_list_by_cat_slug($cat_slug, $count_on_page, $page_num);
 		$category = model('Cats') -> get_cat_by_slug($cat_slug);
@@ -72,7 +81,7 @@ class ArticleController extends \Extend\Controller{
 
 	public function pagination($current_page){
 		$count_articles = model('Article') -> count_published_articles();
-		$count_on_page = 10;	
+		$count_on_page = model('Settings') -> get_setting('count_articles_on_page');	
 		$count_page = ceil($count_articles / $count_on_page);
 		$pagination = [];
 		for($i=0; $i<$count_page; $i++){
@@ -99,7 +108,7 @@ class ArticleController extends \Extend\Controller{
 	}
 
 	public function article_list_by_tag_slug($tag_slug, $page_num = 1){
-		$count_on_page = 10;
+		$count_on_page = model('Settings') -> get_setting('count_articles_on_page');
 		$page_num --;
 		$articles = model('Article') -> get_article_list_by_tag_slug($tag_slug, $count_on_page, $page_num);
 		$tag = model('Tag') -> get_tag_by_slug($tag_slug);

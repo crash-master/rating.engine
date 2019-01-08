@@ -1,14 +1,6 @@
 <?php
 
-/*  Automatically was generated from a template fw/templates/model.php */
-
 class Monitor extends \Extend\Model{
-
-	public $sets;
-
-	public function __construct(){
-		$this -> sets = new \Sets\MonitorSet;
-	}
 
 	public function __call($meth, $args){
 		if(strpos($meth, 'monfix_') === false){

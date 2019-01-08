@@ -1,10 +1,42 @@
+let _quill;
 $(document).ready(function(){
 
-	$.trumbowyg.svgPath = '/resources/css/libs/icons.svg';
-	$('#content').trumbowyg();
+	var toolbarOptions = [
+	  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+	  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+	  [{ 'align': [] }],
+	  ['blockquote', /*'code-block'*/],
+	  ['image']
+
+	  //[{ 'header': 1 }, { 'header': 2 }],               // custom button values
+	  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+	  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+	  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+	  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+	  //[{ 'direction': 'rtl' }],                         // text direction
+
+	  // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+	  // [{ 'font': [] }],
+
+	  ['clean']                                         // remove formatting button
+	];
+	//$.trumbowyg.svgPath = '/resources/css/libs/icons.svg';
+	//$('#content').trumbowyg();
 	$('#description').trumbowyg();
+	_quill = new Quill('.quill-editor', {
+	  modules: { toolbar: '.quill-toolbar-container' },
+	  theme: 'snow',
+	  placeholder: "Поле для создания",
+	});
+
+	// let toolbar = _quill.getModule('toolbar');
+	// toolbar.addHandler('image', showImageUI);
 
 	setTimeout(function(){
+		let qlImageInside = $('.ql-image').html();
+		let cont = $('.ql-image').parent();
+		$('.ql-image').remove();
+		cont.append('<button class="ql-image">' + qlImageInside + '</button>');
 		customMedia();
 	}, 200);
 
@@ -94,6 +126,25 @@ $(document).ready(function(){
 	})
 
 	check_site_on_exists();
+	if($('.ql-editor').length){
+		setInterval(function(){
+			let container = $('.ql-editor');
+			let content = container.html();
+			container.parent().parent().find('.quill-textarea').val(content);
+		}, 100);
+	}
+
+	custom_file_loader_fix_filename();
+
+	$('button.menu').on('click', function(){
+		if($(this).attr('data-menu-status') == 'close'){
+			$(this).attr('data-menu-status', 'open');
+			$('#aside').addClass('active');
+		}else{
+			$(this).attr('data-menu-status', 'close');
+			$('#aside').removeClass('active');
+		}
+	});
 })
 
 function tagRemoveBtnInit(btn){
@@ -129,14 +180,15 @@ function check_site_on_exists(){
 }
 
 function customMedia(){
-	$('.trumbowyg-insertImage-button').on('click', function(){
+	$('.ql-image').on('click', function(e){
+		e.preventDefault();
 		$('.media-model-btn').trigger('click');
 		let modal = $('#mediaModal');
 		let img_link = '/binary-img/id/{media_id}/size/{size}';
 		let modalBody = modal.find('.modal-body');
 		let mediaContainer = modalBody.find('.media-container');
 		let closeModal = modal.find('.close:eq(0)');
-		let insertField = $('.trumbowyg-modal-box [name="url"]');
+		let insertField = $(this).parent().parent().parent().find('.ql-editor');
 		if(mediaContainer.html() == ''){
 			$.getJSON('/api/media-list', function(d){
 				let html = '';
@@ -150,7 +202,7 @@ function customMedia(){
 				.on('click', function(){
 					let id = $(this).attr('data-media-id');
 					let link = img_link.replace('{media_id}', id).replace('{size}', 'lg');
-					insertField.val(link);
+					insertField.append('<img src="' + link + '">');
 					closeModal.trigger('click');
 				})
 				.on('mouseover', function(){
@@ -163,5 +215,13 @@ function customMedia(){
 				});
 			});
 		}
+	});
+}
+
+function custom_file_loader_fix_filename(){
+	$('.custom-file-input').on('change', function(){
+		let filename = $(this).val().split('\\');
+		filename = filename[filename.length - 1];
+		$(this).parent().find('.custom-file-label').html(filename);
 	});
 }

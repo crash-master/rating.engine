@@ -71,7 +71,9 @@ class PageController extends \Extend\Controller{
 			return re_404();
 		}
 
-		return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/info-page.php', ['page' => model('Page') -> get_page('/page/'.$pagename)]);
+		$page = model('Page') -> get_page('/page/'.$pagename);
+
+		return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/info-page.php', ['page' => $page]);
 	}
 
 

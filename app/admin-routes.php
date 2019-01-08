@@ -46,6 +46,7 @@ route('/admin/create-new-profile', 'ProfileController@admin_create_new_profile_p
 route('/admin/recomended', 'RecomendedController@admin_page');
 route('/admin/recomended/remove/{profileid}', 'RecomendedController@remove');
 route('/admin/article/list', 'ArticleController@admin_article_list_page');
+route('/admin/article/list/fiter/cat/{cat_slug}', 'ArticleController@admin_article_list_page_filtered_by_cat');
 route('/admin/article/create-page', 'ArticleController@admin_create_page');
 route('/admin/article/update-page/{article_id}', 'ArticleController@admin_update_page');
 route('/admin/article/remove/{article_id}', 'ArticleController@remove');
@@ -59,6 +60,8 @@ route('/admin/media', 'MediaController@admin_page');
 route('/admin/media/page/{page_num}', 'MediaController@admin_page');
 route('/admin/media/remove/{media_id}', 'MediaController@remove');
 route('/admin/media/img-preview/{media_id}', 'MediaController@get_img_preview');
+route('/admin/settings', 'SettingsController@admin_page');
+route('update-settings', 'SettingsController@update', '/admin/settings/update');
 
 
 route('/admin/tags', 'TagController@admin_page');

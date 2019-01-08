@@ -81,7 +81,7 @@ function re_is_visible($admin_page_route){
 }
 
 function tag_filer($text){
-	return strip_tags($text, '<p><a><em><b><strong><h1><h2><h3><h4><h5><h6><ul><li><ol><img><del><sup><sub><hr><blockquote><font>');
+	return htmlspecialchars_decode(strip_tags($text, '<p><a><em><b><strong><h1><h2><h3><h4><h5><h6><ul><li><ol><img><del><sup><sub><hr><blockquote><font>'));
 }
 
 function txtpage($slug){
@@ -219,4 +219,12 @@ function get_random_color(){
   $count = count($colors);
 
 	return $colors[rand(0, $count - 1)];
+}
+
+function get_setting($name){
+	return model('Settings') -> get_setting($name);
+}
+
+function get_option($name){
+	return model('Option') -> get_by_name_value($name);
 }

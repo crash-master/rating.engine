@@ -41,20 +41,22 @@
 						<table class="table table-light">
 							<thead class="thead-dark">
 								<tr>
-									<th scope="col">#</th>
+									<th class="mob-hid" scope="col">#</th>
 									<th scope="col">Название</th>
 									<th scope="col">Slug</th>
-									<th scope="col" title="Удалить">Удалить</th>
+									<th scope="col" title="Удалить"><i class="fa fa-trash"></i> <span class="mob-hid">Удалить</span></th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ($cat_list as $key => $item): ?>
 									<tr>
-										<th scope="row"><?= $key + 1 ?></th>
+										<th class="mob-hid" scope="row"><?= $key + 1 ?></th>
 										<td data-edit="/admin/cats/update/<?= $item['id'] ?>/title/?"><?= $item['title'] ?></td>
 										<td data-edit="/admin/cats/update/<?= $item['id'] ?>/slug/?"><?= $item['slug'] ?></td>
 										<td>
-											<a class="danger-link" href="<?= linkTo('CatsController@remove', ['id' => $item['id']]) ?>">Удалить</a>
+											<a class="danger-link" href="<?= linkTo('CatsController@remove', ['id' => $item['id']]) ?>">
+												<i class="fa fa-trash"></i> <span class="mob-hid">Удалить</span>
+											</a>
 										</td>
 										</tr>
 								<?php endforeach ?>

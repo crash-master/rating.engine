@@ -9,7 +9,7 @@
 			<hr class="my-4">
 
 			<div class="row">
-				<div class="col-6 offset-3">
+				<div class="col-12 col-lg-6 col-xl-6 offset-lg-3 offset-xl-3">
 					<br>
 					<form action="<?= linkTo('ProfileController@profile_edit_page') ?>" method="get">
 						<div class="row">
@@ -34,7 +34,7 @@
 				<form action="/admin/profile_update?s=<?= $_GET['s'] ?>" method="post" enctype="multipart/form-data">
 				<div class="row">
 						<input type="hidden" name="mid" value="<?= $profile['id'] ?>">
-						<div class="col-4">
+						<div class="col-12 col-lg-4 col-xl-4">
 							<? if($profile['site_obj']['screen']): ?>
 								<img src="<?= $profile['site_obj']['screen'] ?>" class="a-panel-img" alt="Icon"></span>
 							<? endif; ?>
@@ -60,7 +60,7 @@
 							</div>
 						</div>
 
-						<div class="col-8">
+						<div class="col-12 col-lg-8 col-xl-8">
 							<div class="form-group">
 								<label for="name">Название мага</label>
 								<input type="text" id="name" class="form-control" name="name" placeholder="Название мага" value="<?= $profile['name'] ?>">
@@ -91,7 +91,10 @@
 						<div class="col-12">
 							<div class="form-group">
 								<label for="description">Описание</label>
-								<div id="description"><?= $profile['site_obj']['description'] ?></div>
+								<!-- <div id="description"><?= $profile['site_obj']['description'] ?></div> -->
+								<? vjoin('admin-layouts/quill-toolbar') ?>
+								<div id="content" class="quill-editor"><?= $profile['site_obj']['description'] ?></div>
+								<textarea name="description" class="quill-textarea" id="" cols="30" rows="10"></textarea>
 								<!-- <textarea name="description" style="height: 180px;" id="description" class="form-control" placeholder="Описание"><?= $profile['site_obj']['description'] ?></textarea> -->
 							</div>
 						</div>
@@ -113,7 +116,7 @@
 					<div class="col-12">
 						<hr>
 						<div class="row">
-								<div class="col-6">
+								<div class="col-12 col-lg-6 col-xl-6">
 									<h6>Выбранные теги</h6>
 									<div class="alert alert-dismissible alert-secondary empty-tag-list-out d-none">
 									  <strong>Ни один тег не добавлен.</strong> Для добавления выберите нужный тег из списка тегов
@@ -128,7 +131,8 @@
 									</ul>
 
 								</div>
-								<div class="col-6">
+								<div class="col-12 d-block d-lg-none d-xl-none mob-vert-space"></div>
+								<div class="col-12 col-lg-6 col-xl-6">
 									<h6>Существующие теги</h6>
 									<div class="form-group">
 										<select id="tag-list" class="form-control" data-path-to-create="/admin/api/profile-tags/create/" data-path-to-remove="/admin/api/profile-tags/remove/">

@@ -41,20 +41,22 @@
 					<table class="table table-light">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th scope="col">#</th>
+						      <th class="mob-hid" scope="col">#</th>
 						      <th scope="col">Название</th>
 						      <th scope="col">Slug</th>
-						      <th scope="col" title="Удалить"><i class="fa fa-trash" aria-hidden="true"></i></th>
+						      <th scope="col" title="Удалить"><i class="fa fa-trash"></i> <span class="mob-hid">Удалить</span></th>
 						    </tr>
 						  </thead>
 						  <tbody>
 						  	<? $i = 0; foreach($tag_list as $tag): $i++; ?>
 							<tr>
-								<th scope="row"><?= $i ?></th>
+								<th class="mob-hid" scope="row"><?= $i ?></th>
 								<td data-edit="/admin/tags/update/<?= $tag['id'] ?>/title/?"><?= $tag['title'] ?></td>
 								<td data-edit="/admin/tags/update/<?= $tag['id'] ?>/slug/?"><?= $tag['slug'] ?></td>
 								<td>
-									<a class="danger-link" href="<?= linkTo('TagController@remove', ['tagid' => $tag['id']]); ?>">Удалить</a>
+									<a class="danger-link" href="<?= linkTo('TagController@remove', ['tagid' => $tag['id']]); ?>">
+										<i class="fa fa-trash"></i> <span class="mob-hid">Удалить</span>
+									</a>
 								</td>
 							</tr>
 						<? endforeach; ?>

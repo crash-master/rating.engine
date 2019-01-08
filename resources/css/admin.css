@@ -22,34 +22,43 @@ body{
 
 nav.main li .fa{
 	position: absolute;
-	margin: 3px 0 0 -20px;
+	margin: 3px 0 0 -30px;
 }
 
 #aside{
-	position: fixed;
-	background-color: #158CBA;
-	color: white;
-	top: 0;
-	left: 0;
+    position: fixed;
+    background-color: #158CBA;
+    color: white;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 100%;
+    border-right: 7px solid #127ba3;
+    overflow: hidden;
+    transition-duration: .3s;
+    z-index: 100;
+}
+
+#aside:hover{
 	width: 250px;
-	height: 100%;
-	border-right: 7px solid #127ba3;
 }
 
 #aside li a{
-	color: white;
-	padding: 15px 0 15px 50px;
-	width: 100%;
-	display: block;
-	transition-duration: .2s;
+    color: white;
+    padding: 13px 0 15px 50px;
+    width: 100%;
+    display: block;
+    transition-duration: .2s;
 }
 
 #aside li{
 	list-style: none;
 	width: 100%;
+	min-width: 250px;
 }
 
-#aside li a:hover{
+#aside li a:hover,
+#aside li.active a{
 	background: #127ba3;
 	text-decoration: none;
 }
@@ -68,6 +77,8 @@ nav.main li .fa{
 
 #content{
 	background: #fff;
+    min-height: 200px;
+    /*max-height: 600px;*/
 }
 
 .a-panel-img{
@@ -91,16 +102,14 @@ nav.main li .fa{
 	width: 100%
 }
 
-@media (max-width: 1650px){
-	.page{
-		margin-left: 200px;
-	}
+.quill-textarea{
+	visibility: hidden;
+	width: 1px;
+	height: 1px;
 }
 
-@media (max-width: 1250px){
-	.page{
-		margin-left: 250px;
-	}
+.custom-file-label{
+	overflow: hidden;
 }
 
 .danger-link{
@@ -113,4 +122,40 @@ nav.main li .fa{
 
 .description-form{
 	display: none;
+}
+
+button.menu{
+    position: fixed;
+    z-index: 200;
+    color: #777;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    font-size: 30px;
+    left: 100%;
+    transform: translate(-125%, 25%);
+    top: 0px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 1px 3px 6px #aaa;
+    display: none;
+}
+
+button.menu[data-menu-status="close"] .fa-times{
+	display: none;
+}
+
+button.menu[data-menu-status="close"] .fa-bars{
+	display: block;
+}
+
+button.menu[data-menu-status="open"] .fa-times{
+	display: block;
+}
+
+button.menu[data-menu-status="open"] .fa-bars{
+	display: none;
+}
+
+.mob-vert-space{
+	margin: 15px 0;
 }

@@ -1,0 +1,46 @@
+[2019-01-05 03:34:53] E_WARNING (code 2) | filemtime(): stat failed for ./resources/view/attract/assets/css/master.min.css IN FILE G:\server\OSPanel\domains\rating.engine\app\functions.php IN LINE 151
+==================================================================================================
+[2019-01-05 04:20:24] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:24] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:26] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:26] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:29] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:29] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:38] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:38] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:39] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:39] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:39] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:39] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:40] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:40] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:40] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:40] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:41] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:41] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:41] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:41] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================
+[2019-01-05 04:20:56] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 34
+-------------------------------------------------
+[2019-01-05 04:20:56] E_WARNING (code 2) | array_merge(): Argument #1 is not an array IN FILE G:\server\OSPanel\domains\rating.engine\app\controllers\IndexController.php IN LINE 47
+==================================================================================================

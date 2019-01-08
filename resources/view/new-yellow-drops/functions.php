@@ -33,7 +33,7 @@ function nyd_excerpt_from_text($text, $max_count_words){
 
 function nyd_articles_pag($current, $category){
 	$count_articles = model('Article') -> count_published_articles($category['id']);
-	$count_on_page = 10;	
+	$count_on_page = get_setting('count_articles_on_page');	;	
 	$total = ceil($count_articles / $count_on_page);
 	$prev = $current > 1 ? $current - 1 : false;
 	$next = $current < $total ? $current + 1 : false;
@@ -43,7 +43,7 @@ function nyd_articles_pag($current, $category){
 
 function nyd_profiles_pag($current, $category){
 	$count_articles = model('Profile') -> get_count_published_profiles($category['id']);
-	$count_on_page = 10;	
+	$count_on_page = get_setting('count_profiles_on_page');	
 	$total = ceil($count_articles / $count_on_page);
 	$prev = $current > 1 ? linkTo('ProfileController@profile_list_by_category', ['cat_slug' => $category['slug'], 'page_num' => $current - 1]) : false;
 	$next = $current < $total ? linkTo('ProfileController@profile_list_by_category', ['cat_slug' => $category['slug'], 'page_num' => $current + 1]) : false;

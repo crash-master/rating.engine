@@ -9,10 +9,14 @@ use Kernel\{
 class MediaController extends \Extend\Controller{
     
     public function admin_page($page_num = 1){
+        if(!intval($page_num)){
+            return redirect(linkTo('MediaController@admin_page', ['page_num' => 1]));
+        }
     	$count_on_page = 20;
     	$media = model('Media') -> get_media_list('sm', $count_on_page, $page_num);
     	$pagination = model('Media') -> get_pagination($count_on_page, $page_num);
-    	return view('admin/media', ['media_list' => $media, 'pagination' => $pagination]);
+        $total = model('Media') -> length();
+    	return view('admin/media', ['media_list' => $media, 'pagination' => $pagination, 'total' => $total]);
     }
 
     public function remove($media_id){
@@ -42,7 +46,7 @@ class MediaController extends \Extend\Controller{
             model('Media') -> set_new_media($_FILES['media_file']['tmp_name'], $_FILES['media_file']['name']);
         }
 
-        return redirect('MediaController@admin_page');
+        return redirect('MediaController@admin_page', ['page_num' => 1]);
     }
     
 }

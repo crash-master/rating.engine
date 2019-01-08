@@ -5,14 +5,17 @@ use Kernel\{
     DBW
 };
 
-class MonitorMigration extends \Extend\Migration{
+class OptionMigration extends \Extend\Migration{
 
     public static function up(){
 
         // Create tables in db
 
-        DBW::create('Monitor',function($t){
-            $t -> datetime('timestamp');
+        DBW::create('Option',function($t){
+            $t -> varchar('name')
+            -> longtext('value')
+            -> varchar('section_name')
+            -> varchar('about_option');
         });
 
     }
@@ -21,8 +24,9 @@ class MonitorMigration extends \Extend\Migration{
 
         // Drop tables from db
 
-        DBW::drop('Monitor');
+        DBW::drop('Option');
 
     }
 
 }
+

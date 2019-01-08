@@ -2,8 +2,12 @@
 use Kernel\Components;
 $templatename = \Kernel\Config::get('rating-engine -> view-template');
 
+Components::create('Admin-Head', ['admin-layouts/header' => [
+	'IndexController@admin_header'
+]]);
+
 Components::create('Head', [$templatename . '/layouts/head' => [
-	'PageController@page_meta_component',
+	'PageController@page_meta_component'
 ]]);
 
 Components::create('Footer', [$templatename . '/layouts/footer' => [

@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="page" id="cats">
 		<div class="jumbotron">
-		  <h1 class="display-4">Загруженные изображения</h1>
+		  <h1 class="display-4">Загруженные изображения (<?= $total ?>)</h1>
 			<hr class="my-4">
 			<form action="/admin/media/upload" method="post" enctype="multipart/form-data">
 				<div class="row">
@@ -29,7 +29,14 @@
 					</div>
 				</div>
 			</form>
-			<hr class="my-4">
+			<? if($count_media): ?>
+				<hr class="my-4">
+			<? endif ?>
+			<? if(!$total): ?>
+				<div class="alert alert-warning" role="alert">
+					Не добавлено ни одного изображения
+				</div>
+			<? endif ?>
 			<div class="row">
 				<? for($i=0; $i<3; $i++): ?>
 					<div class="col-12 col-xl-4 col-lg-6 col-md-6">
@@ -46,38 +53,40 @@
 					</div>
 				<? endfor; ?>
 			</div>
-			<br>
-			<hr class="my-4">
-			<br>
-			<nav>
-			  <ul class="pagination">
-			  	<?php if ($pagination[0]['prev']): ?>
-			  		<li class="page-item">
-				      <a class="page-link" href="<?= $pagination[0]['prev'] ?>" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				        <span class="sr-only">Previous</span>
-				      </a>
-				    </li>
-			  	<?php endif ?>
-			    <?php foreach ($pagination[1] as $i => $item): ?>
-			    	<li class="page-item <?= $item['current'] ? 'active' : '' ?>">
-			    		<? if(!$item['current']): ?>
-			    			<a class="page-link" href="<?= $item['link'] ?>"><?= $item['num'] ?></a>
-		    			<? else: ?>	
-		    				<span class="page-link"><?= $item['num'] ?><span class="sr-only">(current)</span></span>
-		    			<? endif; ?>
-			    	</li>
-			    <?php endforeach ?>
-			    <?php if ($pagination[0]['next']): ?>
-			    	<li class="page-item">
-				      <a class="page-link" href="<?= $pagination[0]['next'] ?>" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				        <span class="sr-only">Next</span>
-				      </a>
-				    </li>
-			    <?php endif ?>
-			  </ul>
-			</nav>
+			<? if($count_media): ?>
+				<br>
+				<hr class="my-4">
+				<br>
+				<nav>
+				  <ul class="pagination">
+				  	<?php if ($pagination[0]['prev']): ?>
+				  		<li class="page-item">
+					      <a class="page-link" href="<?= $pagination[0]['prev'] ?>" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					        <span class="sr-only">Previous</span>
+					      </a>
+					    </li>
+				  	<?php endif ?>
+				    <?php foreach ($pagination[1] as $i => $item): ?>
+				    	<li class="page-item <?= $item['current'] ? 'active' : '' ?>">
+				    		<? if(!$item['current']): ?>
+				    			<a class="page-link" href="<?= $item['link'] ?>"><?= $item['num'] ?></a>
+			    			<? else: ?>	
+			    				<span class="page-link"><?= $item['num'] ?><span class="sr-only">(current)</span></span>
+			    			<? endif; ?>
+				    	</li>
+				    <?php endforeach ?>
+				    <?php if ($pagination[0]['next']): ?>
+				    	<li class="page-item">
+					      <a class="page-link" href="<?= $pagination[0]['next'] ?>" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					        <span class="sr-only">Next</span>
+					      </a>
+					    </li>
+				    <?php endif ?>
+				  </ul>
+				</nav>
+			<? endif ?>
 		</div>
 	</div>
 </div>

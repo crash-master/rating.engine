@@ -1,4 +1,0 @@
-[2018-12-20 20:37:52] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\new-yellow-drops\functions.php IN LINE 59
--------------------------------------------------
-[2018-12-20 20:37:52] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\new-yellow-drops\functions.php IN LINE 67
-==================================================================================================

@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-12">
 					<form action="<?= isset($page) ? linkTo('PageController@update') : linkTo('PageController@create') ?>" method="post">
-						<input type="hidden" name="<?= isset($page) ? 'update-page' : 'new-page' ?>" value="<?= !isset($page) ? '' : $page['id'] ?>">
+						<input type="hidden" name="<?= isset($page) ? 'update-page' : 'new-page' ?>" value="<?= !isset($page) ? '' : $page['page_id'] ?>">
 						<div class="row">
 							<div class="col-12 col-lg-6 col-xl-6">
 								<div class="form-group">
@@ -36,7 +36,10 @@
 									</div>
 								</div>
 							</div>
-							<div id="content"><?= !isset($page) ? '' : $page['content'] ?></div>
+							<? vjoin('admin-layouts/quill-toolbar') ?>
+							<div id="content" class="quill-editor"><?= !isset($page) ? '' : $page['content'] ?></div>
+							<textarea name="content" class="quill-textarea" id="" cols="30" rows="10"></textarea>
+							<!-- <div id="content"><?= !isset($page) ? '' : $page['content'] ?></div> -->
 						</div>
 						<div class="form-group">
 							<label>Ключевые слова</label>

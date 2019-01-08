@@ -72,7 +72,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<div id="content"><?= !isset($article) ? '' : $article['content'] ?></div>
+							<? vjoin('admin-layouts/quill-toolbar') ?>
+							<div id="content" class="quill-editor"><?= !isset($article) ? '' : $article['content'] ?></div>
+							<textarea name="content" class="quill-textarea" id="" cols="30" rows="10"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Ключевые слова</label>

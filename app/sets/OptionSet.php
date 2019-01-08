@@ -4,15 +4,13 @@
 
 namespace Sets;
 
-class MonitorSet extends \Extend\Set{
+class OptionSet extends \Extend\Set{
 
     public function tableName(){ 
-        return 'Monitor'; 
+        return 'Option'; 
     }
 
     public function defaultRows(){
-        return [
-            'timestamp' => 'NOW()'
-        ];
+        return [];
     }
 }

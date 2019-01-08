@@ -100,6 +100,8 @@ class Article extends \Extend\Model{
 
     	model('Route_meta') -> set($meta);
 
+        model('Cats') -> update_article_cat($article['id'], $data['catid']);
+
     	if($file){
     		$thumbnail_id = model('Media') -> set_new_media($file['tmp_name'], $file['name']);
     		$this -> update(['thumbnail_media_id' => $thumbnail_id], ['id', '=', $article['id']]);

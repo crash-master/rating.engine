@@ -1,0 +1,118 @@
+[2019-01-08 03:55:46] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 7
+==================================================================================================
+[2019-01-08 04:10:28] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:10:28] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:10:28] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:23:16] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:23:33] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:23:34] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:23:41] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:24:17] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:24:18] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:24:21] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin-layouts\header.php IN LINE 6
+==================================================================================================
+[2019-01-08 04:30:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:30:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:30:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:32:34] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:32:34] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:32:34] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:33:03] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:33:03] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:33:03] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:35:05] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:35:05] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:35:05] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:35:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:35:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:35:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:36:35] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:36:35] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:36:35] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:37:31] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:37:31] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:37:31] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:38:40] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:38:40] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:38:40] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:39:13] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:39:13] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:39:13] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:40:41] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:40:41] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:40:41] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:41:14] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:41:14] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 145
+-------------------------------------------------
+[2019-01-08 04:41:14] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 146
+==================================================================================================
+[2019-01-08 04:43:40] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:43:40] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 142
+-------------------------------------------------
+[2019-01-08 04:43:40] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 143
+==================================================================================================
+[2019-01-08 04:43:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:43:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 142
+-------------------------------------------------
+[2019-01-08 04:43:57] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 143
+==================================================================================================
+[2019-01-08 04:44:20] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:44:20] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 142
+-------------------------------------------------
+[2019-01-08 04:44:20] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 143
+==================================================================================================
+[2019-01-08 04:44:27] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:44:27] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 142
+-------------------------------------------------
+[2019-01-08 04:44:27] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 143
+==================================================================================================
+[2019-01-08 04:44:44] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 129
+-------------------------------------------------
+[2019-01-08 04:44:44] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 142
+-------------------------------------------------
+[2019-01-08 04:44:44] E_WARNING (code 2) | A non-numeric value encountered IN FILE G:\server\OSPanel\domains\rating.engine\app\models\Media.php IN LINE 143
+==================================================================================================

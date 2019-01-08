@@ -12,6 +12,8 @@ use Kernel\Model;
 Router::_404('IndexController@_404');
 route('/', 'IndexController@index');
 route('/secret/app/init', 'IndexController@app_init');
+route('/secret/app/default_option', 'IndexController@init_default_options');
+route('/secret/app/default_settings', 'IndexController@init_default_settings');
 
 route('/page/{pagename}', 'PageController@text_page');
 route('/page/rating', 'RatingController@page');

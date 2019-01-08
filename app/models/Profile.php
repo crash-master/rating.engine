@@ -120,7 +120,8 @@ class Profile extends \Extend\Model{
 	}
 
 	public function get_high_list(){
-		$data = model('Profile') -> get(['where' => ['public_flag', '=', 1], 'order' => ['rating', 'DESC'], 'limit' => [0, 10]]);
+		$count_profiles = model('Settings') -> get_setting('count_profiles_on_high_block');
+		$data = model('Profile') -> get(['where' => ['public_flag', '=', 1], 'order' => ['rating', 'DESC'], 'limit' => [0, $count_profiles]]);
 		$data = arrayToArray($data);
 		$count = count($data);
 		for($i=0; $i<$count; $i++){
@@ -134,7 +135,7 @@ class Profile extends \Extend\Model{
 	}
 
 	public function get_profiles_by_cat_slug($cat_slug, $page_num = 1){
-		$count_on_page = 10;
+		$count_on_page = model('Settings') -> get_setting('count_profiles_on_page');
 		$profile_ids = model('Cats') -> get_profile_ids_by_cat_slug($cat_slug);
 		$query_str = "('" . implode ( "','", $profile_ids ) . "')";
         $where = ['public_flag', '=', '1', 'AND', 'id', 'IN', $query_str];

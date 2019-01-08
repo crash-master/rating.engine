@@ -7,7 +7,7 @@
 			<hr class="my-4">
 
 			<div class="row">
-				<div class="col-6">
+				<div class="col-12 col-md-12 col-lg-6 col-xl-6">
 					<h4>Основная информация</h4>
 					<form action="/admin/meta/save/main-meta" method="post">
 						<input type="hidden" name="main-meta">
@@ -34,8 +34,8 @@
 					  <button type="submit" class="btn btn-primary">Сохранить</button>
 					</form>
 				</div>
-
-				<div class="col-6">
+				<div class="col-12 d-block d-lg-none d-xl-none mob-vert-space"></div>
+				<div class="col-12 col-md-12 col-lg-6 col-xl-6">
 					<h4>Соц сети</h4>
 					<form method="post" action="/admin/meta/save/social-links">
 						<input type="hidden" name="social-links">

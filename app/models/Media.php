@@ -127,12 +127,9 @@ class Media extends \Extend\Model{
 	public function get_media_list($size, $count_on_page, $page_num){
 		$page_num--;
 		$from = $count_on_page * $page_num; 
-		$media = $this -> get(['rows' => ['id', 'timestamp'], 'limit' => [$from, $count_on_page], 'order' => ['id', 'DESC']]);
+		$media = atarr($this -> get(['rows' => ['id', 'timestamp'], 'limit' => [$from, $count_on_page], 'order' => ['id', 'DESC']]));
 		foreach ($media as $i => $item) {
-			$media[$i]['size'] = $size;
-			// $media[$i]['src'] = $this -> get_src($media[$i]);
 			$media[$i]['src'] = linkTo('MediaController@get_binary_img', ['media_id' => $item['id'], 'size' => $size]);
-			unset($media[$i][$media['size']]);
 		}
 		return $media;
 	}
