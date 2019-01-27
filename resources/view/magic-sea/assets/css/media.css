@@ -1,6 +1,7 @@
 @media (max-width: 1200px){
 	.mob-menu{
 		display: inline-block;
+		visibility: visible;
 	}
 
 	.service-btns{

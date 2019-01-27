@@ -39,7 +39,7 @@
 			</div>
 			<div class="col-lg-6 col-md-12 col-12">
 				<div class="form-about">
-					<?= model('Meta') -> getMeta('rules-for-adding-psychics'); ?>
+					<?= get_content_block('rules-for-adding-profiles') ?>
 				</div>	
 			</div>
 		</div>

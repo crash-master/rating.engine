@@ -158,6 +158,22 @@ class Profile extends \Extend\Model{
         return $len;
 	}
 
+	public function get_all_profiles_for_map(){
+		$rows = [
+			'slug', 'timestamp'
+		];
+
+		$profiles = $this -> get(['rows' => $rows]);
+		foreach($profiles as $i => $profile){
+			$profiles[$i]['loc'] = linkTo('ProfileController@page', ['slug' => $profile['slug']]);
+			list($profiles[$i]['lastmod']) = explode(' ', $profile['timestamp']);
+			unset($profiles[$i]['slug']);
+			unset($profiles[$i]['timestamp']);
+		}
+
+		return count($profiles) ? $profiles : [];
+	}
+
 
 		/////// RATING ///////
 

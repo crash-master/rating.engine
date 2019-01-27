@@ -30,9 +30,15 @@
 						</span>
 					</div>
 
-					<div class="info-item row">
+					<div class="info-item row" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+						<meta itemprop="itemReviewed" content="<?= $profile['name'] ?>">
+						<? $totalReviews = intval($profile['count_like']) + intval($profile['count_dislike']) + intval($profile['count_neutral']); ?>
+						<? $ratingValue = $totalReviews * intval($profile['rating']) ? round(100 / $totalReviews * intval($profile['rating']) / 10, 1) : 0; ?>
+						<meta itemprop="bestRating" content="10">
+						<meta itemprop="ratingValue" content="<?= $ratingValue ?>">
+
 						<span class="left-part"><strong>Общий рейтинг</strong></span>
-						<span class="right-part"><big><b style="position:  relative;top: -3px;"><?= $profile['rating'] ?></b></big></span>
+						<span class="right-part"><big><b style="position:  relative;top: -3px;" itemprop="reviewCount"><?= $profile['rating'] ?></b></big></span>
 					</div>
 
 					<div class="info-item row">

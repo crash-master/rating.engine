@@ -1,6 +1,7 @@
 <?php
 use Kernel\Events;
 use Kernel\Sess;
+use Kernel\Components;
 
 // for login to admin panel
 function checkOnSecureList($current_route){
@@ -25,19 +26,45 @@ function monitor_manager(){
 	}
 }
 
-Events::add('call_action', function($params){
-	if(is_string($params['actionName'])){
-		$route = linkTo($params['controllerName'].'@'.$params['actionName']);
+function sitemap_manager(){
+	if(model('Settings') -> get_setting('sitemap_flag') == 'on'){
+		$sitemap_time_period = model('Settings') -> get_setting('sitemap_time_period');
+		$last_sitemap_generate = model('Option') -> get_option('last_sitemap_generate');
+		$period = floor(24 * 60 * 60 / $sitemap_time_period);
+		if(empty($last_sitemap_generate) or time() - $last_sitemap_generate > $period){
+			model('Sitemap') -> generate();
+			model('Option') -> set_option('last_sitemap_generate', time());
+		}
+	}
+}
+
+function admin_panel_secure($event_params){
+	if(is_string($event_params['actionName'])){
+		$route = linkTo($event_params['controllerName'].'@'.$event_params['actionName']);
 		if(Sess::get('admin') != 'true'){
 			if(checkOnSecureList($route)){
 				return redirect(linkTo('IndexController@admin_login_page'));
 			}
 		}
 	}
+}
+
+function theme_init(){
+	$templatename = \Kernel\Config::get('rating-engine -> view-template');
+	$path_to_theme_init = './resources/view/'. $templatename . '/init.php';
+	include_once($path_to_theme_init);
+}
+
+Events::add('call_action', function($params){
+	admin_panel_secure($params);
+
+	theme_init();
 
 	model('Media') -> always_resize();
 
 	monitor_manager();
+
+	sitemap_manager();
 });
 
 //Events::add('call_action_404', function($params){

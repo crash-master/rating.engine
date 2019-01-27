@@ -8,27 +8,6 @@ use Kernel\{
 };
 
 class MetaController extends \Extend\Controller{
-    
-    public function meta_page(){
-    	$metainfo = [];
- 		$mi = model('Meta') -> getMeta('sitename', true);
- 		$metainfo[$mi['meta_name']] = $mi['meta_value'];
-
-        $mi = model('Meta') -> getMeta('sub_sitename', true);
-        $metainfo[$mi['meta_name']] = $mi['meta_value'];
-
-        $mi = model('Meta') -> getMeta('siteurl', true);
-        $metainfo[$mi['meta_name']] = $mi['meta_value'];
-
-        $mi = model('Meta') -> getMeta('metrica', true);
-        $metainfo[$mi['meta_name']] = $mi['meta_value'];
-
- 		$mi = model('Meta') -> getMeta('social', true);
- 		$metainfo[$mi['meta_name']] = json_decode($mi['meta_value'], true);
-
-        return View::make('admin/meta', ['metainfo' => $metainfo]);
-        
-    }
 
     public function save_main_meta(){
     	Request::clear();
@@ -43,15 +22,7 @@ class MetaController extends \Extend\Controller{
     		model('Meta') -> updateMeta($name, $value);
     	}
 
-    	return redirect(linkTo('MetaController@meta_page'));
-    }
-
-    public function save_social_links(){
-    	$social = Request::post();
-    	unset($social['social-links']);
-    	$data = json_encode($social);
-    	model('Meta') -> updateMeta('social', $data);
-    	return redirect(linkTo('MetaController@meta_page'));
+    	return redirect('SettingsController@admin_page');
     }
 
     public function getHeadMeta(){  // !!!!!!!!!!!!!

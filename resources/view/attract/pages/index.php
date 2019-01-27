@@ -4,7 +4,7 @@
 
 	<section class="block" id="home-info">
 		<div class="content">
-			<?= model('Meta') -> getMeta('preface'); ?>
+			<?= get_content_block('preface'); ?>
 		</div>
 	</section>
 
@@ -14,7 +14,7 @@
 		<div class="col-12 col-lg-6 col-xl-6">
 			<section class="block no-border">
 				<div class="content txt-grey">
-					<?= model('Meta') -> getMeta('after-top5-block'); ?>
+					<?= get_content_block('after-high-profiles-block'); ?>
 				</div>
 			</section>
 		</div>

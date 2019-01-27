@@ -180,4 +180,23 @@ class Article extends \Extend\Model{
         return $articles;
     }
 
+    public function get_all_articles_for_map(){
+        $rows = [
+            'id', 'timestamp'
+        ];
+
+        $articles = $this -> get(['rows' => $rows, 'where' => ['published', '=', '1']]);
+        foreach($articles as $i => $article){
+            $articles[$i] = $this -> fields_transform($article, ['link']);
+            $articles[$i]['loc'] = $articles[$i]['link'];
+            list($articles[$i]['lastmod']) = explode(' ', $article['timestamp']);
+            unset($articles[$i]['link']);
+            unset($articles[$i]['timestamp']);
+            unset($articles[$i]['id']);
+            unset($articles[$i]['meta']);
+        }
+
+        return count($articles) ? $articles : [];
+    }
+
 }

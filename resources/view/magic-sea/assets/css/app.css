@@ -555,6 +555,7 @@ button.send-form .m-icon{
     margin-top: 3px;
     margin-left: 70%;
     padding: 10px;
+    visibility: hidden;
 }
 
 .mob-menu .m-icon{

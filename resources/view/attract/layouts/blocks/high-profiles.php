@@ -17,9 +17,9 @@
 					</div>
 					<div class="col-10 col-lg-4 col-xl-4 offset-2 offset-md-2 offset-sm-2 offset-lg-0 offset-xl-0">
 						<div class="top stats txt-grey-dark">
-							<i class="m-icon thumb-up-green"></i> <?= $item['count_like'] ?>
-							<i class="m-icon thumb-down-red"></i> <?= $item['count_dislike'] ?>
-							<i class="m-icon thumbs-up-down"></i> <?= $item['count_neutral'] ?>
+							<i class="mdi mdi-thumb-up font-color-green"></i> <?= $item['count_like'] ?>
+							<i class="mdi mdi-thumb-down font-color-red"></i> <?= $item['count_dislike'] ?>
+							<i class="mdi mdi-thumbs-up-down font-color-grey"></i> <?= $item['count_neutral'] ?>
 						</div>
 						<div class="bottom timestamp txt-grey">
 							Добавлен <?= $item['timestamp'] ?>
@@ -30,7 +30,7 @@
 			<? endforeach; ?>
 
 			<div style="text-align:left">
-				<button href="/page/rating" onclick="document.location = this.getAttribute('href')" class="std-a std-btn icon-fix more-news">Смотреть весь список <i class="m-icon arrow-right-red"></i> <i class="m-icon arrow-right"></i></button>
+				<button href="/page/rating" onclick="document.location = this.getAttribute('href')" class="std-a std-btn more-news">Смотреть весь список <i class="mdi mdi-arrow-right mdi-fix"></i></button>
 			</div>
 		</div>
 	</section>

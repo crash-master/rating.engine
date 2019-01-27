@@ -26,21 +26,37 @@
 						</div>
 						<div class="form-group">
 							<div class="row">
-								<div class="col-4"><label>Контент страницы</label></div>
+								<div class="col-4"><label id="page_content_field_title" <?= (isset($page) and $page['is_text'] == '1') ? '' : 'style="display: none"' ?>>Контент страницы</label></div>
 								<div class="col-8" style="text-align: right">
 									<div class="form-group">
 										<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="is_text" name="is_text" <?= (isset($page) and $page['is_text'] == '1') ? 'checked' : '' ?>>
+											<input type="checkbox" class="custom-control-input" id="is_text" name="is_text" data-checked="<?= (isset($page) and $page['is_text'] == '1') ? 'true' : 'false' ?>" <?= (isset($page) and $page['is_text'] == '1') ? 'checked=""' : '' ?>>
 											<label class="custom-control-label" for="is_text">Текстовая страница</label>
 										</div>
 									</div>
 								</div>
 							</div>
-							<? vjoin('admin-layouts/quill-toolbar') ?>
-							<div id="content" class="quill-editor"><?= !isset($page) ? '' : $page['content'] ?></div>
-							<textarea name="content" class="quill-textarea" id="" cols="30" rows="10"></textarea>
-							<!-- <div id="content"><?= !isset($page) ? '' : $page['content'] ?></div> -->
+							<div class="page-editor" <?= (isset($page) and $page['is_text'] == '1') ? '' : 'style="display: none"' ?>>
+								<? vjoin('admin-layouts/quill-toolbar') ?>
+								<div id="content" class="quill-editor"><?= !isset($page) ? '' : $page['content'] ?></div>
+								<textarea name="content" class="quill-textarea" id="" cols="30" rows="10"></textarea>
+							</div>
 						</div>
+						<script>
+							$(document).ready(function(){
+								$("#is_text").on('change', function(){
+									if($(this).attr('data-checked') == 'false'){
+										$('.page-editor').show();
+										$('#page_content_field_title').show();
+										$(this).attr('data-checked', 'true');
+									}else{
+										$('.page-editor').hide();
+										$('#page_content_field_title').hide();
+										$(this).attr('data-checked', 'false');
+									}
+								});
+							});
+						</script>
 						<div class="form-group">
 							<label>Ключевые слова</label>
 							<textarea class="form-control" rows="2" name="keywords" placeholder="Ключевые слова"><?= !isset($page) ? '' : $page['keywords'] ?></textarea>

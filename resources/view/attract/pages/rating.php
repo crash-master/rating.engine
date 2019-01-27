@@ -23,10 +23,11 @@
 			<h2 class="block-title">Список магов на сайте <small class="txt-grey-light">(<?= $count ?> шт)</small></h2>
 		</div>
 		<div class="col-lg-6 col-md-6 col-12 order-field">
-			<div class="input select" id="rating-order">
+			<div class="input select with-icon" id="rating-order">
+				<i class="main-icon mdi mdi-sort-variant input-icon"></i>
 				<div class="placeholder txt-grey">Сортировать по рейтингу</div>
 				<input type="hidden" name="order" value="rating">
-				<i class="m-icon menu-down"></i>
+				<i class="mdi mdi-menu-down"></i>
 
 				<div class="options">
 					<div class="option" data-value="rating">Сортировать по рейтингу</div>

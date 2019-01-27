@@ -14,13 +14,6 @@
 				</nav>
 			</div>
 			<div class="col-lg-3 col-md-3 col-12">
-				<nav class="social-links">
-					<ul>
-						<li><a href="<?= $social['facebook'] ?>"><i class="m-icon facebook"></i></a></li>
-						<li><a href="<?= $social['twitter'] ?>"><i class="m-icon twitter"></i></a></li>
-						<li><a href="<?= $social['vk'] ?>"><i class="m-icon vk"></i></a></li>
-					</ul>
-				</nav>
 			</div>
 		</div>	
 	</div>

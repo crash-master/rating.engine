@@ -116,6 +116,22 @@
     max-height: 850px;
 }
 
+#single .comments-list::-webkit-scrollbar{
+	width: 12px;
+	border-radius: 3px;
+	background-color: #cceeff;
+}
+
+#single .comments-list::-webkit-scrollbar-thumb{
+  background-color: var(--main-color);
+  border-radius: 3px;
+}
+
+#single .comments-list::-webkit-scrollbar-button{
+	visibility: hidden;
+	height: 0;
+}
+
 #single .card-comment{
 	/* box-shadow: 0 0 6px #bbb; */
   border: 1px solid var(--main-color);

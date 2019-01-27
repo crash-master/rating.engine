@@ -1,9 +1,8 @@
 <section class="popup search">
-	<button class="close-popup"><i class="m-icon close"></i></button>
+	<button class="close-popup"><i class="mdi mdi-close"></i></button>
 	<div class="container">
-		<!-- <h2 class="block-title main txt-grey">Поиск</h2> -->
 		<div class="input">
-			<i class="m-icon Profilenify"></i>
+			<i class="mdi mdi-magnify font-color-grey"></i>
 			<input type="text" class="search-input" name="search" placeholder="Поиск">
 		</div>
 

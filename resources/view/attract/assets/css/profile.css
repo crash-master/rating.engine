@@ -70,26 +70,19 @@
 	display: inline-block;
 	width: 60px;
 	height: 60px;
-	background-position: center;
-	background-size: 80% auto;
-	background-repeat: no-repeat;
 	transition-duration: .3s;
 }
 
-#profile .rat-btn.good{
-	background-image: url('../imgs/icons/thumb-up-outline.png');
+#profile .rat-btn .active{
+	display: none;
 }
 
-#profile .rat-btn.bad{
-	background-image: url('../imgs/icons/thumb-down-outline.png');
+#profile .rat-btn.active .disactive{
+	display: none;
 }
 
-#profile .rat-btn.bad.active{
-	background-image: url('../imgs/icons/thumb-down-red.png');
-}
-
-#profile .rat-btn.good.active{
-	background-image: url('../imgs/icons/thumb-up-green.png');
+#profile .rat-btn.active .active{
+	display: inline;
 }
 
 #profile .img-radio{
@@ -280,5 +273,7 @@
 	font-size: 4.5rem;
 }
 
-
-
+#profile .site-description-text,
+#profile .site-description-text *{
+	font-size: 5rem;
+}

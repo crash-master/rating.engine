@@ -61,4 +61,18 @@ class Page extends \Extend\Model{
     	model('Route_meta') -> remove(['page_id', '=', $pageid]);
     }
 
+    public function get_all_pages_for_map(){
+        $pages_src = $this -> get_page_list();
+        $pages = [];
+        foreach($pages_src as $i => $page){
+            list($lastmod) = explode(' ', $page['timestamp']);
+            $pages[] = [
+                'loc' => $page['route'],
+                'lastmod' => $lastmod
+            ];
+        }
+
+        return $pages;
+    }
+
 }

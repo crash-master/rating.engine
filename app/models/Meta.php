@@ -4,83 +4,33 @@
 
 class Meta extends \Extend\Model{
 
-	public $sets;
-	public $metaCache = [];
-
-	public function __construct(){
-		$this -> sets = new \Sets\MetaSet;
-	}
+	private $section_name = 'meta_info';
 
 	public function getMeta($name, $arr_flag = false){
-		$meta = $this -> get(['where' => ['meta_name', '=', $name]]);
-		if(isset($meta['meta_name'])){
-			if(!$arr_flag){
-				return $meta['meta_value'];
-			}else{
-				return $meta;
+		if($arr_flag){                
+			$option = model('Option') -> get_by_name($name);
+			if($option['section_name'] == $this -> section_name){
+				return $option;
 			}
+
+			return [];
 		}
 
-		return false;
+		$option = model('Option') -> get_option($name);
+
+		return $option;
 	}
 
-	public function setMeta($name, $val){
-		return $this -> set(['meta_name' => $name, 'meta_value' => $val]);
+	public function setMeta($name, $value, $about_meta = false){
+		return model('Option') -> set_option($name, $value, $this -> section_name, $about_meta);
 	}
 
-	public function updateMeta($name, $val){
-		return $this -> update(['meta_name' => $name, 'meta_value' => $val], ['meta_name', '=', $name]);
-	}
-
-	public function removeMeta($name){
-		return $this -> remove(['meta_name', '=', $name]);
+	public function updateMeta($name, $val, $about_meta = false){
+		return $this -> setMeta($name, $val, $about_meta);
 	}
 
 	public function allMeta(){
 		return $this -> all();
-	}
-
-	public function issetMeta($name){
-		if(!count($this -> metaCache)){
-			$all = $this -> allMeta();
-			$this -> metaCache = $all;
-		}else{
-			$all = $this -> metaCache;
-		}
-
-		foreach($all as $i => $item){
-			if($item['meta_name'] == $name){
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	public function init(){
-		
-		$base = require('app/basemetadata.php');
-
-		foreach($base as $name => $val){
-			if($this -> issetMeta($name)){
-				continue;
-			}
-			$this -> setMeta($name, $val);
-		}
-
-		return true;
-	}
-
-	public function get_title($pagename){
-		
-	}
-
-	public function get_keywords($pagename){
-		
-	}
-
-	public function get_description($pagename){
-		
 	}
 
 	public function getTextBlocksList(){
@@ -99,10 +49,10 @@ class Meta extends \Extend\Model{
 		$this -> updateMeta($meta_name, $num);
 	}
 
-	// public function get_main_pages(){
-	//    $pages = json_decode($this -> getMeta('main-pages'), true);
-	//    $mainpagelist = array_keys($pages);
-	//    return ['mainPageList' => $mainpagelist, 'mainpages' => $pages];
-	// }
+	public function set_meta_from_arr($meta){
+		if(!isset($meta['about_option'])) 
+			$meta['about_option'] = false;
+		return $this -> setMeta($meta['name'], $meta['value'], $meta['about_option']);
+	}
 
 }

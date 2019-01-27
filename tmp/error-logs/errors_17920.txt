@@ -1,0 +1,4 @@
+[2019-01-24 19:40:53] E_WARNING (code 2) | include_once(./resources/view/magic-sea/init.php): failed to open stream: No such file or directory IN FILE G:\server\OSPanel\domains\rating.engine\app\events.php IN LINE 55
+-------------------------------------------------
+[2019-01-24 19:40:53] E_WARNING (code 2) | include_once(): Failed opening './resources/view/magic-sea/init.php' for inclusion (include_path='.;g:/server/ospanel/modules/php/PHP-7.1-x64;g:/server/ospanel/modules/php/PHP-7.1-x64/PEAR/pear') IN FILE G:\server\OSPanel\domains\rating.engine\app\events.php IN LINE 55
+==================================================================================================

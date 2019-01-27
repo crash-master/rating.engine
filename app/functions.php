@@ -228,3 +228,20 @@ function get_setting($name){
 function get_option($name){
 	return model('Option') -> get_by_name_value($name);
 }
+
+function content_block_register($title, $alias, $default_content = '', $about_block = ''){
+	return model('Content_block') -> register_block($title, $alias, $default_content, $about_block);
+}
+
+function get_content_block($alias, $full = false){
+	$block = model('Content_block') -> get_block_by_alias($alias);
+	return $full ? $block : $block['content'];
+}
+
+function get_metrica(){
+	return model('Meta') -> getMeta('metrica');
+}
+
+function get_sitename(){
+	return model('Meta') -> getMeta('sitename');
+}

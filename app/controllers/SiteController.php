@@ -12,6 +12,7 @@ class SiteController extends \Extend\Controller{
         $profile = model('Profile') -> get(['where' => ['id', '=', $profileid]]);
         $site = model('Site') -> get(['where' => ['profileid', '=', $profileid]]);
         model('Site') -> update(['count_visits' => $site['count_visits'] + 1], ['id', '=', $site['id']]);
+        model('Meta') -> incrementField('count_personal_site_visits');
         return redirect(linkToLink($profile['site']));
     }
 
@@ -29,8 +30,8 @@ class SiteController extends \Extend\Controller{
         return model('Media') -> get_src(model('Media') -> get_media($site['screen'], 'sm'));
     }
 
-		public function auto_set_site_thumbnail($siteid){
-			model('Site') -> make_site_screen($siteid);
-		}
+	public function auto_set_site_thumbnail($siteid){
+		model('Site') -> make_site_screen($siteid);
+	}
 
 }

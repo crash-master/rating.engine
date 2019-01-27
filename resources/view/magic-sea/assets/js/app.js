@@ -422,7 +422,7 @@ var drawRating = function(data){
 			'<i class="m-icon dislike"></i> ' + data[i].count_dislike + ' '+
 			'<i class="m-icon comment-text-multiple-blue"></i> ' + count_review + '</div>' +
 			'<div class="top-timestamp">' + data[i].timestamp + '</div>' +
-			'<div class="top-btn-show"><a href="' + data[i]['to-profile'] + '" class="btn-profile-show">Посмотреть <i class="m-icon eye"></i></a></div>' +
+			'<div class="top-btn-show"><a href="' + data[i]['to_profile'] + '" class="btn-profile-show">Посмотреть <i class="m-icon eye"></i></a></div>' +
 			'</li>'
 	}
 

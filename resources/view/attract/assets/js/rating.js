@@ -40,6 +40,7 @@ var Rating = function(){
 	}
 
 	this.render = function(data){
+    console.log(data);
     var html = '';
     for(var i in data){
       if(typeof data[i]['id'] == 'undefined'){
@@ -94,9 +95,9 @@ var Rating = function(){
 
               '<div class="col-12 col-lg-4 col-xl-4">' +
                 '<div class="top stats txt-grey-dark">' +
-                  '<i class="m-icon thumb-up-green"></i> ' + data[i].count_like +
-                  '<i class="m-icon thumb-down-red"></i> ' + data[i].count_dislike +
-                  '<i class="m-icon thumbs-up-down"></i> ' + data[i].count_neutral +
+                  '<i class="mdi mdi-thumb-up font-color-green"></i>&nbsp;&nbsp;' + data[i].count_like +
+                  '&nbsp;&nbsp;<i class="mdi mdi-thumb-down font-color-red"></i>&nbsp;&nbsp;' + data[i].count_dislike +
+                  '&nbsp;&nbsp;<i class="mdi mdi-thumbs-up-down font-color-grey"></i>&nbsp;&nbsp;' + data[i].count_neutral +
                 '</div>' +
                 '<div class="bottom timestamp txt-grey">' +
                   'Добавлен ' + data[i].timestamp +

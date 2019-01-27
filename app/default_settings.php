@@ -30,5 +30,20 @@ return [
 		'name' => 'monitor_flag',
 		'value' => 'on',
 		'about_setting' => 'Флаг активности монитора'
+	],
+	[
+		'name' => 'password',
+		'value' => 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', // root
+		'about_setting' => 'Пароль от админки'
+	],
+	[
+		'name' => 'sitemap_time_period',
+		'value' => '2',
+		'about_setting' => 'Количество итераций построения карты сайта'
+	],
+	[
+		'name' => 'sitemap_flag',
+		'value' => 'on',
+		'about_setting' => 'Флаг включения генератора карты сайта'
 	]
 ];

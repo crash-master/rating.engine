@@ -20,11 +20,10 @@ class IndexController extends \Extend\Controller{
 	public function admin_header(){
 		$current_route = '/' . Router::getUrl();
 		$nav_items = [
-			['action' => 'MetaController@meta_page', 'icon_html' => '<i class="fa fa-info-circle" aria-hidden="true"></i>', 'title' => 'Мета информация'],
 			['action' => 'PageController@admin_page', 'icon_html' => '<i class="fa fa-window-maximize" aria-hidden="true"></i>', 'title' => 'Страницы'],
 			['action' => 'ArticleController@admin_article_list_page', 'icon_html' => '<i class="fa fa-thumb-tack" aria-hidden="true"></i>', 'title' => 'Статьи'],
 			['action' => 'MediaController@admin_page', 'icon_html' => '<i class="fa fa-picture-o" aria-hidden="true"></i>', 'title' => 'Изображения', 'linkTo_second_ags' => ['page_num' => 1]],
-			['action' => 'TBController@admin_page', 'icon_html' => '<i class="fa fa-file-text" aria-hidden="true"></i>', 'title' => 'Текстовые блоки'],
+			['action' => 'ContentBlockController@admin_page', 'icon_html' => '<i class="fa fa-file-text" aria-hidden="true"></i>', 'title' => 'Блоки контента'],
 			['action' => 'CatsController@admin_page', 'icon_html' => '<i class="fa fa-th-list" aria-hidden="true"></i>', 'title' => 'Категории'],
 			['action' => 'TagController@admin_page', 'icon_html' => '<i class="fa fa-tags" aria-hidden="true"></i>', 'title' => 'Теги'],
 			['action' => 'RecomendedController@admin_page', 'icon_html' => '<i class="fa fa-star" aria-hidden="true"></i>', 'title' => 'Рекомендованные'],
@@ -99,7 +98,7 @@ class IndexController extends \Extend\Controller{
 	}
 
 	public function admin(){
-		return redirect(linkTo('MetaController@meta_page'));
+		return redirect(linkTo('PageController@admin_page'));
 	}
 
 	public function admin_login_page(){
@@ -162,6 +161,15 @@ class IndexController extends \Extend\Controller{
 		$default_settings = require("app/default_settings.php");
 		foreach($default_settings as $i => $setting){
 			model('Settings') -> set_setting_from_arr($setting);
+		}
+
+		return redirect('/');
+	}
+
+	public function init_default_meta(){
+		$default_meta = require("app/default_meta.php");
+		foreach($default_meta as $i => $meta){
+			model('Meta') -> set_meta_from_arr($meta);
 		}
 
 		return redirect('/');

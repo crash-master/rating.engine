@@ -3,7 +3,6 @@ use Kernel\Model;
 
 // Admin
 route('/admin', 'IndexController@admin');
-route('/admin/meta', 'MetaController@meta_page');
 route('/admin/logout', 'IndexController@admin_logout');
 route('/admin/login-page', 'IndexController@admin_login_page');
 route('/admin/pages', 'PageController@admin_page');
@@ -27,9 +26,9 @@ route('/admin/moderation/create-review/reject/{id}', 'ReviewController@reject');
 route('/admin/moderation/create-comment', 'CommentController@moderation');
 route('/admin/moderation/create-comment/confirm/{id}', 'CommentController@confirm');
 route('/admin/moderation/create-comment/reject/{id}', 'CommentController@reject');
-route('/admin/textblocks', 'TBController@admin_page');
-route('/admin/textblocks/edit/{blockname}', 'TBController@tb_edit_page');
-route('/admin/textblocks/update', 'TBController@update');
+route('/admin/content-blocks', 'ContentBlockController@admin_page');
+route('/admin/api/content-blocks/get-block/{block_alias}', 'ContentBlockController@json_block');
+route('block-alias', 'ContentBlockController@update', '/admin/content-blocks/update');
 route('/admin/cats', 'CatsController@admin_page');
 route('/admin/cats/remove/{id}', 'CatsController@remove');
 route('/admin/cats/update/{id}/{colname}/{val}', 'CatsController@update'); //api

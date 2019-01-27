@@ -8,7 +8,15 @@ class SettingsController{
 		foreach($settings as $i => $setting){
 			$settings[$setting['name']] = $setting['value'];
 		}
-		return view('admin/settings', ['settings' => $settings]);
+
+		$metainfo = [];
+		$metainfo_fields = ['sitename', 'siteurl', 'metrica', 'description'];
+		foreach($metainfo_fields as $field){
+			$mi = model('Meta') -> getMeta($field, true);
+ 			$metainfo[$mi['name']] = $mi['value'];
+		}
+
+		return view('admin/settings', ['settings' => $settings, 'metainfo' => $metainfo]);
 	}
 
 	public function update(){
@@ -16,6 +24,10 @@ class SettingsController{
 		unset($data['update-settings']);
 		if(!isset($data['monitor_flag'])){
 			$data['monitor_flag'] = 'off';
+		}
+
+		if(!isset($data['sitemap_flag'])){
+			$data['sitemap_flag'] = 'off';
 		}
 		foreach($data as $name => $value){
 			model('Settings') -> set_setting($name, $value);

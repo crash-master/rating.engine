@@ -6,9 +6,9 @@
 			<div class="row">
 				<div class="col-2 thumb">
 					<? if($item['rating'] == 1): ?>
-						<i class="m-icon thumb-up-green"></i><? elseif($item['rating'] == -1): ?>
-						<i class="m-icon thumb-down-red"></i><? else: ?>
-						<i class="m-icon thumbs-up-down"></i>
+						<i class="mdi mdi-thumb-up font-color-green mdi-big"></i><? elseif($item['rating'] == -1): ?>
+						<i class="mdi mdi-thumb-down font-color-red mdi-big"></i><? else: ?>
+						<i class="mdi mdi-thumb-up-down font-color-grey mdi-big"></i>
 					<? endif; ?>
 				</div>
 				<div class="col-10">

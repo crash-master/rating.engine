@@ -5,6 +5,33 @@
 		<div class="jumbotron">
 		 	<h1 class="display-4">Пользовательские настройки</h1>
 			<hr class="my-4">
+			<h4>Основные настройки сайта</h4>
+			<form action="/admin/meta/save/main-meta" method="post">
+				<input type="hidden" name="main-meta">
+			  <div class="form-group">
+				<label>Название сайта</label>
+				<input type="text" class="form-control" name="sitename" placeholder="Название сайта" value="<?= $metainfo['sitename'] ?>">
+			  </div>
+			  <div class="form-group">
+				<label>Дефолтное описание <small>(Будет использовано на страницах без описания)</small></label>
+				<textarea class="form-control" rows="3" name="description" placeholder="Дефолтное описание"><?= $metainfo['description'] ?></textarea>
+			  </div>
+			  <div class="form-group">
+				<label>URL сайта</label>
+				<input type="text" class="form-control" name="siteurl" placeholder="URL сайта" value="<?= $metainfo['siteurl'] ?>">
+			  </div>
+			  <div class="form-group">
+				<label>Код метрики</label>
+				<textarea class="form-control" rows="3" name="metrica" placeholder="Код метрики"><?= $metainfo['metrica'] ?></textarea>
+			  </div>
+			  <div class="form-group">
+				<labe>Пароль от админки</label>
+				<input type="password" class="form-control" placeholder="Пароль" name="password">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Сохранить</button>
+			</form>
+			<hr class="my-4">
+			<h4>Дополнительные настройки сайта</h4>
 			<form action="<?= linkTo('SettingsController@update') ?>" method="post">
 				<input type="hidden" name="update-settings">
 				<div class="row">
@@ -46,6 +73,15 @@
 							<div class="custom-control custom-checkbox">
 			                    <input type="checkbox" class="custom-control-input" name="monitor_flag" id="monitor" <? if($settings['monitor_flag'] == 'on'): ?>checked=""<? endif ?>>
 			                    <label class="custom-control-label" for="monitor">Включить монитор</label>
+		            		</div>
+						</div>
+						<div class="form-group">
+							<label>Настройки sitemap.xml</label>
+							<label for="monitor_time_period">Частота обновления карты (в день)</label>
+		                    <input type="number" step="1" min="1" max="24" value="<?= $settings['sitemap_time_period'] ?>" class="form-control" name="sitemap_time_period" id="sitemap_time_period">
+							<div class="custom-control custom-checkbox">
+			                    <input type="checkbox" class="custom-control-input" name="sitemap_flag" id="sitemap" <? if($settings['sitemap_flag'] == 'on'): ?>checked=""<? endif ?>>
+			                    <label class="custom-control-label" for="sitemap">Включить построение карты</label>
 		            		</div>
 						</div>
 					</div>

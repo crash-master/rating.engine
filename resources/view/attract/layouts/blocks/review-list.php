@@ -10,9 +10,9 @@
 								<div class="row">
 									<div class="col-2 thumb">
 										<? if($reviews[$i]['rating'] == 1): ?>
-											<i class="m-icon thumb-up-green"></i><? elseif($reviews[$i]['rating'] == -1): ?>
-											<i class="m-icon thumb-down-red"></i><? else: ?>
-											<i class="m-icon thumbs-up-down"></i>
+											<i class="mdi mdi-thumb-up font-color-green mdi-big"></i><? elseif($reviews[$i]['rating'] == -1): ?>
+											<i class="mdi mdi-thumb-down font-color-red mdi-big"></i><? else: ?>
+											<i class="mdi mdi-thumbs-up-down font-color-grey mdi-big"></i>
 										<? endif; ?>
 									</div>
 									<div class="col-10">
@@ -64,16 +64,16 @@
 
 										<div class="new-comment" data-review-id="<?= $reviews[$i]['id'] ?>">
 											<div class="input">
-												<i class="m-icon account"></i>
+												<i class="mdi mdi-account input-icon"></i>
 												<input type="text" name="name" placeholder="Ваше имя" value="<?= \Kernel\Sess::get('username') ?>">
 											</div>
 
 											<div class="input textarea">
-												<i class="m-icon message-text"></i>
+												<i class="mdi mdi-message-text input-icon"></i>
 												<textarea type="text" name="message" placeholder="Ваш комментарий"></textarea>
 											</div><br>
 
-											<button class="std-btn icon-fix send-btn disable">Отправить <i class="m-icon arrow-right-red"></i> <i class="m-icon arrow-right"></i></button>
+											<button class="std-btn icon-fix send-btn disable">Отправить <i class="mdi mdi-arrow-right mdi-fix"></i></button>
 										</div>
 									</div>
 

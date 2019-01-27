@@ -2,9 +2,7 @@
 <div class="container">
 	<div id="home" class="page">
 		<div class="check-block">
-			<!-- <button class="check-btn">Проверить мага</button> -->
-			<h3>Единый рейтинг магов и экстрасенсов</h3>
-			<p>Самый полный каталог специалистов в области эзотерики со всего СНГ.<br>Реальные отзывы людей</p>
+			<?= get_content_block('site_header_on_home_page') ?>
 		</div>
 
 		<div class="block-container">

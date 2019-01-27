@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: /sitemap.xml
+Host: https://astralmagic.ru

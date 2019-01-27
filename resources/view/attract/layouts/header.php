@@ -33,8 +33,8 @@
 			</div>
 			<div class="col-2">
 				<div class="top-btn-group">
-					<button class="new-user-open"><i class="m-icon plus"></i><i class="m-icon plus-red"></i></button>
-					<button class="search-open"><i class="m-icon magnify"></i><i class="m-icon magnify-red"></i></button>
+					<button class="new-user-open"><i class="mdi mdi-plus"></i></button>
+					<button class="search-open"><i class="mdi mdi-magnify"></i></button>
 				</div>
 			</div>
 		</div>

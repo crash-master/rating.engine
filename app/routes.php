@@ -12,15 +12,15 @@ use Kernel\Model;
 Router::_404('IndexController@_404');
 route('/', 'IndexController@index');
 route('/secret/app/init', 'IndexController@app_init');
-route('/secret/app/default_option', 'IndexController@init_default_options');
+route('/secret/app/default_options', 'IndexController@init_default_options');
 route('/secret/app/default_settings', 'IndexController@init_default_settings');
+route('/secret/app/default_meta', 'IndexController@init_default_meta');
 
 route('/page/{pagename}', 'PageController@text_page');
 route('/page/rating', 'RatingController@page');
 route('/page/tag/{slug}', 'TagController@page');
 route('/profile/{slug}', 'ProfileController@page');
 route('main-meta', 'MetaController@save_main_meta', '/admin/meta/save/main-meta');
-route('social-links', 'MetaController@save_social_links', '/admin/meta/save/social-links');
 route('/redirect/original-url/{profileid}','SiteController@incrementSiteVisit');
 route('/waiting/for/key/{key}', 'ReviewController@waiting_key_for_remove');
 route('/article/{slug}', 'ArticleController@single_article');
@@ -47,4 +47,8 @@ route('/app/transport-review-images', 'IndexController@transport_review_image_to
 
 route('/monitor', function(){
 	return model('Monitor') -> fix_all();
+});
+
+route('/map', function(){
+	return model('Sitemap') -> generate();
 });

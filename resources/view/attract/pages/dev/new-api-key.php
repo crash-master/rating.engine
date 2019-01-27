@@ -9,16 +9,16 @@
 					<? if(isset($create)): ?>
 					<div class="new-api-key">
 						<div class="input">
-							<i class="m-icon email"></i>
+							<i class="mdi mdi-email input-icon"></i>
 							<input type="text" name="email" placeholder="Ваш E-mail">
 						</div>
 
 						<div class="input">
-							<i class="m-icon web"></i>
+							<i class="mdi mdi-web input-icon"></i>
 							<input type="text" name="access_url" placeholder="Url которому будет выдан API key">
 						</div>
 						<br>
-						<button class="std-btn icon-fix send-btn disable">Создать <i class="m-icon arrow-right-red"></i> <i class="m-icon arrow-right"></i></button>
+						<button class="std-btn send-btn disable">Создать <i class="mdi mdi-arrow-right mdi-fix"></i></button>
 					</div>
 					<? elseif(isset($success)): ?>
 						<span style="font-size: 6rem">На указаную почту было отправлено письмо для<br> подтверждения активации API key</span>
