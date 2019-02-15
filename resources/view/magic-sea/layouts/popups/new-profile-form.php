@@ -34,6 +34,7 @@
 					</div>
 					<div class="send">
 						<button class="send-form disable">Добавить <i class="m-icon arrow-right"></i></button>
+						<div class="lds-ring hid" id="create-profile-loader"><div></div><div></div><div></div><div></div></div>
 					</div>
 				</div>
 			</div>

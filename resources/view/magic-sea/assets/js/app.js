@@ -161,12 +161,14 @@ $(document).ready(function(){
 		}
 
 		$('.add-user-container .send-form').addClass('disable');
+		loaderShow('#create-profile-loader');
 
 		$.post('/api/create-profile', data, function(response){
 			$(container).find('[name="site"]').val('');
 			$(container).find('[name="name"]').val('');
 			$(container).find('.agree-label').trigger('click');
 			$('.global-background').trigger('click');
+			loaderHid('#create-profile-loader');
 			setTimeout(function(){
 				showNotif('Новый маг отправлен на модерацию', 4000);
 			}, 300);
@@ -429,3 +431,12 @@ var drawRating = function(data){
 	$('#rating .top-list').append(html);
 
 }
+
+function loaderShow(selector){
+	$(selector).removeClass('hid');
+}
+
+function loaderHid(selector){
+	$(selector).addClass('hid');
+}
+

@@ -23,6 +23,8 @@
 		<script type="text/javascript" src="/resources/view/magic-sea/assets/js/check-site-on-exists.js"></script>
 		<script type="text/javascript" src="/resources/view/magic-sea/assets/js/app.js"></script>
 
+		<link rel="icon" href="/resources/view/magic-sea/assets/imgs/favicon.png" type="image/png" />
+
 </head>
 <body>
 	

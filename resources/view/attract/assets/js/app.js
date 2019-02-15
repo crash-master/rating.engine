@@ -37,7 +37,8 @@ $(document).ready(function(){
 
 // excerpt news description
 
-	excerptNewsItemsOnHomePage()
+	excerptNewsItemsOnHomePage();
+	excerptLastProfiles();
 
 
 	mainEventsInit();
@@ -87,6 +88,8 @@ var addNewProfile = function(){
 			return false;
 		}
 
+		loaderShow('#create-profile-loader');
+
 		$('.new-user .send-btn').addClass('disable').attr('disable');
 
 		$.post('/api/create-profile', data, function(response){
@@ -96,6 +99,7 @@ var addNewProfile = function(){
 			$(container).find('.new-user-form').fadeOut('fast', function(){
 				$(container).find('.notification').fadeIn('fast');
 			});
+			loaderHid('#create-profile-loader');
 			setTimeout(function(){
 				$('.hidden-bg').trigger('click');
 				setTimeout(function(){
