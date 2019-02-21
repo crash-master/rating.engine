@@ -16,6 +16,10 @@ route('/secret/app/default_options', 'IndexController@init_default_options');
 route('/secret/app/default_settings', 'IndexController@init_default_settings');
 route('/secret/app/default_meta', 'IndexController@init_default_meta');
 
+route('/secret/app/new_options', 'IndexController@init_new_options');
+route('/secret/app/new_settings', 'IndexController@init_new_settings');
+route('/secret/app/new_meta', 'IndexController@init_new_meta');
+
 route('/page/{pagename}', 'PageController@text_page');
 route('/page/rating', 'RatingController@page');
 route('/page/tag/{slug}', 'TagController@page');

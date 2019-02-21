@@ -45,5 +45,10 @@ return [
 		'name' => 'sitemap_flag',
 		'value' => 'on',
 		'about_setting' => 'Флаг включения генератора карты сайта'
+	],
+	[
+		'name' => 'extra_to_title',
+		'value' => '',
+		'about_setting' => 'Добавочная информация к тайтлу профиля'
 	]
 ];

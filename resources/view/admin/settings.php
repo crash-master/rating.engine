@@ -13,6 +13,10 @@
 				<input type="text" class="form-control" name="sitename" placeholder="Название сайта" value="<?= $metainfo['sitename'] ?>">
 			  </div>
 			  <div class="form-group">
+				<label>Добавочный к title <small>(Будет добавлено к тайтлу страницы профиля)</small></label>
+				<textarea class="form-control" rows="2" name="extra_to_title" placeholder="Добавочный к title"><?= $metainfo['extra_to_title'] ?></textarea>
+			  </div>
+			  <div class="form-group">
 				<label>Дефолтное описание <small>(Будет использовано на страницах без описания)</small></label>
 				<textarea class="form-control" rows="3" name="description" placeholder="Дефолтное описание"><?= $metainfo['description'] ?></textarea>
 			  </div>

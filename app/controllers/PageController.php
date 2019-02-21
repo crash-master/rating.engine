@@ -53,8 +53,10 @@ class PageController extends \Extend\Controller{
 
 	public function page_meta_component($profile = false){
 		if($profile){
+			$extra_to_title = model('Option') -> get_option('extra_to_title');
+			$title = is_null($extra_to_title) ? $profile['name'] : $profile['name'] . ' - ' . $extra_to_title;
 			$page_meta = [
-				'title' => $profile['name'],
+				'title' => $title,
 				'description' => strip_tags($profile['site_obj']['description']),
 				'keywords' => $profile['name']
 			];

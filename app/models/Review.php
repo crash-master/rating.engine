@@ -76,7 +76,11 @@ class Review extends \Extend\Model{
 					if(empty($review['image']) or strpos($review['image'], 'base64')){
 						break;
 					}
-					$review['media'] = model('Media') -> get_media($review['image'], 'sm');
+					if(function_exists('theme_settings')){
+						$theme_settings = theme_settings();
+					}
+					$reviews_media_size = (isset($theme_settings) and isset($theme_settings['reviews_thumbnail_size'])) ? $theme_settings['reviews_thumbnail_size'] : 'md';
+					$review['media'] = model('Media') -> get_media($review['image'], $reviews_media_size);
 					$review['image'] = model('Media') -> get_src($review['media']);
 				break;
 			}

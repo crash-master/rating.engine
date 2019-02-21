@@ -111,10 +111,10 @@
 	color: #111;
 }
 
-#single .comments-list{
+/*#single .comments-list{
 	overflow: auto;
     max-height: 850px;
-}
+}*/
 
 #single .comments-list::-webkit-scrollbar{
 	width: 12px;

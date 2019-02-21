@@ -673,6 +673,30 @@
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
+		<loc>/profile/astral_magic</loc>
+		<lastmod>2019-02-15</lastmod>
+		<priority>1</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>/profile/loading.io</loc>
+		<lastmod>2019-02-15</lastmod>
+		<priority>1</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>/profile/git_hub</loc>
+		<lastmod>2019-02-15</lastmod>
+		<priority>1</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>/profile/</loc>
+		<lastmod>2019-02-15</lastmod>
+		<priority>1</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
 		<loc>/article/article_thumbnail</loc>
 		<lastmod>2018-11-30</lastmod>
 		<priority>.8</priority>

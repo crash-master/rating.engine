@@ -14,7 +14,7 @@ class Settings{
 			return $option['value'];
 		}
 
-		return 'Not found setting ' . $name;
+		return null;
 	}
 
 	public function set_setting_from_arr($setting){

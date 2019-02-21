@@ -175,4 +175,37 @@ class IndexController extends \Extend\Controller{
 		return redirect('/');
 	}
 
+	public function init_new_options(){
+		$default_options = require("app/default_options.php");
+		foreach($default_options as $i => $option){
+			if(!model('Option') -> get_option($option['name'])){
+				model('Option') -> set_option_from_arr($option);
+			}
+		}
+
+		return redirect('/');
+	}
+
+	public function init_new_settings(){
+		$default_settings = require("app/default_settings.php");
+		foreach($default_settings as $i => $setting){
+			if(is_null(model('Option') -> get_option($setting['name']))){
+				model('Settings') -> set_setting_from_arr($setting);
+			}
+		}
+
+		return redirect('/');
+	}
+
+	public function init_new_meta(){
+		$default_meta = require("app/default_meta.php");
+		foreach($default_meta as $i => $meta){
+			if(!model('Option') -> get_option($meta['name'])){
+				model('Meta') -> set_meta_from_arr($meta);
+			}
+		}
+
+		return redirect('/');
+	}
+
 }

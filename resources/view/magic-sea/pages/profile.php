@@ -15,7 +15,7 @@
 
 		<div class="page-part-container" id="info">
 			<div class="row">
-				<div class="col-12 col-lg-6 col-xl-6">
+				<div class="col-12">
 					<div class="screen-container">
 						<? if($profile['site_obj']['screen']): ?>
 							<img src="<?= $profile['site_obj']['screen'] ?>" class="screen" alt="Icon">
@@ -71,7 +71,7 @@
 						<span class="right-part"><i class="m-icon eye-blue"></i> <big><b style="position:  relative;top: -3px;"><?= $profile['count_views'] ?></b></big></span>
 					</div>
 				</div>
-				<div class="col-12 col-lg-6 col-xl-6">
+				<div class="col-12" style="margin-top: 20px;">
 					<?php vjoin('magic-sea/layouts/reviews') ?>
 					<div class="open-add-comments-form-container">
 						<button class="send-form open-add-comments-form">Добавить отзыв<i class="m-icon comment-text"></i></button>

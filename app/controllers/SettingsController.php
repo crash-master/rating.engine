@@ -10,7 +10,7 @@ class SettingsController{
 		}
 
 		$metainfo = [];
-		$metainfo_fields = ['sitename', 'siteurl', 'metrica', 'description'];
+		$metainfo_fields = ['sitename', 'siteurl', 'metrica', 'description', 'extra_to_title'];
 		foreach($metainfo_fields as $field){
 			$mi = model('Meta') -> getMeta($field, true);
  			$metainfo[$mi['name']] = $mi['value'];
