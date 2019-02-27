@@ -100,6 +100,8 @@ class Profile extends \Extend\Model{
 			$theme_settings = theme_settings();
 		}
 		$profile_media_size = (isset($theme_settings) and isset($theme_settings['profile_thumbnail_size'])) ? 'media_' . $theme_settings['profile_thumbnail_size'] : 'media_md';
+		$profile['timestamp_src'] = $profile['timestamp'];
+		list($profile['timestamp_date'], $profile['timestamp_time']) = explode(' ', $profile['timestamp_src']);
 		$profile = $this -> fields_transform($profile, ['site_link', 'timestamp', 'site_obj', 'cat', 'site', 'domen_created', 'number_txt', 'number', 'tags', $profile_media_size, 'category']);
 
 		model('Profile') -> update(['count_views' => $profile['count_views'] + 1], ['slug', '=', $slug]);

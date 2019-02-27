@@ -56,3 +56,5 @@ route('/monitor', function(){
 route('/map', function(){
 	return model('Sitemap') -> generate();
 });
+
+route('TestingController');

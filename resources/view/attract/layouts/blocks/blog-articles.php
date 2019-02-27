@@ -43,7 +43,7 @@
 						</div>
 					</div>
 
-					<button href="http://news.Profile2-master/" onclick="document.location = this.getAttribute('href')" class="std-a std-btn more-news">Ещё статьи <i class="mdi mdi-arrow-right mdi-fix"></i></button>
+					<button href="http://news.astralmagic.ru/" onclick="document.location = this.getAttribute('href')" class="std-a std-btn more-news">Ещё статьи <i class="mdi mdi-arrow-right mdi-fix"></i></button>
 					
 				</div>
 			</div>

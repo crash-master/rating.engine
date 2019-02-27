@@ -1,6 +1,6 @@
 <section class="reviews">
 		<? $count_reviews = count($reviews) ?>
-		<h2 class="block-title">Отзывы <small class="txt-grey-light">(<?= $count_reviews ?> шт)</small></h2>
+		<h2 class="block-title"><?= $profile['name'] ?> отзывы <small class="txt-grey-light">(<?= $count_reviews ?> шт)</small></h2>
 		<div class="row">
 			<? if(count($reviews)): $i = 0; ?>
 				<? for($n=0; $n<2; $n++): ?>
@@ -28,7 +28,7 @@
 										<div class="review-foot">
 											<span class="txt-grey-light timestamp">Оставлен <?= $reviews[$i]['timestamp'] ?></span> <a href="#" class="std-a">Коментарии <span class="txt-grey">(<?= count($reviews[$i]['comments']) ?>)</span></a>
 											<? if(is_admin()): ?>
-												---- <a href="<?= linkTo('ReviewController@remove', ['id' => $reviews[$i]['id']]); ?>" class="std-a danger-link">Удалить</a>
+												---- <a href="<?= linkTo('ReviewController@review_edit', ['id' => $reviews[$i]['id']]); ?>" class="std-a danger-link">Редактировать</a>
 											<? endif; ?>
 										</div>
 									</div>

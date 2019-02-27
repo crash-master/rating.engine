@@ -70,6 +70,17 @@
 								<input type="text" id="site" class="form-control" name="site" placeholder="Редактирование url сайта" value="<?= $profile['site'] ?>">
 							</div>
 							<div class="form-group">
+								<label for="timestamp_date">Дата публикации</label>
+								<div class="row">
+									<div class="col-12 col-lg-6 col-xl-6">
+										<input type="date" id="timestamp_date" class="form-control" name="timestamp_date" value="<?= $profile['timestamp_date'] ?>">
+									</div>
+									<div class="col-12 col-lg-6 col-xl-6">
+										<input type="time" id="timestamp_time" class="form-control" name="timestamp_time" value="<?= $profile['timestamp_time'] ?>">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="catid">Выбор категории</label>
 								<select name="catid" id="catid" class="form-control">
 									<?php foreach ($categories as $i => $cat): ?>

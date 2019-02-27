@@ -89,4 +89,11 @@ class Review extends \Extend\Model{
 		return $review;
 	}
 
+	public function get_review_for_edit($review_id){
+		$review = $this -> get(['id', '=', $review_id]);
+		$review = $this -> fields_transform($review, ['profile']);
+		list($review['timestamp_date'], $review['timestamp_time']) = explode(' ', $review['timestamp']);
+		return $review;
+	}
+
 }

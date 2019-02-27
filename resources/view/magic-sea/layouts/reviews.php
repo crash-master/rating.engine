@@ -1,5 +1,5 @@
 <div id="comments">
-	<div class="count-comments">Количество отзывов <strong><big><?= count($reviews) ?></big></strong></div>
+	<div class="count-comments">Отзывы о <?= $profile['name'] ?> <strong><big><?= count($reviews) ?> шт.</big></strong></div>
 	<div class="comments-list row">
 		<? if(count($reviews)): $i = 0; ?>
 			<? foreach($reviews as $i => $item): $i++; ?>
@@ -64,9 +64,7 @@
 								</div>
 								<div class="col-4" style="text-align: right">
 									<? if(is_admin()): ?>
-										---- <a href="<?= linkTo('ReviewController@remove', ['id' => $item['id']]); ?>" class="std-a danger-link">Удалить</a>
-									<? else: ?>
-										<!-- <button class="comment-delete" data-id="<?= $item['id'] ?>">Удалить <i class="m-icon delete"></i></button> -->
+										---- <a href="<?= linkTo('ReviewController@review_edit', ['id' => $item['id']]); ?>" class="btn-edit-review">Редактировать</a>
 									<? endif; ?>
 								</div>
 							</div>

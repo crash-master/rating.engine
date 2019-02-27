@@ -31,7 +31,8 @@ class Site extends \Extend\Model{
 
 	public function getMetaDataFromSite($url){
 		include_once("./app/vendor/simple_html_dom.php");
-		$html = @file_get_contents($url);
+		$response = get_web_page($url);
+		$html = $response['content'];
 		if(!$html){
 			return [
 				'title' => 'Неизвестно',
@@ -78,11 +79,15 @@ class Site extends \Extend\Model{
 	}
 
 	 public function domen_created($profile){ // domen_created
-		$domen = urlencode(url_without_prefix($profile['site']));
-		$url = 'http://api.whois.vu/?q='.$domen;
-		$result = json_decode(file_get_contents($url), true);
-		if($result['created']){
-			$this -> update(['domen_created' => $result['created']], ['profileid', '=', $profile['id']]);
+		$domain = urlencode(url_without_prefix($profile['site']));
+		$apiKey = 'at_twCZ1Iyep1tM6bzWuQjBbJ0g4qiu3';
+		$url = "https://www.whoisxmlapi.com/whoisserver/WhoisService?domainName={$domain}&apiKey={$apiKey}&outputFormat=JSON";
+		$response = get_web_page($url);
+		$res = json_decode($response['content'], true);
+		$result = strtotime($res['WhoisRecord']['createdDate']);
+
+		if($result){
+			$this -> update(['domen_created' => $result], ['profileid', '=', $profile['id']]);
 		}else{
 			$this -> update(['domen_created' => "Неизвестно"], ['profileid', '=', $profile['id']]);
 		}
@@ -109,7 +114,9 @@ class Site extends \Extend\Model{
 		$site = $this -> get(['id', '=', $siteid]);
 		$profile = model("Profile") -> get(['id', '=', $site['profileid']]);
 		$url = $profile['site'];
-		$screen = file_get_contents("http://mini.s-shot.ru/1366x768/800/png/?{$url}");
+		$url = "https://mini.s-shot.ru/1366x768/800/png/?{$url}";
+		$response = get_web_page($url);
+		$screen = $response['content'];
 		$base64 = base64_encode($screen);
 		if(empty($base64)){
 			return false;

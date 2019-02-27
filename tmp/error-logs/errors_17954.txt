@@ -1,0 +1,10 @@
+[2019-02-27 20:10:53] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\profile_page.php IN LINE 125
+==================================================================================================
+[2019-02-27 20:11:01] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\profile_page.php IN LINE 125
+==================================================================================================
+[2019-02-27 20:11:08] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\profile_page.php IN LINE 125
+==================================================================================================
+[2019-02-27 20:11:17] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\profile_page.php IN LINE 125
+==================================================================================================
+[2019-02-27 20:16:29] E_WARNING (code 2) | Invalid argument supplied for foreach() IN FILE G:\server\OSPanel\domains\rating.engine\resources\view\admin\profile_page.php IN LINE 125
+==================================================================================================

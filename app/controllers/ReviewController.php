@@ -57,5 +57,17 @@ class ReviewController extends \Extend\Controller{
 		$profile = model('Profile') -> get(['where' => ['id', '=', $review['profileid']]]);
 		return redirect(linkTo('ProfileController@page', ['slug' => $profile['slug']]));
 	}
+
+	public function review_edit($id){
+		$review = model('Review') -> get_review_for_edit($id);
+		return view('admin/review-edit', compact('review'));
+	}
+
+	public function update_review(){
+		$post = Request::post();
+		$post['timestamp'] = $post['timestamp_date'] . ' ' . $post['timestamp_time'];
+		model('Review') -> update($post, ['id', '=', $post['review_id']]);
+		return redirect(linkTo('ReviewController@review_edit', ['id' => $post['review_id']]));
+	}
 	
 }

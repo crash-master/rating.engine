@@ -76,13 +76,14 @@
 	<div class="col-12 bottom-border"></div>
 	<!-- recomended -->
 	<? vjoin('Recomended') ?>
-	<div class="col-12 bottom-border"></div>
-	<!-- new review form -->
-	<? vjoin('attract/layouts/blocks/new-review') ?>
 
 	<div class="col-12 bottom-border"></div>
 	<!-- review list -->
 	<? vjoin('attract/layouts/blocks/review-list') ?>
+
+	<div class="col-12 bottom-border"></div>
+	<!-- new review form -->
+	<? vjoin('attract/layouts/blocks/new-review') ?>
 
 </div>
 

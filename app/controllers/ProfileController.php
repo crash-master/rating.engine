@@ -85,6 +85,7 @@ class ProfileController extends \Extend\Controller{
 
 	public function profile_update(){
 		$data = Request::post();
+		$data['timestamp'] = $data['timestamp_date'] . ' ' . $data['timestamp_time'];
 		$data['public_flag'] = ($data['public'] == 'on') ? '1' : '0';
 		$file = $_FILES['screen']['tmp_name'];
 		if($file){

@@ -68,3 +68,5 @@ route('/admin/tags/remove/{tagid}', 'TagController@remove');
 route('/admin/tags/update/{id}/{colname}/{val}', 'TagController@update');
 route('create-tag', 'TagController@create');
 route('recomended-add', 'RecomendedController@add_new_profile', '/admin/recomended/add-new');
+route('/admin/review-edit/review_id/{id}', 'ReviewController@review_edit');
+route('update-review', 'ReviewController@update_review', '/admin/update_review');
