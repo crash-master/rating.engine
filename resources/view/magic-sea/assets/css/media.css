@@ -95,6 +95,10 @@
 		overflow: initial;
 		max-height: initial;
 	}
+
+	#single .screen-container .screen.fixed{
+		position: static !important;
+	}
 }
 
 @media (max-width: 768px){
@@ -173,6 +177,7 @@
 		width: 32px;
 		height: 32px;
 	}
+
 }
 
 @media (max-width: 576px){

@@ -15,6 +15,29 @@ $(document).ready(function(){
 		}
 	});
 
+	if(document.location.toString().split('profile').length > 1){
+		let container = $('.screen-container');
+		container.css('height', container.innerHeight() + 'px');
+
+		$(document).on('scroll', function() {
+			let heightPoint = $('.info-container').innerHeight();
+			if(heightPoint < 800){
+				heightPoint = 800;
+			}
+			console.log(heightPoint);
+		  	let s = $('html').scrollTop();
+		  	if(s > heightPoint && !$(".screen-container .screen").hasClass("fixed")){
+		  		$(".screen-container .screen").addClass('fixed').css('display', 'none');
+		  		$(".screen-container .screen").fadeIn('fast');
+		  	}
+
+		  	if(s < heightPoint && $(".screen-container .screen").hasClass("fixed")){
+		  		$(".screen-container .screen").removeClass('fixed');
+		  	}
+		});
+	}
+
+
 	check_site_on_exists();
 
 	$('.check-block .check-btn').click(function(){

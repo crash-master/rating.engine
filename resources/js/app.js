@@ -7,6 +7,14 @@ $(document).ready(function(){
 		getRating();
 	});
 
+	console.log(document.location.indexOf('profile'));
+	if(document.location.indexOf('profile') !== false){
+		$('html').on('scroll', function() {
+		  	let s = $('html').scrollTop();
+		  	console.log(s);
+		});
+	}
+
 	check_site_on_exists();
 
 	$('.check-block .check-btn').click(function(){

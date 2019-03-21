@@ -4,6 +4,9 @@
 		<i class="mdi mdi-chevron-up"></i>
 	</button>
 </footer>
+<div style="display: none">
+	<?= model('Meta') -> getMeta('metrica') ?>
+</div>
 
 </body>
 </html>

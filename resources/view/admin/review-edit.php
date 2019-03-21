@@ -49,6 +49,11 @@
 							<input type="time" name="timestamp_time" class="form-control" value="<?= $review['timestamp_time'] ?>">
 						</div>
 
+						<div class="form-group">
+							<label>Текст отзыва</label>
+							<textarea name="message" class="form-control" placeholder="Рекст отзыва" style="height: 130px"><?= $review['message'] ?></textarea>
+						</div>
+
 						<button class="btn btn-primary">Сохранить</button>
 						<a href="<?= linkTo('ReviewController@remove', ['id' => $review['id']]) ?>" class="danger-link" style="color: red; display: inine-block; margin-left: 40px">Удалить</a>
 					</form>

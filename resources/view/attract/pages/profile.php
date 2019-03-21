@@ -6,7 +6,12 @@
 			<div class="screen-container">
 				<img src="<?= ($profile['site_obj'] and !empty($profile['site_obj']['screen'])) ? $profile['site_obj']['screen'] : "/resources/view/attract/assets/imgs/screens/default-screen.jpg" ?>" class="screen">
 			</div>
-			<h3 class="txt-grey Profile-name"><span class="top number txt-grey-dark"><span><?= $profile['number_txt'] ?></span></span> <?= $profile['name'] ?></h3>
+			<h3 class="txt-grey Profile-name">
+				<span class="top number txt-grey-dark"><span><?= $profile['number_txt'] ?></span></span> <?= $profile['name'] ?>
+				<?php if (is_admin()): ?>
+					----- <a href="<?= linkTo('ProfileController@profile_edit_page') ?>?s=<?= $profile['slug'] ?>">Редактировать</a>
+				<?php endif ?>
+			</h3>
 			<noindex>
 				<a href="<?= $profile['site_link'] ?>" rel="nofollow" class="std-a site txt-red" target="_blank">
 					<?= $profile['site'] ?> <small><i class="mdi mdi-open-in-new"></i></small>

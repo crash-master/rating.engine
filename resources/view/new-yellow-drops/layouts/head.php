@@ -8,8 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	
 	<!-- CSS LIBS -->
-	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/normalize.css"> -->
-	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/bootstrap-grid.min.css"> -->
+	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/normalize.css">
+	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/bootstrap-grid.min.css"> -->
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/materialdesignicons.css">
 
 	<!-- APP CSS -->
@@ -35,9 +35,9 @@
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/article-list.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/article-read.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/profile-list.css">
-	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/profile-read.css">
+	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/profile-read.css"> -->
 
-	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/media.css"> -->
+	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/media.css">
 
 	<!-- JS LIBS -->
 	<script src="/resources/view/new-yellow-drops/assets/js/libs/jquery-3.3.1.min.js"></script>

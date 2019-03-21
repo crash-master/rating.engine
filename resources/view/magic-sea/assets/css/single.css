@@ -300,6 +300,14 @@
     transform: rotate(0deg);
 }
 
+#single .screen-container .screen.fixed{
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    width: 500px;
+    margin-left: -520px;
+}
+
 /* remove separate single pago on profile info and comments */
 
 .nav-links{

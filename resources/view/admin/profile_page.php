@@ -101,6 +101,26 @@
 						</div>
 						<div class="col-12">
 							<div class="form-group">
+								<label for="title">Заголовок сайта</label>
+								<input type="text" id="title" class="form-control" name="title" placeholder="Заголовок сайта" value="<?= $profile['site_obj']['title'] ?>">
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="row">
+								<div class="col-12 col-lg-6 col-xl-6">
+									<div class="form-group">
+										<label for="domen_created">Дата создания домена (дата)</label>
+										<input type="date" class="form-control" name="domen_created_date" id="domen_created_date" value="<?= $profile['site_obj']['domen_created_date'] ?>">
+									</div>
+								</div>
+								<div class="col-12 col-lg-6 col-xl-6">
+									<label for="domen_created">Дата создания домена (время)</label>
+									<input type="time" class="form-control" name="domen_created_time" id="domen_created_time" value="<?= $profile['site_obj']['domen_created_time'] ?>">
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
 								<label for="description">Описание</label>
 								<!-- <div id="description"><?= $profile['site_obj']['description'] ?></div> -->
 								<? vjoin('admin-layouts/quill-toolbar') ?>

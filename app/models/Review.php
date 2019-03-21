@@ -21,7 +21,7 @@ class Review extends \Extend\Model{
 	}
 
 	public function get_last_reviews(){
-		$reviews = arrayToArray(model('Review') -> get(['where' => ['public_flag', '=', '1'], 'order' => ['id', 'DESC'], 'limit' => [0, 3]]));
+		$reviews = arrayToArray(model('Review') -> get(['where' => ['public_flag', '=', '1'], 'order' => ['timestamp', 'DESC'], 'limit' => [0, 3]]));
 
 		$count = count($reviews);
 		for($i=0; $i<$count; $i++){
@@ -39,7 +39,11 @@ class Review extends \Extend\Model{
 	}
 
 	public function get_by_profile_id($profile_id){
-		$reviews = arrayToArray(model('Review') -> get(['where' => ['profileid', '=', $profile_id, 'AND', 'public_flag', '=', '1']]));
+		$order = [
+			'timestamp',
+			'DESC'
+		];
+		$reviews = arrayToArray(model('Review') -> get(['where' => ['profileid', '=', $profile_id, 'AND', 'public_flag', '=', '1'], 'order' => $order]));
 		$count = count($reviews);
 		for($i=0; $i<$count; $i++){
 			$reviews[$i] = $this -> fields_transform($reviews[$i], ['country', 'city', 'timestamp', 'media']);

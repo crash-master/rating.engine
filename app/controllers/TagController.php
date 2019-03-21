@@ -13,7 +13,7 @@ class TagController extends \Extend\Controller{
 	}
 
 	public function page($slug){
-		$tag = model('Tag') -> get(['where' => ['slug', '=', $slug]]);
+		$tag = model('Tag') -> get(['where' => ['slug', '=', urldecode($slug)]]);
 		return View::make(\Kernel\Config::get('rating-engine -> view-template') . '/pages/tag-page.php', ['tag' => $tag]);
 	}
 
@@ -30,7 +30,7 @@ class TagController extends \Extend\Controller{
 	}
 
 	public function exist($slug){
-		if(model('Tag') -> get(['where' => ['slug', '=', $slug]])){
+		if(model('Tag') -> get(['where' => ['slug', '=', urldecode($slug)]])){
 			return json_encode(['exist' => true]);
 		}
 		return json_encode(['exist' => false]);

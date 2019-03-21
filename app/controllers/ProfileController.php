@@ -87,6 +87,7 @@ class ProfileController extends \Extend\Controller{
 		$data = Request::post();
 		$data['timestamp'] = $data['timestamp_date'] . ' ' . $data['timestamp_time'];
 		$data['public_flag'] = ($data['public'] == 'on') ? '1' : '0';
+		$data['domen_created'] = strtotime($data['domen_created_date'].'T'.$data['domen_created_time']);
 		$file = $_FILES['screen']['tmp_name'];
 		if($file){
 			$media = model('Media');
