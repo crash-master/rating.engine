@@ -3,18 +3,8 @@
 <script>
 	let rating = new Rating();
 	$(document).ready(function(){
-			rating.get(<?= $tag['id'] ?>);
-			// $('#rating-order .option').on('click', function(){
-			// 	setTimeout(function(){
-			// 		console.log($('input[name="order"]').val());
-			// 		$('#rating .items-container').html('');
-			// 		$('.load-more').show();
-			// 		rating.ratingListCounter = 1;
-			// 		rating.currentCountRatingList = 0;
-			// 		rating.get(<?= $tag['id'] ?>);
-			// 	}, 300);
-			// });
-		});
+		rating.get(<?= $tag['id'] ?>);
+	});
 </script>
 
 <div class="container" id="rating">
@@ -33,6 +23,71 @@
 	<div class="preloader">
 		<img src="/resources/view/attract/assets/imgs/103.gif">
 	</div>
+
+	<? $annotation = externalCustomField() -> get_field('attract_tagid_' . $tag['id']); ?>
+	<?php if(($annotation and !empty($annotation)) or is_admin()): ?>
+		<div class="tag-annotation" style="margin-top: 30px">
+			<?= $annotation ?>
+			<?php if (is_admin()): ?>
+				<p style="text-align: right; width: 100%">
+					<a href="#" class="open-tag-annotation-editor">--- Редактировать аннотацию к тегу</a>
+				</p>
+			<?php endif ?>
+		</div>
+	<?php endif ?>
+	<?php if(is_admin()): ?>
+		<style>
+			.tag-annotation-input-container{
+				width: 100%;
+				height: 150px;
+			}
+
+			.tag-annotation-update{
+				border: 1px solid red;
+				padding: 30px;
+				margin: 30px 0;
+				display: none;
+			}
+		</style>
+
+		<div class="tag-annotation-update">
+			<h1>Админ превилегия</h3>
+			<div class="tag-annotation-update-form">
+				<label for="tag-annotation-input">Редактирование аннотации тега</label><br><br>
+				<div class="input textarea tag-annotation-input-container">
+					<i class="mdi mdi-message-text font-color-grey input-icon"></i>
+					<textarea id="tag-annotation-input" placeholder="Редактирование аннотации тега"><?= $annotation ?></textarea>
+				</div>
+				<button class="std-btn save-tag-annotation" data-tag-annotation-id="attract_tagid_<?= $tag['id'] ?>">Сохранить изменения</button>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(function(){
+				$('.save-tag-annotation').on('click', function(){
+					const data = {
+						'external-custom-field-update': true,
+						'field_id': $(this).attr('data-tag-annotation-id'),
+						'field_value': $('#tag-annotation-input').val()
+					};
+					console.log(data);
+					$.post('/api/external-custom-field/update', data, function(resp){
+						document.location = document.location;
+					});
+				});
+
+				$('.open-tag-annotation-editor').on('click', function(e){
+					e.preventDefault();
+					if($('.tag-annotation-update').is(":visible")){
+						$('.tag-annotation-update').slideUp();
+					}else{
+						$('.tag-annotation-update').slideDown();
+					}
+				})
+			})
+		</script>
+		
+	<?php endif ?>
 
 	<!-- <div class="rating-item">
 		<div class="row">

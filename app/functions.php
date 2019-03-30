@@ -273,3 +273,7 @@ function get_web_page( $url ){
     $header['content'] = $content;
     return $header;
 }
+
+function externalCustomField(){
+	return model('ExternalCustomField');
+}

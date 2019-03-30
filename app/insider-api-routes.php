@@ -18,3 +18,5 @@ Router::get('/api/exist', 'ProfileController@exist');
 Router::get('/get-site-thumbnail/{id}', 'SiteController@get_site_thumbnail');
 Router::get('/api/update-site-description/{profileid}', 'SiteController@update_description');
 route('/api/media-list', 'MediaController@get_all_media_list');
+
+route('external-custom-field-update', 'ExternalCustomFieldController@update', '/api/external-custom-field/update');
