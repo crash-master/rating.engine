@@ -41,12 +41,14 @@
 @media (max-width: 560px){
 	.header,
 	.header .site-present{
-		height: 200px;
+		height: 300px;
 	}
 
 	.header .site-present{
-		background-size: 150%;
-    	background-position: left center;
+		/*background-size: 150%;*/
+    	/*background-position: left center;*/
+	    background-position: center;
+		background-size: cover;
 	}
 
 	.header .container{

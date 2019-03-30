@@ -26,7 +26,7 @@
 			'profile-list.css',
 			'profile-read.css',
 			'media.css'
-		], '/resources/view/new-yellow-drops/assets/css/master.min.css') ?>
+		], '/resources/view/new-yellow-drops/assets/css/master.min.css')  ?>
 	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/fonts.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/vars.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/mobile-nav.css">
@@ -35,9 +35,9 @@
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/article-list.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/article-read.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/profile-list.css">
-	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/profile-read.css"> -->
+	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/profile-read.css">
 
-	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/media.css">
+	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/media.css"> -->
 
 	<!-- JS LIBS -->
 	<script src="/resources/view/new-yellow-drops/assets/js/libs/jquery-3.3.1.min.js"></script>

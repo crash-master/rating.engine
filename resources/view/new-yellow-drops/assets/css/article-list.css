@@ -26,6 +26,7 @@
 .articles .article-timestamp{
 	font-size: 4rem;
 	margin-bottom: 15px;
+	display: none;
 }
 
 .articles .article-thumbnail{

@@ -12,8 +12,13 @@ class Profile extends \Extend\Model{
 
 	public function create($data){
 		$data['timestamp'] = 'NOW()';
-		$this -> set($data);
 		$slug = translit($data['name']);
+		list(,$site) = explode("://", $data['site']);
+		list($site) = explode("/", $site);
+		if($this -> length(['site', 'LIKE', '%' . $site . '%'])){
+			die("Site like this, already exists");
+		}
+		$this -> set($data);
 		$profile = $this -> get(['where' => ['site', '=', $data['site']]]);
 		$profile_search = $this -> get(['where' => ['slug', '=', $slug]]);
 		if($profile_search['id']){

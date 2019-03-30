@@ -123,8 +123,7 @@ class ProfileController extends \Extend\Controller{
 	public function exist(){
 		$site = $_GET['site'];
 		$site = url_without_prefix($site);
-		$res = model('Profile') -> get(['where' => ['site', 'LIKE', '%' . $site . '%']]);
-		if($res){
+		if(model('Profile') -> length(['where' => ['site', 'LIKE', '%' . $site . '%']])){
 			return json_encode(['result' => true]);
 		}
 		return json_encode(['result' => false]);

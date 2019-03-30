@@ -17,9 +17,10 @@
 						<? endif; ?>
 						<h1 class="profile-title"><?= $profile['name'] ?></h1>
 						<div class="profile-site">
-							<noindex>
+							<!-- <noindex>
 								<a href="<?= $profile['site_link'] ?>" rel="nofollow"><?= $profile['site'] ?></a>
-							</noindex>
+							</noindex> -->
+							<?= $profile['site'] ?>
 						</div>
 						<div class="profile-timestamp">Дата добавления <?= $profile['timestamp'] ?></div>
 						<div class="profile-description">

@@ -5,6 +5,7 @@ content_block_register('Контент, главная страница', 'conte
 function theme_settings(){
 	return [
 		'profile_thumbnail_size' => 'lg',
-		'reviews_thumbnail_size' => 'md'
+		'reviews_thumbnail_size' => 'md',
+		'article_thumbnail_size' => 'md'
 	];
 }

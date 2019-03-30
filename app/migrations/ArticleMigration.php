@@ -12,7 +12,7 @@ class ArticleMigration extends \Extend\Migration{
         // Create tables in db
 
         DBW::create('Article',function($t){
-            $t -> varchar('content')
+            $t -> longtext('content')
             -> tinyint('with_comments')
             -> tinyint('published')
             -> int('thumbnail_media_id')

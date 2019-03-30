@@ -33,7 +33,14 @@ class Article extends \Extend\Model{
     		}
     		switch($field){
     			case 'meta': $article['meta'] = model('Route_meta') -> get_by_article_id($article['id']); break;
-    			case 'thumbnail': $article['thumbnail'] = model('Media') -> get_src(model('Media') -> get_media($article['thumbnail_media_id'], 'sm')); break;
+    			case 'thumbnail': 
+                    $thumbnail_size = 'sm';
+                    if(function_exists('theme_settings')){
+                        $tsettings = theme_settings();
+                        $thumbnail_size = isset($tsettings['article_thumbnail_size']) ? $tsettings['article_thumbnail_size'] : $thumbnail_size;
+                    }
+                    $article['thumbnail'] = model('Media') -> get_src(model('Media') -> get_media($article['thumbnail_media_id'], $thumbnail_size)); 
+                    break;
     			case 'comments': $article['comments'] = model('Comment') -> get_by_article_id($article['id']); break;
     			case 'link': 
     				if(!isset($article['meta'])){

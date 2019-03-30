@@ -30,6 +30,75 @@ p{
 	margin-bottom: 20px;
 }
 
+h1, h2, h3, h4{
+    line-height: 11rem;
+}
+
+/* EDITOR */
+
+.page .ql-align-justify{
+	text-align: justify;
+}
+
+.page .ql-align-center{
+	text-align: center;
+}
+
+.page .ql-align-right{
+	text-align: right;
+}
+
+.page blockquote{
+	font-style: italic;
+	display: block;
+	padding-left: 30px;
+}
+
+.page blockquote:before{
+    content: '"';
+    font-size: 60px;
+    position: absolute;
+    opacity: .3;
+    margin: 13px 0px 0px -43px;
+    font-family: Arial;
+}
+
+.page .ql-size-large{
+	font-size: 9rem;
+}
+
+.page .ql-size-huge{
+	font-size: 12rem;
+}
+
+.page .ql-size-small{
+	font-size: 4rem;
+}
+
+.page ol>li{
+	list-style-type: unset;
+}
+
+.page li{
+	margin-bottom: 20px;
+}
+
+.page ul>li{
+	list-style-type: square;
+}
+
+.page .ql-indent-1{
+	padding-left: 30px;
+}
+
+.page .ql-indent-2{
+	padding-left: 60px;
+}
+
+.page .ql-indent-3{
+	padding-left: 90px;
+}
+
 /* CLASSES */
 
 .yd-block{
@@ -261,7 +330,7 @@ p{
 .header{
 	width: 100%;
 	height: 500px;
-	background-color: #f7f7f7;
+	/*background-color: #f7f7f7;*/
 }
 
 .header .site-present{
@@ -270,7 +339,8 @@ p{
 	background-image: url(../imgs/header2.jpg);
 	background-repeat: no-repeat;
 	-webkit-background-size: contain;
-	background-size: contain;
+	/*background-size: contain;*/
+	background-size: cover;
 	background-position: center center;
 }
 

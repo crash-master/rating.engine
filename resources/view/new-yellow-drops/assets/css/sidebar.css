@@ -86,6 +86,8 @@
 
 /* TAGS CLOUD */
 
-.tags-cloud{}
+.tags-cloud{
+	display: none;
+}
 
 .tags-cloud .yd-tag{}

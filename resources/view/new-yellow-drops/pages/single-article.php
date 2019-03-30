@@ -3,8 +3,6 @@
 <? vjoin('new-yellow-drops/layouts/nav') ?>
 <? vjoin('new-yellow-drops/layouts/header') ?>
 
-<? //dd($article) ?>
-
 <div class="container">
 	<div class="row">
 		<div class="col-4">
