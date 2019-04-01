@@ -1,6 +1,6 @@
 <?php
 
-class ExternalCustomField extends \Extend\Model{
+class ExternalCustomField{
 	public function get_field($field_id){
 		return model('Option') -> get_option($field_id);
 	}
