@@ -14,7 +14,9 @@
 							<span class="txt-grey"><?= $item['site'] ?></span>
 						</noindex>
 					</div>
-					<div class="date-of-create"><?= nyd_short_timestamp($item['timestamp']) ?></div>
+					<div class="date-of-create">
+						Читать <i class="mdi mdi-arrow-right"></i>
+					</div>
 				</div>
 			</div>
 

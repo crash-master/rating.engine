@@ -30,7 +30,7 @@
 			<? endforeach; ?>
 
 			<div style="text-align:left">
-				<button href="/page/rating" onclick="document.location = this.getAttribute('href')" class="std-a std-btn more-news">Смотреть весь список <i class="mdi mdi-arrow-right mdi-fix"></i></button>
+				<button data-emulate-a="/page/rating" class="std-a std-btn more-news">Смотреть весь список <i class="mdi mdi-arrow-right mdi-fix"></i></button>
 			</div>
 		</div>
 	</section>

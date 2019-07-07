@@ -35,6 +35,10 @@ $(document).ready(function(){
 		}
 	});
 
+	$('[data-emulate-a]').on('click', function(){
+		document.location = $(this).attr('data-emulate-a');
+	});
+
 // excerpt news description
 
 	excerptNewsItemsOnHomePage();

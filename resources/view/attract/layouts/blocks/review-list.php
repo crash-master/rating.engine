@@ -47,7 +47,11 @@
 													<div class="col-10">
 														<div class="head txt-grey-dark"><?= $comment['name'] ?> <span class="txt-grey">сказал(а):</span></div>
 														<div class="body"><?= $comment['message'] ?></div>
-														<div class="foot txt-grey-light">Оставлен <?= $comment['timestamp'] ?></div>
+														<div class="foot txt-grey-light">Оставлен <?= $comment['timestamp'] ?>
+															<? if(is_admin()): ?>
+																--- <a href="<?= linkTo('CommentController@remove', ['id' => $comment['id']]) ?>" class="danger-link">Удалить</a>
+															<? endif ?>
+														</div>
 													</div>
 												</div>
 											</div>

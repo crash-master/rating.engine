@@ -25,9 +25,12 @@ class ArticleController extends \Extend\Controller{
 	}
 
 	public function admin_update_page($article_id){
+		$article = model('Article') -> get_article_by_id($article_id);
+		$article['timestamp_src'] = $article['timestamp'];
+		list($article['timestamp_date'], $article['timestamp_time']) = explode(' ', $article['timestamp_src']);
 		return view('admin/articles/article-create-update', [
 			'update_flag' => true,
-			'article' => model('Article') -> get_article_by_id($article_id),
+			'article' => $article,
 			'tag_list' => model('Tag') -> get_tag_list(),
 			'categories' => model('Cats') -> full_list()
 		]);
@@ -53,6 +56,7 @@ class ArticleController extends \Extend\Controller{
 
 	public function update(){
 		$data = Request::post();
+		$data['timestamp'] = $data['timestamp_date'] . ' ' . $data['timestamp_time'];
 		$article_id = $data['article-update'];
 		$file = false;
 		if(isset($_FILES['thumbnail']) and $thumbnail = $_FILES['thumbnail']['tmp_name']){

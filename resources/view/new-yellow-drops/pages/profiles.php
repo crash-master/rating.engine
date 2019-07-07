@@ -25,7 +25,7 @@
 									<h1 class="profile-name">
 										<a href="<?= $profile['to_profile'] ?>"><?= $profile['name'] ?></a>
 									</h1>
-									<div class="profile-timestamp">Дата добавления <?= nyd_short_timestamp($profile['timestamp']) ?></div>
+									<!-- <div class="profile-timestamp">Дата добавления <?= nyd_short_timestamp($profile['timestamp']) ?></div> -->
 									<div class="profile-thumb" style="background-image: url('<?= $profile['site_obj']['screen'] ? $profile['site_obj']['screen'] : '/resources/view/new-yellow-drops/assets/imgs/no-img.jpg'; ?>')"></div>
 									<div class="profile-description">
 										<p class="text">

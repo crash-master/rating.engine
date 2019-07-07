@@ -83,7 +83,7 @@ class Profile extends \Extend\Model{
 
 		return $profile;
 	}
-
+ 
 	public function get_profile_media($profile, $size = 'sm'){
 		if(!isset($profile['site_obj'])){
 			$profile = $this -> fields_transform($profile, ['site_obj']);
@@ -92,7 +92,7 @@ class Profile extends \Extend\Model{
 			return $profile;
 		}
 		$profile['media'] = model('Media') -> get_media($profile['site_obj']['screen'], $size);
-		$profile['site_obj']['screen'] = model('Media') -> get_src($profile['media']);
+		$profile['site_obj']['screen'] = linkTo('MediaController@get_binary_img', ['media_id' => $profile['media']['id'], 'size' => $size]);
 		return $profile;
 	}
 

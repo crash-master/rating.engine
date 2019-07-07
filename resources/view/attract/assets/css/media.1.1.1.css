@@ -104,6 +104,7 @@
 }
 
 @media (max-width: 768px){
+
 	#rating .order-field{
 		text-align: left;
 	}
@@ -121,4 +122,83 @@
 	#single-article .block-title {
 	    margin-bottom: 20px;
 	}
+
+	/* V 1.1.1 */
+	
+	/*html{
+		font-size: 5px;
+	}*/
+
+	/*.news-item-big .description{
+		height: 320px;
+		margin-top: -320px;
+	}*/
+
+	/*#stats .line-item{
+		font-size: 5rem;
+	}*/
+
+	/*#stats .stats-foot{
+		font-size: 4.5rem;
+	}*/
+
+	/*.input.image .placeholder{
+		font-size: 3rem;
+	}*/
+
+	.logo img{
+		width: 100%;
+	}
+
+	/*.review-item .timestamp{
+		font-size: 3.5rem;
+	}*/
+
+	/*.rating-item .Profile-info{
+		font-size: 4.6rem;
+	}*/
+
+	/*.tag{
+		margin-bottom: 10px;
+		padding: 7px 10px;
+		font-size: 4.1rem;
+	}*/
+
+	/*.review-item {
+	    margin-bottom: 35px;
+	}*/
+
+	/*.ng-item .Profile-info {
+    	font-size: 4.5rem;
+    }*/
+
+    /*.ng-item{
+    	padding-bottom: 27px;
+    }*/
+
+    /*#profile .category,
+    #profile .site-title,
+    #profile .site-description{
+		margin-bottom: 15px;
+    }
+*/
+    /*#profile .Profile-name {
+   		font-size: 6rem;
+   	}*/
+
+   	/*#profile .site {
+	    font-size: 5.6rem;
+	}
+
+	.popup .block-title.main{
+		font-size: 6rem;
+	}
+
+	.new-user .input {
+	    width: 100%;
+	}
+
+	.new-user-form{
+		margin-bottom: 40px;
+	}*/
 }

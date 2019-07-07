@@ -1,4 +1,16 @@
-<? if(!isset($profile)) $profile = false; vjoin('Head', ['profile' => $profile]) ?>
+<? 
+	$description = false;
+	if(!isset($profile)){
+		$profile = false; 
+	}
+	if(!isset($tag)){
+		$tag = false; 
+	}else{
+		$annotation = externalCustomField() -> get_field('attract_tagid_' . $tag['id']);
+		$description = $annotation ? strip_tags($annotation) : false;
+	}
+	vjoin('Head', ['profile' => $profile, 'tag' => $tag, 'description' => $description]); 
+?>
 <button class="menu" data-menu="">
 	<span class="item"></span>
 	<span class="item"></span>

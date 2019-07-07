@@ -85,7 +85,7 @@ class Review extends \Extend\Model{
 					}
 					$reviews_media_size = (isset($theme_settings) and isset($theme_settings['reviews_thumbnail_size'])) ? $theme_settings['reviews_thumbnail_size'] : 'md';
 					$review['media'] = model('Media') -> get_media($review['image'], $reviews_media_size);
-					$review['image'] = model('Media') -> get_src($review['media']);
+					$review['image'] = linkTo('MediaController@get_binary_img', ['media_id' => $review['media']['id'], 'size' => $reviews_media_size]);
 				break;
 			}
 		}

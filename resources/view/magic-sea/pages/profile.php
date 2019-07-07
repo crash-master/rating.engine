@@ -62,7 +62,7 @@
 						<? endif; ?>
 						<div class="info-item row">
 							<span class="left-part"><strong>Описание</strong></span>
-							<span class="right-part"><? if($profile['site_obj']['description']): ?><?= $profile['site_obj']['description'] ?></span><? else: ?> Неизвестно <? endif; ?>
+							<span class="right-part mob-fix"><? if($profile['site_obj']['description']): ?><?= $profile['site_obj']['description'] ?></span><? else: ?> Неизвестно <? endif; ?>
 						</div>
 						<? if($profile['site_obj']['domen_created']): // domen_created ?>
 						<div class="info-item row">
@@ -93,6 +93,39 @@
 		if($('.comments-list .card-comment').length == 0){
 			$('.open-add-comments-form-container').addClass('up').find('button').trigger('click');
 		}
+	});
+
+
+	// SCREEN SIZE
+	const screenSize = function(){
+		let container = $('.screen-container');
+		container.removeAttr('style');
+		container.css('height', container.innerHeight() + 'px');
+	}
+
+	screenSize();
+	setInterval(function(){
+		screenSize();
+	}, 200);
+	window.addEventListener('resize', function(){
+		screenSize();
+	});
+
+	$(document).on('scroll', function() {
+		// let heightPoint = $('.info-container').innerHeight();
+		// if(heightPoint < 800){
+		// 	heightPoint = 800;
+		// }
+		// // console.log(heightPoint);
+	 //  	let s = $('html').scrollTop();
+	 //  	if(s > heightPoint && !$(".screen-container .screen").hasClass("fixed")){
+	 //  		$(".screen-container .screen").addClass('fixed').css('display', 'none');
+	 //  		$(".screen-container .screen").fadeIn('fast');
+	 //  	}
+
+	 //  	if(s < heightPoint && $(".screen-container .screen").hasClass("fixed")){
+	 //  		$(".screen-container .screen").removeClass('fixed');
+	 //  	}
 	});
 
 </script>

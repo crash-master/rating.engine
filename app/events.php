@@ -62,9 +62,9 @@ Events::add('call_action', function($params){
 
 	model('Media') -> always_resize();
 
-	// monitor_manager();
+	monitor_manager();
 
-	// sitemap_manager();
+	sitemap_manager();
 });
 
 //Events::add('call_action_404', function($params){

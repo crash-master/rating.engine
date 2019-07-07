@@ -257,6 +257,14 @@
 		font-size: 19px;
 	}
 
+	#single .right-part.mob-fix{
+		display: block;
+		width: 100%;
+		margin-left: 15px;
+		box-sizing: border-box;
+		padding-right: 15px;
+	}
+
 	/* --- END FORNT SIZE ---*/
 }
 

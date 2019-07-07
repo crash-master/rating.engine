@@ -22,7 +22,7 @@
 							</noindex> -->
 							<?= $profile['site'] ?>
 						</div>
-						<div class="profile-timestamp">Дата добавления <?= $profile['timestamp'] ?></div>
+						<!-- <div class="profile-timestamp">Дата добавления <?= $profile['timestamp'] ?></div> -->
 						<div class="profile-description">
 							<h3 class="description-title">Описание</h3>
 							<p>

@@ -1,0 +1,2 @@
+[2019-06-24 16:48:44] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+==================================================================================================

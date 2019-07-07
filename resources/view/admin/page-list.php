@@ -1,4 +1,21 @@
 <?php vjoin('admin-layouts/header'); ?>
+<style>
+	.is_text{
+		
+	}
+
+	.is_meta{
+		background-color: #eee;
+	}
+
+	.is_text.hid{
+		display: none;
+	}
+
+	.is_meta.hid{
+		display: none;
+	}
+</style>
 <div class="container">
 	<div class="page" id="meta">
 		<div class="jumbotron">
@@ -7,6 +24,12 @@
 			<hr class="my-4">
 			<div class="row">
 				<div class="col-12">
+					<div class="form-group">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="only_meta" data-checked="false">
+							<label class="custom-control-label" for="only_meta">Отобразить мета страницы</label>
+						</div>
+					</div>
 					<?php if (count($pagelist)): ?>
 						<table class="table table-light">
 							<thead class="thead-dark">
@@ -20,8 +43,7 @@
 							</thead>
 							<tbody>
 								<?php foreach ($pagelist as $key => $page): ?>
-									<?// dd($page) ?>
-									<tr>
+									<tr class="<? if($page['is_text']): ?>is_text<? else: ?>is_meta<? endif; ?>">
 										<th class="mob-hid" scope="row"><?= $key + 1 ?></th>
 										<td data-edit="/admin/pages/update/<?= $page['id'] ?>/title/?"><?= $page['title'] ?></td>
 										<td data-edit="/admin/pages/update/<?= $page['page_id'] ?>/route/?"><?= $page['route'] ?></td>
@@ -49,4 +71,17 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		if(!$('#only_meta').prop("checked")){
+			$('.is_meta').addClass('hid');
+		}else{
+			$('.is_text').addClass('hid');
+		}
+		$('#only_meta').on('change', function(){
+			$('.is_meta').toggleClass('hid');
+			$('.is_text').toggleClass('hid');
+		});
+	});
+</script>
 <?php vjoin('admin-layouts/footer'); ?>

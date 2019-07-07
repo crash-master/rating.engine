@@ -41,9 +41,20 @@ class Site extends \Extend\Model{
 				'favicon' => 'Неизвестно'
 			];
 		}
-		$dom = str_get_html($html);
+
 		$title = '';
-		$title = $dom -> find('title', 0);
+		if($html && !empty($html) && strlen($html) > 30){
+			$dom = str_get_html($html);
+			if(!is_object($dom)){
+				return [
+					'title' => '',
+					'description' => '',
+					'keywords' => '',
+					'favicon' => ''
+				];
+			}
+			$title = $dom -> find('title', 0);
+		}
 		if($title){
 			 $title = mb_strimwidth($title -> innertext, 0, 250, "...");
 		}
@@ -80,7 +91,7 @@ class Site extends \Extend\Model{
 
 	 public function domen_created($profile){ // domen_created
 		$domain = urlencode(url_without_prefix($profile['site']));
-		$apiKey = 'at_twCZ1Iyep1tM6bzWuQjBbJ0g4qiu3';
+		$apiKey = 'at_MNZMcV8V3ETQVJe6gk3is3DguKSRm';
 		$url = "https://www.whoisxmlapi.com/whoisserver/WhoisService?domainName={$domain}&apiKey={$apiKey}&outputFormat=JSON";
 		$response = get_web_page($url);
 		$res = json_decode($response['content'], true);

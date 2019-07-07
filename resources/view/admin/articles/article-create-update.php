@@ -28,6 +28,17 @@
 									<input type="text" class="form-control" name="route" placeholder="/article/..." value="<?= !isset($article) ? '' : $article['meta']['route'] ?>">
 								</div>
 								<div class="form-group">
+								<label for="timestamp_date">Дата публикации</label>
+									<div class="row">
+										<div class="col-12 col-lg-6 col-xl-6">
+											<input type="date" id="timestamp_date" class="form-control" name="timestamp_date" value="<?= $article['timestamp_date'] ?>">
+										</div>
+										<div class="col-12 col-lg-6 col-xl-6">
+											<input type="time" id="timestamp_time" class="form-control" name="timestamp_time" value="<?= $article['timestamp_time'] ?>">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="published" name="published" <?= (isset($article) and $article['published'] == '1') ? 'checked' : '' ?>>
 										<label class="custom-control-label" for="published">Публиковать</label>

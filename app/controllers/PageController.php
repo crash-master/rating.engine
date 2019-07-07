@@ -51,20 +51,31 @@ class PageController extends \Extend\Controller{
 		return redirect('PageController@admin_page');
 	}
 
-	public function page_meta_component($profile = false){
+	public function page_meta_component($profile = false, $tag = false, $description = false){
 		if($profile){
 			$extra_to_title = model('Option') -> get_option('extra_to_title');
 			$title = is_null($extra_to_title) ? $profile['name'] : $profile['name'] . ' - ' . $extra_to_title;
 			$page_meta = [
 				'title' => $title,
-				'description' => strip_tags($profile['site_obj']['description']),
+				'description' => $description ? $description : strip_tags($profile['site_obj']['description']),
 				'keywords' => $profile['name']
 			];
-		}else{
-			$route = \Kernel\Request::getUrl();
-			$route = '/'.$route;
-			$page_meta = model('Route_meta') -> get_by_route($route);
+		}else if($tag){
+			$extra_to_title = model('Option') -> get_option('extra_to_title');
+			$title = is_null($extra_to_title) ? $tag['title'] : $tag['title'] . ' - ' . $extra_to_title;
+			$page_meta = [
+				'title' => $title,
+				'description' => $description ? $description : $tag['title'],
+				'keywords' => $tag['title']
+			];
 		}
+		$route = \Kernel\Request::getUrl();
+		$route = '/'.$route;
+		$pm = model('Route_meta') -> get_by_route($route);
+		if($pm){
+			$page_meta = $pm;
+		}
+
 		return ['page_meta' => $page_meta];
 	}
 
