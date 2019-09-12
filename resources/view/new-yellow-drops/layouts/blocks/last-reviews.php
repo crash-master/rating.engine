@@ -6,9 +6,10 @@
 			<div class="review-item">
 				<div class="review-name">
 					<a href="<?= $comment['profile']['to_profile'] ?>"><?= $comment['name'] ?></a>
+					о <a href="<?= $comment['profile']['to_profile'] ?>">"<?= $comment['profile']['name'] ?>"</a>
 				</div>
 				<div class="review-content">
-					<?= nyd_excerpt_from_text($comment['message'], 30); ?>
+					<a href="<?= $comment['profile']['to_profile'] ?>"><?= nyd_excerpt_from_text($comment['message'], 30); ?></a>
 				</div>
 			</div>
 		<?php endforeach ?>

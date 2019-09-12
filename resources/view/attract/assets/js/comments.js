@@ -18,6 +18,8 @@ var Comments = function(){
   	for(var i=0;i<min;i++){
   		$(comments[i]).show();
   	}
+
+    $(container).find('.new-comment').attr('data-comment-id', '0');
   }
   
   this.initProfileComments = function(){
@@ -42,6 +44,33 @@ var Comments = function(){
   
   		return false;
   	});
+  }
+
+  this.initAnswerBtn = function(){
+    let self = this;
+    $('.comment-item .answer').on('click', function(e){
+      e.preventDefault();
+      let commentID = $(this).attr('data-comment-id');
+      let uname = $(this).attr('data-uname');
+      let container = $($(this).parent().parent().parent().parent().parent());
+      self.cancelAnswer(container);
+      $(this).hide();
+      container.find('.new-comment').attr('data-comment-id', commentID);
+      container.find('.answer-desc .uname').html(uname);
+      container.find('.answer-desc').show();
+      container.find('.new-comment input', 0).focus();
+    });
+
+    $('.answer-cancel').on('click', function(){
+      let container = $(this).parent().parent().parent();
+      self.cancelAnswer(container);
+    });
+  }
+
+  this.cancelAnswer = function(container){
+    $(container).find('.new-comment').attr('data-comment-id', '0');
+    $(container).find('.answer-desc').hide();
+    $(container).find('.comment-item .answer').show();
   }
   
   this.commentsPaginationInit = function(){
@@ -109,13 +138,18 @@ var Comments = function(){
   	$('.new-comment .send-btn').on('click', function(){
   		var btn = $(this);
   		var form = btn.parent();
+      let commentID = btn.parent().attr('data-comment-id');
   		if(btn.hasClass('disable')){
   			return false;
   		}
   
   		var data = takeData(form);
-  		data['create-comment'] = 1;
-  		data['reviewid'] = form.attr('data-review-id');
+  		data['create-comment'] = 1;      
+      if(typeof commentID == 'undefined'){
+        data['reviewid'] = form.attr('data-review-id');
+      }else{
+  		  data['commentid'] = commentID;
+      }
   
   		// clean fields;
   		var inps = form.find('[placeholder]').val('');
@@ -172,6 +206,7 @@ var Comments = function(){
     self.commentsPaginationInit();
     self.closeProfileCommentsInit();
     self.reviewNewCommentValidate();
+    self.initAnswerBtn();
   }
   
   self.init();

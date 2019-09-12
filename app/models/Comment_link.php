@@ -38,14 +38,22 @@ class Comment_link extends \Extend\Model{
 		return $linked_comments;
 	}
 
-	public function get_comments_by_link($link, $public_flag = '1'){
+	public function get_comments_by_link($link, $public_flag = '1', $order = "DESC"){
 		$links = atarr($this -> get(['link', '=', $link]));
 		$src = [];
 		foreach($links as $link){
 			$src[] = $link['srcid'];
 		}
 		$links_query_str = "('" . implode ( "','", $src ) . "')";
-		$comments = atarr(model('Comment') -> get(['public_flag', '=', $public_flag, 'AND', 'id', 'IN', $links_query_str]));
+		$where = ['public_flag', '=', $public_flag, 'AND', 'id', 'IN', $links_query_str];
+		$comments = atarr(model('Comment') -> get(['where' => $where, 'order' => ['timestamp', $order]]));
+		foreach ($comments as $i => $comment) {
+			$link = array_filter($links, function($item) use ($comment){
+				return $item['srcid'] == $comment['id'];
+			});
+			list($inx) = array_keys($link);
+			$comments[$i]['link'] = $link[$inx];
+		}
 		return $comments;
 	}
 

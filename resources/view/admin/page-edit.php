@@ -58,6 +58,10 @@
 							});
 						</script>
 						<div class="form-group">
+							<label>Заголовок страницы (title)</label>
+							<input type="text" class="form-control" name="head_title" placeholder="Заголовок страницы" value="<?= !isset($page) ? '' : $page['head_title'] ?>">
+						</div>
+						<div class="form-group">
 							<label>Ключевые слова</label>
 							<textarea class="form-control" rows="2" name="keywords" placeholder="Ключевые слова"><?= !isset($page) ? '' : $page['keywords'] ?></textarea>
 						</div>

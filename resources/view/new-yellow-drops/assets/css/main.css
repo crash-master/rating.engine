@@ -679,3 +679,12 @@ button.menu, button.close{
 	overflow: hidden;
     max-height: 16px;
 }
+
+.yd-block-container .review-content a{
+	color: var(--main-text-color);
+}
+
+.yd-block-container .review-content a:hover{
+	text-decoration: none;
+	color: var(--selected-text-color);
+}

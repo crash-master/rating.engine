@@ -1,5 +1,5 @@
 <section class="comments">
-    <div class="comments-header"><?= count($comments) ?> Коментариев</div>
+    <div class="comments-header"><?= count($comments) ?> Коментариев к "<?= $profile['name'] ?>"</div>
     <div class="comments-container">
         <? if(count($comments)): ?>
             <?php foreach ($comments as $key => $comment): ?>
@@ -17,7 +17,9 @@
                         <?= $comment['message'] ?>
                         <? if(is_admin()): ?>
                             <br>
-                            <a class="danger-link" href="<?= linkTo('CommentController@remove', ['id' => $comment['id']]) ?>">Удалить</a>
+                            <a class="danger-link" target="_blank" href="<?= linkTo('CommentController@edit_comment_page', ['comment_id' => $comment['id']]) ?>">Редактировать</a>
+                            &nbsp;
+                            <small><a class="danger-link" href="<?= linkTo('CommentController@remove', ['id' => $comment['id']]) ?>">Удалить</a></small>
                         <? endif; ?>
                     </div>
                 </div>  

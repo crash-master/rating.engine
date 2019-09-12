@@ -13,7 +13,7 @@
 				<section class="page single-profile">
 					<article>
 						<? if($profile['site_obj']['screen']): ?>
-							<img src="<?= $profile['site_obj']['screen'] ?>" class="profile-screen page-thumbnail">
+							<img src="<?= $profile['site_obj']['screen'] ?>" alt="<?= $profile['site_obj']['screen_alt'] ?>" class="profile-screen page-thumbnail">
 						<? endif; ?>
 						<h1 class="profile-title"><?= $profile['name'] ?></h1>
 						<div class="profile-site">
@@ -34,7 +34,7 @@
 					<? vjoin('Share') ?>
 
 					<div class="form-new-comment create-comment-form">
-						<h3 class="form-title">Вы можете написать отзыв</h3>
+						<h3 class="form-title">Вы можете написать отзыв о "<?= $profile['name'] ?>"</h3>
 						<div class="row">
 							<div class="col-12">
 								<textarea name="message" id="message" class="yd-input textarea" placeholder="Ваш отзыв"></textarea>

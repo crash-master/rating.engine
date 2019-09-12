@@ -61,6 +61,7 @@ route('/admin/media/remove/{media_id}', 'MediaController@remove');
 route('/admin/media/img-preview/{media_id}', 'MediaController@get_img_preview');
 route('/admin/settings', 'SettingsController@admin_page');
 route('update-settings', 'SettingsController@update', '/admin/settings/update');
+route('/admin/comment/edit/{comment_id}', 'CommentController@edit_comment_page');
 
 
 route('/admin/tags', 'TagController@admin_page');
@@ -70,3 +71,5 @@ route('create-tag', 'TagController@create');
 route('recomended-add', 'RecomendedController@add_new_profile', '/admin/recomended/add-new');
 route('/admin/review-edit/review_id/{id}', 'ReviewController@review_edit');
 route('update-review', 'ReviewController@update_review', '/admin/update_review');
+route('update-comment', 'CommentController@update_comment', '/admin/update_comment');
+route('update-img-meta', 'ImgsMetaController@ajax_update', '/admin/update-img-meta');

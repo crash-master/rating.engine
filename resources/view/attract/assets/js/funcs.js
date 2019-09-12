@@ -77,14 +77,15 @@ function excerptNewsItemsOnHomePage(){
   }
 
 	let excerpt = new ExcerptJS(params);
-	excerpt.input($('.news-item-big .description').find('p:eq(1)').html());
-	$('.news-item-big .description').find('p:eq(1)').html(excerpt.out('symbols') + '...');
+	console.log($('.news-item-big .description .news-desc'));
+	excerpt.input($('.news-item-big .description .news-desc').html());
+	$('.news-item-big .description .news-desc').html(excerpt.out('symbols') + '...');
 
 	let newsItems = $('.news-item');
 	for(let i of newsItems){
-		let txt = $(i).find('.description p:eq(1)').html();
+		let txt = $(i).find('.description .news-desc').html();
 		excerpt.input(txt);
-		$(i).find('.description p:eq(1)').html(excerpt.out('symbols') + '...');
+		$(i).find('.description .news-desc').html(excerpt.out('symbols') + '...');
 	}
 
 	params.len.min = 30;

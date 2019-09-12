@@ -32,11 +32,13 @@
 			'new-user.css',
 			'search.css',
 			'media.1.1.1.css'
-		], '/resources/view/attract/assets/css/master.min.css') ?>
+		], '/resources/view/attract/assets/css/master_1.3.min.css') ?>
 
-	<script type="text/javascript" src="/resources/vendor/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="/resources/vendor/bootstrap-4.1.2/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="/resources/view/attract/assets/js/funcs.js"></script>
+	<script src="/resources/vendor/jquery-3.3.1.min.js"></script>
+	<script src="/resources/vendor/bootstrap-4.1.2/js/bootstrap.min.js"></script>
+
+	<!-- <script type="text/javascript" src="/resources/view/attract/assets/js/libs/excerpt.js"></script>
+	<script type="text/javascript" src="/resources/view/attract/assets/js/funcs.js"></script>
 	<script type="text/javascript" src="/resources/view/attract/assets/js/mobile-nav.js"></script>
 	<script type="text/javascript" src="/resources/view/attract/assets/js/form-control.js"></script>
 	<script type="text/javascript" src="/resources/view/attract/assets/js/search.js"></script>
@@ -54,7 +56,7 @@
 			'check-site-on-exists.js',
 			'rating.js',
 			'app.js'
-		], '/resources/view/attract/assets/js/master_v1.1.min.js') ?>
+		], '/resources/view/attract/assets/js/master_v1.4.min.js') ?>
 
 	<link rel="icon" type="image/png" href="/resources/view/attract/assets/imgs/favicon.png">
 

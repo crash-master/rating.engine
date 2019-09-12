@@ -74,6 +74,9 @@ class PageController extends \Extend\Controller{
 		$pm = model('Route_meta') -> get_by_route($route);
 		if($pm){
 			$page_meta = $pm;
+			if(!empty(trim($page_meta['head_title']))){
+				$page_meta['title'] = $page_meta['head_title'];
+			}
 		}
 
 		return ['page_meta' => $page_meta];

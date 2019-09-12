@@ -7,6 +7,6 @@ content_block_register('Блок приветствия', 'preface', '<h2>Рей
 function theme_settings(){
 	return [
 		'profile_thumbnail_size' => 'md',
-		'reviews_thumbnail_size' => 'md'
+		'reviews_thumbnail_size' => 'sm'
 	];
 }

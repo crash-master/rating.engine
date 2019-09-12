@@ -60,7 +60,10 @@ class Profile extends \Extend\Model{
 			switch($field){
 				case 'site_link': $profile['site_link'] = linkTo('SiteController@incrementSiteVisit', ['profileid' => $profile['id']]); break;
 				case 'timestamp': $profile['timestamp'] = dateFormat($profile['timestamp']); break;
-				case 'site_obj': $profile['site_obj'] = model('Site') -> get(['where' => ['profileid', '=', $profile['id']]]); break;
+				case 'site_obj': 
+					$profile['site_obj'] = model('Site') -> get(['where' => ['profileid', '=', $profile['id']]]); 
+					$profile['site_obj']['screen_alt'] = model('ImgsMeta') -> get_alt($profile['site_obj']['screen']);
+				break;
 				case 'cat': $profile['cat'] = model('Cats') -> get(['where' => ['id', '=', $profile['catid']]]); break;
 				case 'site': $profile['site'] = url_without_prefix($profile['site']); break;
 				case 'to_profile': $profile['to_profile'] = model('Meta') -> getMeta('siteurl') . linkTo('ProfileController@page', ['slug' => $profile['slug']]); break;

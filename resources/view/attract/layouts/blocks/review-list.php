@@ -1,3 +1,4 @@
+<? //dd($reviews[2]['comments']) ?>
 <section class="reviews">
 		<? $count_reviews = count($reviews) ?>
 		<h2 class="block-title"><?= $profile['name'] ?> отзывы <small class="txt-grey-light">(<?= $count_reviews ?> шт)</small></h2>
@@ -42,15 +43,37 @@
 											<div class="comment-item">
 												<div class="row">
 													<div class="col-2 avatar-container">
-														<div class="avatar txt-grey" data-fl-content="<?= $comment['name'] ?>">А</div>
+														<div class="avatar txt-grey" data-fl-content="<?= $comment['name'] ?>"><?= substr($comment['name'], 0, 1) ?></div>
 													</div>
 													<div class="col-10">
-														<div class="head txt-grey-dark"><?= $comment['name'] ?> <span class="txt-grey">сказал(а):</span></div>
-														<div class="body"><?= $comment['message'] ?></div>
+														<div class="head txt-grey-dark">
+															<?= $comment['name'] ?> 
+															<small class="txt-grey">
+																<? if(!isset($comment['answer_flag'])): ?>
+																	сказал(а):
+																<? else: ?>
+																	ответил(а) <?= $comment['quote'][0] ?>
+																<? endif ?>
+															</small>
+														</div>
+														<div class="body">
+															<? if(isset($comment['answer_flag'])): ?>
+																<blackquote class="txt-grey">
+																	<small>"<?= $comment['quote'][1] ?>"</small>
+																</blackquote><br>
+															<? endif ?>
+															<?= $comment['message'] ?>
+														</div>
 														<div class="foot txt-grey-light">Оставлен <?= $comment['timestamp'] ?>
 															<? if(is_admin()): ?>
+																--- <a target="_blank" href="<?= linkTo('CommentController@edit_comment_page', ['comment_id' => $comment['id']]) ?>">Редактировать</a>
+																&nbsp;
 																--- <a href="<?= linkTo('CommentController@remove', ['id' => $comment['id']]) ?>" class="danger-link">Удалить</a>
 															<? endif ?>
+															&nbsp;&nbsp;
+															<? if(!isset($comment['answer_flag'])): ?>
+																<a href="#" class="answer" data-comment-id="<?= $comment['id'] ?>" data-uname="<?= $comment['name'] ?>">Ответить</a>
+															<? endif; ?>
 														</div>
 													</div>
 												</div>
@@ -59,7 +82,7 @@
 										<?php endforeach ?>	
 
 										<div class="comments-paginator">
-											<span class="txt-grey cp-counter">3 из 5</span>
+											<span class="txt-grey cp-counter">0 из 0</span>
 											<button class="std-btn prev-comments-page"></button>
 											<button class="std-btn next-comments-page"></button>
 										</div>
@@ -67,6 +90,7 @@
 										<div class="notification">Ваш коментарий был отправлен на модерацию</div>
 
 										<div class="new-comment" data-review-id="<?= $reviews[$i]['id'] ?>">
+											<p class="answer-desc">Ответ для <strong class="uname"></strong> <span class="answer-cancel">Отмена</span></p>
 											<div class="input">
 												<i class="mdi mdi-account input-icon"></i>
 												<input type="text" name="name" placeholder="Ваше имя" value="<?= \Kernel\Sess::get('username') ?>">

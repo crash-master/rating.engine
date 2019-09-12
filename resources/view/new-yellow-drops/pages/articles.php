@@ -27,7 +27,7 @@
 							</h1>
 							<div class="article-timestamp">Дата публикации <?= nyd_short_timestamp($article['timestamp']) ?></div>
 							<? if($article['thumbnail']): ?>
-								<img src="<?= $article['thumbnail'] ?>" class="article-thumbnail">
+								<img src="<?= $article['thumbnail'] ?>" class="article-thumbnail" alt="<?= $article['thumbnail_alt'] ?>">
 							<? endif; ?>
 							<div class="article-excerpt">
 								<?= $article['meta']['description'] ?>

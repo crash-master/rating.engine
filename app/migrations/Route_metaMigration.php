@@ -13,6 +13,7 @@ class Route_metaMigration extends \Extend\Migration{
 
         DBW::create('Route_meta',function($t){
             $t -> varchar('title')
+            -> varchar('head_title')
              -> text('keywords')
              -> text('description')
              -> text('extra')

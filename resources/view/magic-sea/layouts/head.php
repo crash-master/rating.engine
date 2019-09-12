@@ -26,11 +26,11 @@
 			'media.1.0.css'
 		], '/resources/view/magic-sea/assets/css/master.min.css') ?>
 
-    <script type="text/javascript" src="/resources/vendor/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="/resources/view/magic-sea/assets/js/libs/excerpt.js"></script>
-	<script type="text/javascript" src="/resources/view/magic-sea/assets/js/disable-submit-btn.js"></script>
-	<script type="text/javascript" src="/resources/view/magic-sea/assets/js/check-site-on-exists.js"></script>
-	<script type="text/javascript" src="/resources/view/magic-sea/assets/js/app.1.3.js"></script>
+    <script src="/resources/vendor/jquery-3.3.1.min.js"></script>
+	<script src="/resources/view/magic-sea/assets/js/libs/excerpt.js"></script>
+	<script src="/resources/view/magic-sea/assets/js/disable-submit-btn.js"></script>
+	<script src="/resources/view/magic-sea/assets/js/check-site-on-exists.js"></script>
+	<script src="/resources/view/magic-sea/assets/js/app.1.3.js"></script>
 
 	<link rel="icon" href="/resources/view/magic-sea/assets/imgs/favicon.png" type="image/png" />
 

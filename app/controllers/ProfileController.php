@@ -150,7 +150,8 @@ class ProfileController extends \Extend\Controller{
 		$profiles = model('Profile') -> get_profiles_by_cat_slug($cat_slug, $page_num);
 		$page_num ++;
 		$category = model('Cats') -> get_cat_by_slug($cat_slug);
-		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/profiles', compact('profiles', 'page_num', 'category'));
+		$canonical_link = $page_num > 1 ? linkTo('ProfileController@profile_list_by_category', ['cat_slug' => $category['slug'], 'page_num' => 1]) : NULL;
+		return view(\Kernel\Config::get('rating-engine -> view-template') . '/pages/profiles', compact('profiles', 'page_num', 'category', 'canonical_link'));
 	}
 
 	public function profile_list_by_tag($tag_slug, $page_num = 1){

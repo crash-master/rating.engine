@@ -14,7 +14,7 @@
 				<section class="page single-article">
 					<article>
 						<? if($article['thumbnail']): ?>
-							<img src="<?= $article['thumbnail'] ?>" class="article-screen">
+							<img src="<?= $article['thumbnail'] ?>" alt="<?=$article['thumbnail_alt'] ?>" class="article-screen">
 						<? endif; ?>
 						<h1 class="article-title"><?= $article['meta']['title'] ?></h1>
 						<div class="article-timestamp">Дата публикации <?= $article['timestamp'] ?></div>

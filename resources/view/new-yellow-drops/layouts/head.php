@@ -6,7 +6,7 @@
 	<meta name="description" content="<?= $page_meta['description'] ?>">
 	<meta name="keywords" content="<?= $page_meta['keywords'] ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	
+	<? if(isset($canonical_link) and !is_null($canonical_link)): ?><link rel="canonical" href="<?= $canonical_link ?>"/><? endif ?>
 	<!-- CSS LIBS -->
 	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/normalize.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/libs/bootstrap-grid.min.css"> -->
@@ -26,7 +26,7 @@
 			'profile-list.css',
 			'profile-read.css',
 			'media.css'
-		], '/resources/view/new-yellow-drops/assets/css/master.min.css')  ?>
+		], '/resources/view/new-yellow-drops/assets/css/master.1.1.min.css')  ?>
 	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/fonts.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/vars.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/mobile-nav.css">

@@ -130,6 +130,7 @@ class Media extends \Extend\Model{
 		$media = atarr($this -> get(['rows' => ['id', 'timestamp'], 'limit' => [$from, $count_on_page], 'order' => ['id', 'DESC']]));
 		foreach ($media as $i => $item) {
 			$media[$i]['src'] = linkTo('MediaController@get_binary_img', ['media_id' => $item['id'], 'size' => $size]);
+			$media[$i]['alt'] = model('ImgsMeta') -> get_alt($item['id']);
 		}
 		return $media;
 	}
@@ -167,7 +168,11 @@ class Media extends \Extend\Model{
 	}
 
 	public function get_all_media_list(){
-		return atarr($this -> get(['rows' => ['id'], 'order' => ['id', 'DESC']]));
+		$media = atarr($this -> get(['rows' => ['id'], 'order' => ['id', 'DESC']]));
+		foreach($media as $i => $item){
+			$media[$i]['alt'] = model('ImgsMeta') -> get_alt($item['id']);
+		}
+		return $media;
 	}
 
 	public function transform_binary_links($media_list, $size = 'sm'){

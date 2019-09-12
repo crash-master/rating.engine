@@ -88,6 +88,10 @@
 							<textarea name="content" class="quill-textarea" id="" cols="30" rows="10"></textarea>
 						</div>
 						<div class="form-group">
+							<label>Заголовок страницы (title)</label>
+							<input type="text" class="form-control" name="head_title" placeholder="Заголовок страницы" value="<?= !isset($article) ? '' : $article['meta']['head_title'] ?>">
+						</div>
+						<div class="form-group">
 							<label>Ключевые слова</label>
 							<textarea class="form-control" rows="2" name="keywords" placeholder="Ключевые слова"><?= !isset($article) ? '' : $article['meta']['keywords'] ?></textarea>
 						</div>

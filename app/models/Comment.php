@@ -67,6 +67,7 @@ class Comment extends \Extend\Model{
 			$link = 'comment_' . $comment['id'];
 			$comments_answers = $this -> get_by($link);
 			foreach($comments_answers as $answer){
+				$answer['quote'] = [$comment['name'], $comment['message']];
 				$answer['answer_flag'] = true;
 				$res_comments[] = $answer;
 			}
@@ -76,7 +77,7 @@ class Comment extends \Extend\Model{
 	}
 
 	public function get_by($link){
-		$comments = model('Comment_link') -> get_comments_by_link($link);
+		$comments = model('Comment_link') -> get_comments_by_link($link, '1', 'ASC');
 		$count_comments = count($comments);
 		for($i=0;$i<$count_comments;$i++){
 			$comments[$i]['timestamp'] = dateFormat($comments[$i]['timestamp']);
@@ -152,6 +153,10 @@ class Comment extends \Extend\Model{
 			$res_comments[$c]['timestamp'] = dateFormat($res_comments[$c]['timestamp']);
 		}
 		return $res_comments;
+	}
+
+	public function get_comment_by_id($comment_id){
+		return $this -> get(['id', '=', $comment_id]);
 	}
 
 

@@ -65,7 +65,9 @@ class Review extends \Extend\Model{
 	public function fields_transform($review, $fields){
 		foreach($fields as $field){
 			switch($field){
-				case 'comments': $review['comments'] = model('Comment') -> get_by_review_id($review['id']); break;
+				case 'comments': 
+					$review['comments'] = model('Comment') -> get_by_with_answers('review_'.$review['id']); 
+				break;
 				case 'timestamp': $review['timestamp'] = dateFormat($review['timestamp']); break;
 				case 'city': $review['city'] = ($review['city'] == '') ? 'Неизвестно': $review['city']; break;
 				case 'country': $review['country'] = ($review['country'] == '') ? 'Неизвестно': $review['country']; break;

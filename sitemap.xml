@@ -703,6 +703,12 @@
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
+		<loc>/profile/testing</loc>
+		<lastmod>2019-06-24</lastmod>
+		<priority>1</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
 		<loc>/article/article_thumbnail</loc>
 		<lastmod>2018-11-30</lastmod>
 		<priority>.8</priority>
@@ -728,7 +734,7 @@
 	</url>
 	<url>
 		<loc>/page/about</loc>
-		<lastmod>2019-01-23</lastmod>
+		<lastmod>2019-08-04</lastmod>
 		<priority>.6</priority>
 		<changefreq>weekly</changefreq>
 	</url>

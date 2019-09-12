@@ -277,3 +277,22 @@
 #profile .site-description-text *{
 	font-size: 5rem;
 }
+
+#profile .review-item .answer-desc{
+	position: relative;
+	top: -20px;
+	display: none;
+}
+
+#profile .review-item .answer-desc .answer-cancel{
+	font-size: 10px;
+	color: grey;
+	cursor: pointer;
+	text-decoration: underline;
+	position: relative;
+	left: 15px;
+}
+
+#profile .review-item .answer-desc .answer-cancel:hover{
+	text-decoration: none;
+}

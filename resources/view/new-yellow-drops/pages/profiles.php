@@ -1,4 +1,4 @@
-<? vjoin('Head', ['profile' => $profile]) ?>
+<? vjoin('Head', ['profile' => $profile, 'canonical_link' => $canonical_link]) ?>
 <? vjoin('new-yellow-drops/layouts/mobile-nav') ?>
 <? vjoin('new-yellow-drops/layouts/nav') ?>
 <? vjoin('new-yellow-drops/layouts/header') ?>

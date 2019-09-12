@@ -193,7 +193,7 @@ function customMedia(){
 			$.getJSON('/api/media-list', function(d){
 				let html = '';
 				for(let item of d){
-					html += '<div class="media-item" data-media-id="' + item.id + '" data-src="' + item.bin_link + '" style="background-image: url(' + item.bin_link + ')"></div>';
+					html += '<div class="media-item" data-media-id="' + item.id + '" data-media-alt="' + item.alt + '" data-src="' + item.bin_link + '" style="background-image: url(' + item.bin_link + ')"></div>';
 				}
 				mediaContainer.html(html);
 
@@ -202,7 +202,8 @@ function customMedia(){
 				.on('click', function(){
 					let id = $(this).attr('data-media-id');
 					let link = img_link.replace('{media_id}', id).replace('{size}', 'lg');
-					insertField.append('<img src="' + link + '">');
+					let alt = $(this).attr('data-media-alt');
+					insertField.append('<img src="' + link + '" alt="' + alt + '">');
 					closeModal.trigger('click');
 				})
 				.on('mouseover', function(){

@@ -3,7 +3,8 @@
 /*  Automatically was generated from a template fw/templates/controller.php */
 use Kernel\{
 	View,
-	Model
+	Model,
+    Request
 };
 
 class CommentController extends \Extend\Controller{
@@ -69,6 +70,21 @@ class CommentController extends \Extend\Controller{
         }
 
         return ['comments' => $comments];
+    }
+
+    public function edit_comment_page($comment_id){
+        $comment_for_edit = model('Comment') -> get_comment_by_id($comment_id);
+        list($comment_for_edit['timestamp_date'], $comment_for_edit['timestamp_time']) = explode(' ', $comment_for_edit['timestamp']);
+        return view('admin/comment-edit', [
+            'comment' => $comment_for_edit
+        ]);
+    }
+
+    public function update_comment(){
+        $post = Request::post();
+        $post['timestamp'] = $post['timestamp_date'] . ' ' . $post['timestamp_time'];
+        model('Comment') -> update($post, ['id', '=', $post['comment_id']]);
+        return redirect(linkTo('CommentController@edit_comment_page', ['comment_id' => $post['comment_id']]));
     }
     
     
