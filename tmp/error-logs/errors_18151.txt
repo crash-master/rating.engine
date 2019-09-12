@@ -2,3 +2,13 @@
 ==================================================================================================
 [2019-09-12 17:31:48] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
 ==================================================================================================
+[2019-09-12 18:07:14] E_WARNING (code 2) | filemtime(): stat failed for ./resources/view/attract/assets/css/master_1.3.min.css IN FILE G:\server\OSPanel\domains\rating.engine\app\functions.php IN LINE 152
+-------------------------------------------------
+[2019-09-12 18:07:14] E_WARNING (code 2) | filemtime(): stat failed for ./resources/view/attract/assets/js/master_v1.4.min.js IN FILE G:\server\OSPanel\domains\rating.engine\app\functions.php IN LINE 187
+==================================================================================================
+[2019-09-12 18:25:22] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+==================================================================================================
+[2019-09-12 18:27:41] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+==================================================================================================
+[2019-09-12 18:30:52] E_WARNING (code 2) | array_keys() expects parameter 1 to be array, null given IN FILE G:\server\OSPanel\domains\rating.engine\fw\kernel\Request.php IN LINE 76
+==================================================================================================

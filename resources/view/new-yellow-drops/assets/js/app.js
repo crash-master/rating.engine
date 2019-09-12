@@ -15,7 +15,7 @@ $(document).ready(function(){
 	let comments = new Comments();
 	let search = new Search();
 
-	$('.answer').on('click', function(e){
+	$('a.answer').on('click', function(e){
 		e.preventDefault();
 		let commentID = $(this).attr('href');
 		let submitBtn = $('.create-comment-form .submit-container button:eq(0)');

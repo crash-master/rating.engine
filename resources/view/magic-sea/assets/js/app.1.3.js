@@ -218,17 +218,6 @@ $(document).ready(function(){
 		})
 	});
 
-	// setInterval(function(){
-	// 	// console.log(window.pageYOffset);
-	// 	if($('body').height() > ){
-	// 		if(!$('#footer').hasClass('footer-fixed')){
-	// 			$('#footer').addClass('footer-fixed');
-	// 		}
-	// 	}else{
-	// 		$('#footer').removeClass('footer-fixed');
-	// 	}
-	// }, 10);
-	//
 
 	$('.comment-delete').on('click', function (){
 		var review_id = $(this).attr('data-id');

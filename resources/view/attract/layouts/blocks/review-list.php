@@ -43,7 +43,7 @@
 											<div class="comment-item">
 												<div class="row">
 													<div class="col-2 avatar-container">
-														<div class="avatar txt-grey" data-fl-content="<?= $comment['name'] ?>"><?= substr($comment['name'], 0, 1) ?></div>
+														<div class="avatar txt-grey" data-fl-content="<?= $comment['name'] ?>"><?= mb_substr($comment['name'], 0, 1) ?></div>
 													</div>
 													<div class="col-10">
 														<div class="head txt-grey-dark">
