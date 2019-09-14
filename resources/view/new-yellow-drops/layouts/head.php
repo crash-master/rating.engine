@@ -26,7 +26,7 @@
 			'profile-list.css',
 			'profile-read.css',
 			'media.css'
-		], '/resources/view/new-yellow-drops/assets/css/master.1.1.min.css')  ?>
+		], '/resources/view/new-yellow-drops/assets/css/master.1.2.min.css')  ?>
 	<!-- <link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/fonts.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/vars.css">
 	<link rel="stylesheet" href="/resources/view/new-yellow-drops/assets/css/mobile-nav.css">

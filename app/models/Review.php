@@ -20,8 +20,8 @@ class Review extends \Extend\Model{
 		return $reviews;
 	}
 
-	public function get_last_reviews(){
-		$reviews = arrayToArray(model('Review') -> get(['where' => ['public_flag', '=', '1'], 'order' => ['timestamp', 'DESC'], 'limit' => [0, 3]]));
+	public function get_last_reviews($count_reviews = 3){
+		$reviews = arrayToArray(model('Review') -> get(['where' => ['public_flag', '=', '1'], 'order' => ['timestamp', 'DESC'], 'limit' => [0, $count_reviews]]));
 
 		$count = count($reviews);
 		for($i=0; $i<$count; $i++){

@@ -64,12 +64,30 @@ class Comment extends \Extend\Model{
 		$res_comments = [];
 		foreach($comments as $comment){
 			$res_comments[] = $comment;
+
 			$link = 'comment_' . $comment['id'];
 			$comments_answers = $this -> get_by($link);
 			foreach($comments_answers as $answer){
 				$answer['quote'] = [$comment['name'], $comment['message']];
-				$answer['answer_flag'] = true;
+				$answer['answer_flag'] = 1;
 				$res_comments[] = $answer;
+
+				$link = 'comment_' . $answer['id'];
+				$comments_answers2 = $this -> get_by($link);
+				foreach($comments_answers2 as $answer){
+					$answer['quote'] = [$comment['name'], $comment['message']];
+					$answer['answer_flag'] = 2;
+					$res_comments[] = $answer;
+
+					$link = 'comment_' . $answer['id'];
+					$comments_answers3 = $this -> get_by($link);
+					foreach($comments_answers3 as $answer){
+						$answer['quote'] = [$comment['name'], $comment['message']];
+						$answer['answer_flag'] = 3;
+						$res_comments[] = $answer;
+					}
+
+				}
 			}
 		}
 
@@ -123,7 +141,13 @@ class Comment extends \Extend\Model{
 	 */
 	public function create($data, $link = false){
 		$this -> set($data);
-		$cur_comment = $this -> get(['name', '=', $data['name'], 'AND', 'message', '=', $data['message']]);
+		$cur_comment = $this -> get([
+			'name', '=', $data['name'], 
+			'AND', 
+			'message', '=', $data['message'],
+			'AND',
+			'timestamp', '>', date('Y-m-d H:i:s', time() - 1)
+		]);
 		if($link){
 			model('Comment_link') -> create_link($cur_comment['id'], $link);
 		}
@@ -137,7 +161,7 @@ class Comment extends \Extend\Model{
 
 	public function get_last_comments(){
 		$link_type = 'profile';
-		$links = model('Comment_link') -> get_last_links_by_link_type($link_type, 5);
+		$links = model('Comment_link') -> get_last_links_by_link_type($link_type, 15);
 		$src = [];
 		foreach ($links as $link) {
 			$src[] = $link['srcid'];
@@ -148,11 +172,16 @@ class Comment extends \Extend\Model{
 		$res_comments = [];
 		for($i=$count-1, $c=0; $i>=0; $i--, $c++){
 			list(, $profileid) = explode('_', $links[$c]['link']);
+			if($comments[$i]['public_flag'] != '1')
+				continue;
 			$res_comments[$c] = $comments[$i];
+			$res_comments[$c]['link'] = $links[$c]['link'];
 			$res_comments[$c]['profile'] = model('Profile') -> get_by_id($profileid);
 			$res_comments[$c]['timestamp'] = dateFormat($res_comments[$c]['timestamp']);
 		}
-		return $res_comments;
+
+		$result = array_slice($res_comments, 0, 5);
+		return $result;
 	}
 
 	public function get_comment_by_id($comment_id){
