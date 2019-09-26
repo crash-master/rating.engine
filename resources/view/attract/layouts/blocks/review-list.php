@@ -22,7 +22,7 @@
 										</div>
 										<div class="review-body txt-grey-dark">
 											<? if($reviews[$i]['image']): ?>
-												<img src="<?= $reviews[$i]['image'] ?>" style="width: 100%; margin-bottom: 10px;" alt="image">
+												<img src="<?= $reviews[$i]['image'] ?>" style="width: 75px; float: left; margin-right: 20px; margin-bottom: 10px; cursor: pointer" alt="image" data-full-img="<?= $reviews[$i]['image'] ?>">
 											<? endif; ?>
 											<?= $reviews[$i]['message'] ?> 
 										</div>
@@ -113,3 +113,52 @@
 			<? endif; ?>
 		</div>
 	</section>
+
+<style type="text/css">
+	.photo-frame{
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, .7);
+		cursor: url('/resources/view/attract/assets/imgs/icons/close-cursor.png') 10 10, pointer;
+		display: none;
+		text-align: center;
+		z-index: 100;
+	}
+
+	.photo-frame img{
+		max-width: 60%;
+		max-height: 90%;
+		margin-top: 3%;
+		border-bottom: 3px solid #ff4936;
+		display: inline-block;
+	}
+
+	@media (max-width: 768px){
+		.photo-frame img{
+			width: auto;
+			max-width: 80%;
+		}
+	}
+</style>
+
+<div class="photo-frame">
+	<img src="" alt="Loading img">
+</div>
+
+<script>
+	$(document).ready(function(){
+		$('[data-full-img]').on('click', function(){
+			let photoFrame = $('.photo-frame');
+			let photo = $(photoFrame).find('img', 0)[0];
+			photo.src = $(this).attr('data-full-img');
+			photoFrame.fadeIn('normal');
+		});
+
+		$('.photo-frame').on('click', function(){
+			$(this).fadeOut('normal');
+		});
+	});
+</script>
